@@ -80684,8 +80684,8 @@ if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/carnet_virtual/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/carnet_virtual/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
