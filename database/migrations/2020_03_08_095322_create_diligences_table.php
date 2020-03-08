@@ -15,7 +15,7 @@ class CreateDiligencesTable extends Migration
     {
         Schema::create('diligences', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tramite_name', 100);
+            $table->string('name', 100);
             $table->timestamps();
         });
     }
