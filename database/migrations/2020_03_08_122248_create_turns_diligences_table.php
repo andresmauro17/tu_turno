@@ -14,9 +14,13 @@ class CreateTurnsDiligencesTable extends Migration
     public function up()
     {
         Schema::create('turns_diligences', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('turn_id')->unsigned();
+            $table->foreign('turn_id')->references('id')->on('turns');
+
             $table->integer('diligence_id')->unsigned();
+            $table->foreign('diligence_id')->references('id')->on('diligences');
+
             $table->dateTime('time_atention');
             $table->dateTime('end_atention');
 
@@ -31,6 +35,8 @@ class CreateTurnsDiligencesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('turns_diligences');
     }
 }

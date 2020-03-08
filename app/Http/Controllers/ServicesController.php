@@ -43,7 +43,7 @@ class ServicesController extends Controller
         $service -> is_active = $request->input('is_active');
         $service -> save();
 
-        return redirect()->route('servicios.index');
+        return redirect()->route('services.index');
     }
 
     /**
@@ -84,7 +84,7 @@ class ServicesController extends Controller
         $service -> observations = $request->input('observations');
         $service -> save();
 
-        return redirect()->route('servicios.index');
+        return redirect()->route('services.index');
     }
 
     /**
@@ -98,6 +98,6 @@ class ServicesController extends Controller
         $service = Service::find($id);
         $service->delete();
 
-        return redirect()->route('servicios.index');
+        return redirect()->route('services.index');
     }
 }

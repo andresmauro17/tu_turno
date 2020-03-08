@@ -8,7 +8,7 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">Servicios</h4>
-            <form class="form-horizontal" method="POST" action="/servicios">
+            <form class="form-horizontal" method="POST" action="/services">
                 @csrf
                 <div class="row">
                     <label class="col-md-3 label-on-left">Nombre</label>

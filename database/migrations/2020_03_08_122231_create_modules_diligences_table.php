@@ -14,9 +14,12 @@ class CreateModulesDiligencesTable extends Migration
     public function up()
     {
         Schema::create('modules_diligences', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('module_id')->unsigned();
+            $table->foreign('module_id')->references('id')->on('modules');
+
             $table->integer('diligence_id')->unsigned();
+            $table->foreign('diligence_id')->references('id')->on('diligences');
             
             $table->timestamps();
         });
@@ -29,6 +32,8 @@ class CreateModulesDiligencesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('modules_diligences');
     }
 }

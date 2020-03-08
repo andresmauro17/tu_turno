@@ -8,7 +8,7 @@
         </div>
         <div class="card-content">
             <h4 class="card-title">Servicio</h4>
-            <form class="form-horizontal" method="POST" action="/servicios/{{$service->id}}">
+            <form class="form-horizontal" method="POST" action="/services/{{$service->id}}">
                 @method('PUT')
                 @csrf
                 <div class="row">

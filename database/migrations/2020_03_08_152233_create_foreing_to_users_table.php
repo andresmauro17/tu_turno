@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForeingToUserTable extends Migration
+class CreateForeingToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateForeingToUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('module_id')->unsigned();
-
+            $table->integer('module_id')->unsigned()->nullable();
             $table->foreign('module_id')->references('id')->on('modules');
+            
         });
     }
 
@@ -28,7 +28,8 @@ class CreateForeingToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_module_id_foreing');
+            
+            $table->dropForeign('users_module_id_foreign');
             $table->dropColumn('module_id');
         });
     }

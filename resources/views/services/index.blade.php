@@ -40,14 +40,14 @@
                                         <td>{{$service->short_name}}</td>
                                         <td>{{$service->is_active}}</td>
                                         <td class="text-right">
-                                            <a href="/servicios/{{$service->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i>  Editar</a>
+                                            <a href="/services/{{$service->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i>  Editar</a>
 
-                                            <a href="/servicios/create" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i>  Crear</a>
+                                            <a href="/services/create" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i>  Crear</a>
                                             
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}
                                         </td>
                                         <td class="text-right col-md-12" >
-                                            <form method="POST" action="/servicios/{{$service->id}}">
+                                            <form method="POST" action="/services/{{$service->id}}">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i> Eliminar</button>

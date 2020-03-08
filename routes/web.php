@@ -37,4 +37,4 @@ Route::GET('/tv', 'TvController@index');
 
 Route::resource('kiosko', 'kioskoController');
 
-Route::resource('servicios', 'ServicesController');
+Route::resource('services', 'ServicesController');
