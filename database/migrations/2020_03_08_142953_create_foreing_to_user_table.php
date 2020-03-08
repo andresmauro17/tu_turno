@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModulesDiligencesTable extends Migration
+class CreateForeingToUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateModulesDiligencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('modules_diligences', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('module_id')->unsigned();
-            $table->integer('diligence_id')->unsigned();
-            
-            $table->timestamps();
+
+            $table->foreign('module_id')->references('id')->on('modules');
         });
     }
 
@@ -29,6 +27,9 @@ class CreateModulesDiligencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules_diligences');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_module_id_foreing');
+            $table->dropColumn('module_id');
+        });
     }
 }

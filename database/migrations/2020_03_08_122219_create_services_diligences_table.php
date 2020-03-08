@@ -15,8 +15,8 @@ class CreateServicesDiligencesTable extends Migration
     {
         Schema::create('services_diligences', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('service_id');
-            $table->integer('diligence_id');
+            $table->integer('service_id')->unsigned();
+            $table->integer('diligence_id')->unsigned();
 
             $table->integer('order');
 

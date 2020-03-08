@@ -15,8 +15,8 @@ class CreateTurnsDiligencesTable extends Migration
     {
         Schema::create('turns_diligences', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('turn_id');
-            $table->integer('diligence_id');
+            $table->integer('turn_id')->unsigned();
+            $table->integer('diligence_id')->unsigned();
             $table->dateTime('time_atention');
             $table->dateTime('end_atention');
 
