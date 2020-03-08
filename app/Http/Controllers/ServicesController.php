@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use Illuminate\Http\Request;
 
-class kioskoController extends Controller
+class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class kioskoController extends Controller
     public function index(Request $request)
     {
         $services = Service::all();
-        return view('kiosko.index', compact('services'));
+        return view('services.index', compact('services'));
     }
 
     /**
@@ -25,7 +25,7 @@ class kioskoController extends Controller
      */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
     /**
@@ -36,8 +36,14 @@ class kioskoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service();
+        $service -> name = $request->input('name');
+        $service -> initials = $request->input('initials');
+        $service -> observations = $request->input('observations');
+        $service -> status = $request->input('status');
+        $service -> save();
 
+        return redirect()->route('servicios.index');
     }
 
     /**
@@ -59,7 +65,8 @@ class kioskoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view('services.edit', compact('service'));
     }
 
     /**
@@ -71,8 +78,13 @@ class kioskoController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        $service = Service::find($id);
+        $service -> name = $request->input('name');
+        $service -> initials = $request->input('initials');
+        $service -> observations = $request->input('observations');
+        $service -> save();
 
+        return redirect()->route('servicios.index');
     }
 
     /**
@@ -83,6 +95,9 @@ class kioskoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+
+        return redirect()->route('servicios.index');
     }
 }

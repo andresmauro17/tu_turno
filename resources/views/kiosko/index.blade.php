@@ -36,77 +36,28 @@
                 <div class="container"> 
                     <div class="row">
 
-                        <div class="col-md-4">
-                            <form method="#" action="#">
-                                <div class="card card-profile card-hidden">
-                                    <div class="card-avatar">
-                                        <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
+                        @foreach ($services as $service)
+                            <div class="col-md-4">
+                                <form method="#" action="#">
+                                    <div class="card card-profile card-hidden">
+                                        <div class="card-avatar">
+                                            <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
+                                        </div>
+                                        <div class="card-content">
+                                        <h4 class="card-title"><strong>{{$service->name}}</strong></h4>
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <p class="control-label">
+                                                {{$service->observations}}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-rose btn-round">IMPRIMIR</button>
+                                        </div>
                                     </div>
-                                    <div class="card-content">
-                                        <h4 class="card-title"><strong>DISPENSACIÓN</strong></h4>
-                                    </div>
-                                    <div class="form-group label-floating">
-                                        <p class="control-label">
-                                            Atención preferencial significa que cumples con almenos una de estas características:
-                                            <li>Persona mayor de 60 años.</li> 
-                                            <li>Mujer en estado de embarazo.</li>
-                                            <li>Vienes con un menor de 10 años.</li>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-rose btn-round">IMPRIMIR</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-md-4">
-                            <form method="#" action="#">
-                                <div class="card card-profile card-hidden">
-                                    <div class="card-avatar">
-                                        <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
-                                    </div>
-                                    <div class="card-content">
-                                        <h4 class="card-title"><strong>APLICACIÓN</strong></h4>
-                                    </div>
-                                    <div class="form-group label-floating">
-                                        <p class="control-label">
-                                            Atención preferencial significa que cumples con almenos una de estas características:
-                                            <li>Persona mayor de 60 años.</li> 
-                                            <li>Mujer en estado de embarazo.</li>
-                                            <li>Vienes con un menor de 10 años.</li>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-rose btn-round">IMPRIMIR</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-md-4">
-                            <form method="#" action="#">
-                                <div class="card card-profile card-hidden">
-                                    <div class="card-avatar">
-                                        <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
-                                    </div>
-                                    <div class="card-content">
-                                        <h4 class="card-title"><strong>INFORMACIÓN</strong></h4>
-                                    </div>
-                                    <div class="form-group label-floating">
-                                        <p class="control-label">
-                                            Atención preferencial significa que cumples con almenos una de estas características:
-                                            <li>Persona mayor de 60 años.</li> 
-                                            <li>Mujer en estado de embarazo.</li>
-                                            <li>Vienes con un menor de 10 años.</li>
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-rose btn-round">IMPRIMIR</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>

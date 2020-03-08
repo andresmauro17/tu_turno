@@ -35,6 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::GET('/tv', 'TvController@index');
 
-Route::GET('/control', 'ControlTv@index');
-
 Route::resource('kiosko', 'kioskoController');
+
+Route::resource('servicios', 'ServicesController');

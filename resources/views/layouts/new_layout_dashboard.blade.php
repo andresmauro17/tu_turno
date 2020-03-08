@@ -6,8 +6,8 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('img/apple-icon.png')}}" />
 	<link rel="icon" type="image/png" href="{{asset('img/favicon.png')}}" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title>Material Dashboard Pro by Creative Tim</title>
+    {{-- <!-- <meta name="csrf-token" content="{{csrf_token}}"/> --> --}}
+	<title>Kiosko</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<meta name="viewport" content="width=device-width" />
@@ -77,9 +77,15 @@
             </div>
                 <ul class="nav">
                     <li>
-                        <a href="/home">
+                        <a href="/kiosko">
                             <i class="material-icons">dashboard</i>
-                            <p> INICIO </p>
+                            <p> KIOSKO </p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/servicios">
+                            <i class="material-icons">dashboard</i>
+                            <p> SERVICIOS </p>
                         </a>
                     </li>
                 </ul>
@@ -135,7 +141,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-12 logo_contenedor">
-                        <img src="{{asset('img/logo.png')}}" alt="" style="" class="">
+                        <!--<img src="{{asset('img/logo.png')}}" alt="" style="" class=""> -->
                         <div class="container-fluid ">
                             @yield('content_user')
                         </div>
@@ -146,7 +152,6 @@
     </div>
 </body>
     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
-
 
 	<script type="text/javascript">
 	$(document).ready(function() {
