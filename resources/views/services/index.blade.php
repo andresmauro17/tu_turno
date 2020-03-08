@@ -37,8 +37,8 @@
                                     <tr>
                                         <td>{{$service->name}}</td>
                                         <td>{{$service->observations}}</td>
-                                        <td>{{$service->initials}}</td>
-                                        <td>{{$service->status}}</td>
+                                        <td>{{$service->short_name}}</td>
+                                        <td>{{$service->is_active}}</td>
                                         <td class="text-right">
                                             <a href="/servicios/{{$service->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i>  Editar</a>
 

@@ -38,9 +38,9 @@ class ServicesController extends Controller
     {
         $service = new Service();
         $service -> name = $request->input('name');
-        $service -> initials = $request->input('initials');
+        $service -> short_name = $request->input('short_name');
         $service -> observations = $request->input('observations');
-        $service -> status = $request->input('status');
+        $service -> is_active = $request->input('is_active');
         $service -> save();
 
         return redirect()->route('servicios.index');
@@ -80,7 +80,7 @@ class ServicesController extends Controller
     {
         $service = Service::find($id);
         $service -> name = $request->input('name');
-        $service -> initials = $request->input('initials');
+        $service -> short_name = $request->input('short_name');
         $service -> observations = $request->input('observations');
         $service -> save();
 

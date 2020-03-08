@@ -38,7 +38,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="initials" class="form-control">
+                            <input type="text" name="short_name" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="col-md-9">
                         <div class="checkbox form-horizontal-checkbox">
                             <label>
-                                <input type="checkbox" name="status">
+                                <input type="checkbox" name="is_active">
                                 Estado
                             </label>
                         </div>

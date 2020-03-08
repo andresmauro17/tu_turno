@@ -39,7 +39,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="initials" class="form-control" value="{{$service->initials}}">
+                            <input type="text" name="short_name" class="form-control" value="{{$service->short_name}}">
                         </div>
                     </div>
                 </div>
