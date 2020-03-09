@@ -41,7 +41,7 @@
 									<i class="material-icons">announcement</i>
 								</div>
 								<div class="card-content text-center">
-									<h4><strong>INFORMACIÓN</strong></h4>
+									<h4><strong>Informacion Publicitaria</strong></h4>
 								</div>
 							</div>
 						</div>
@@ -51,46 +51,21 @@
 					</div>
 					
 					<div id="contenido">
-						<div class="row">				
-							<div class="col">
-								<div class="card">
-									<div class="card-header card-header-icon" data-background-color="grey">
-										<i class="material-icons">all_inbox</i>
-									</div>
-									<div class="card-content text-center">
-										<h4><strong>TURNO DE DISPENSACIÓN</strong></h4>
-										<h3>TURNO ACTUAL A53</h3>
-										<h4>TURNO ANTERIOR A52</h4>									
-									</div>
-								</div>
-							</div>
-
-							<div class="col">
-								<div class="card">
-									<div class="card-header card-header-icon" data-background-color="grey">
-										<i class="material-icons">accessibility</i>
-									</div>
-									<div class="card-content text-center">
-										<h4><strong>TURNO DE APLICACIÓN</strong></h4>
-										<h3>TURNO ACTUAL A53</h3>
-										<h4>TURNO ANTERIOR A52</h4>
+						<div class="row">
+							@foreach ($modules as $module)
+								<div class="col">
+									<div class="card">
+										<div class="card-header card-header-icon" data-background-color="grey">
+											<i class="material-icons">all_inbox</i>
+										</div>
+										<div class="card-content text-center">
+											<h4><strong>{{strtoupper($module->name)}}</strong></h4>
+											<h3>TURNO ACTUAL A53</h3>
+											<h4>TURNO ANTERIOR A52</h4>									
+										</div>
 									</div>
 								</div>
-							</div>
-
-							<div class="col">
-								<div class="card">
-									<div class="card-header card-header-icon" data-background-color="grey">
-										<i class="material-icons">announcement</i>
-									</div>
-									<div class="card-content text-center">
-										<h4><strong>TURNO DE INFORMACIÓN</strong></h4>
-										<h3>TURNO ACTUAL A53</h3>
-										<h4>TURNO ANTERIOR A52</h4>
-									</div>
-								</div>
-							</div>
-
+							@endforeach
 						</div>
 					</div>
 				</div>

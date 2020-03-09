@@ -52,7 +52,7 @@
                                             </p>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="button" class="btn btn-rose btn-round">IMPRIMIR</button>
+                                            <button type="button" class="btn btn-rose btn-round">PEDIR TURNO</button>
                                         </div>
                                     </div>
                                 </form>

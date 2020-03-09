@@ -61,6 +61,12 @@
                     <p> TV </p>
                 </a>
             </li>
+            <li class=" {{ isActiveRoute('atention') }} ">
+                <a href="/atention">
+                    <i class="material-icons">phone_in_talk</i>
+                    <p> Atencion </p>
+                </a>
+            </li>
 
             <li 
                 class="{{ areActiveRoutes([
@@ -71,7 +77,7 @@
             >
                 <a data-toggle="collapse" href="#pagesExamples">
                     <i class="material-icons">settings</i>
-                    <p> SETTINGS
+                    <p> CONFIGURACION
                         <b class="caret"></b>
                     </p>
                 </a>

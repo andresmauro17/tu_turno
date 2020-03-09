@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::GET('/home', 'HomeController@index')->name('home');
 
+    Route::get('/atention', 'AtentionController@index')->name('atention');
+
     Route::GET('/tv', 'TvController@index')->name('tv');
     
     Route::resource('kiosko', 'kioskoController');
