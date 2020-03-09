@@ -27,17 +27,17 @@
 	
 	</head>
 </head>
-<body style="background-color: blue">
+<body class="off-canvas-sidebar">
 		<!-- <div class="wrapper wrapper-full-page">
 		<div class="full-page login-page" filter-color="black" data-image="{{asset('img/vacua-bebe.jpg')}}"> IMAGEN A FULL 
-		<!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+		you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
 		
 			<div class="container">
 				<div class="content">
 					<div class="row">
 						<div class="col-md-8" style="padding-top: 3%">
 							<div class="card">
-								<div class="card-header card-header-icon" data-background-color="grey">
+								<div class="card-header card-header-icon" data-background-color="blue">
 									<i class="material-icons">announcement</i>
 								</div>
 								<div class="card-content text-center">
@@ -55,7 +55,7 @@
 							@foreach ($modules as $module)
 								<div class="col">
 									<div class="card">
-										<div class="card-header card-header-icon" data-background-color="grey">
+										<div class="card-header card-header-icon" data-background-color="blue">
 											<i class="material-icons">all_inbox</i>
 										</div>
 										<div class="card-content text-center">
