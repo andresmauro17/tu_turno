@@ -72,7 +72,13 @@
                 class="{{ areActiveRoutes([
                                             'services.index',
                                             'services.create',
-                                            'services.edit'
+                                            'services.edit',
+                                            'modules.index',
+                                            'modules.create',
+                                            'modules.edit',
+                                            'diligences.index',
+                                            'diligences.create',
+                                            'diligences.edit'
                                         ]) }}"
             >
                 <a data-toggle="collapse" href="#pagesExamples">
@@ -84,7 +90,13 @@
                 <div id="pagesExamples" class="collapse {{ areActiveRoutes([
                                                                             'services.index',
                                                                             'services.create',
-                                                                            'services.edit'
+                                                                            'services.edit',
+                                                                            'modules.index',
+                                                                            'modules.create',
+                                                                            'modules.edit',
+                                                                            'diligences.index',
+                                                                            'diligences.create',
+                                                                            'diligences.edit'
                                                                             ],'in') }}" >
                     <ul class="nav">
                         <li class="{{ areActiveRoutes([
@@ -97,13 +109,21 @@
                                 <span class="sidebar-normal"> Servicios </span>
                             </a>
                         </li>
-                        <li>
+                        <li class="{{ areActiveRoutes([
+                                                        'modules.index',
+                                                        'modules.create',
+                                                        'modules.edit'
+                                                        ]) }}">
                             <a href="/modules">
                                 <span class="sidebar-mini"> MD </span>
                                 <span class="sidebar-normal"> Modulos </span>
                             </a>
                         </li>
-                        <li>
+                        <li class="{{ areActiveRoutes([
+                                                    'diligences.index',
+                                                    'diligences.create',
+                                                    'diligences.edit'
+                                                    ]) }}">
                             <a href="/diligences">
                                 <span class="sidebar-mini"> TR </span>
                                 <span class="sidebar-normal"> Tramites </span>
