@@ -3,11 +3,18 @@
 
 <div class="col-md-6">
     <div class="card">
-        <div class="card-header card-header-icon" data-background-color="rose">
+        <div class="card-header card-header-icon" data-background-color="blue">
             <i class="material-icons">contacts</i>
         </div>
         <div class="card-content">
-            <h4 class="card-title">Servicio</h4>
+            <div class="row">
+                <h4 class="card-title">Servicio</h4>
+                <div class="toolbar text-right">
+                        <a href="/services" class="btn btn-primary btn-just-icon btn-round">
+                            <i class="material-icons">keyboard_backspace</i>
+                        </a>
+                </div>
+            </div>
             <form class="form-horizontal" method="POST" action="/services/{{$service->id}}">
                 @method('PUT')
                 @csrf
@@ -49,7 +56,7 @@
 
                     <div class="col-md-9">
                         <div class="form-group form-button">
-                            <button type="submit" class="btn btn-fill btn-rose">Actualizar</button>
+                            <button type="submit" class="btn btn-fill btn-primary">Actualizar</button>
                         </div>
                     </div>
                 </div>

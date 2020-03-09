@@ -32,7 +32,7 @@ require('./vendor/arrive.min.js');
 require('./vendor/jquery.validate.min.js');
 
 //  Plugin for Date Time Picker and Full Calendar Plugin-->
-//require('./vendor/moment.min.js');
+//require('./vendor/moment.min');
 
 //  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/
 require('./vendor/chartist.min.js');
@@ -44,7 +44,7 @@ require('./vendor/jquery.bootstrap-wizard.js');
 require('./vendor/bootstrap-notify.js');
 
 //  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/
-//require('./vendor/bootstrap-datetimepicker.js');
+require('./vendor/bootstrap-datetimepicker.js');
 
 // Vector Map plugin, full documentation here: http://jvectormap.com/documentation/
 require('./vendor/jquery-jvectormap.js');
@@ -55,7 +55,7 @@ require('./vendor/nouislider.min.js');
 //  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select
 require('./vendor/jquery.select-bootstrap.js');
 
-require('datatables.net');
+require('./vendor/jquery.datatables.js');
 
 // Sweet Alert 2 plugin, full documentation here: https://limonte.github.io/sweetalert2/
 require('./vendor/sweetalert2.js');
@@ -64,7 +64,7 @@ require('./vendor/sweetalert2.js');
 require('./vendor/jasny-bootstrap.min.js');
 
 //  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar   
-//require('./vendor/fullcalendar.min.js');
+require('./vendor/fullcalendar.min.js');
 
 // Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs 
 require('./vendor/jquery.tagsinput.js');

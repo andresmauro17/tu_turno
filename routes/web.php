@@ -31,10 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::GET('/home', 'HomeController@index')->name('home');
 
+    Route::GET('/tv', 'TvController@index')->name('tv');
+    
+    Route::resource('kiosko', 'kioskoController');
+    
+    Route::resource('services', 'ServicesController');
 });
-
-Route::GET('/tv', 'TvController@index');
-
-Route::resource('kiosko', 'kioskoController');
-
-Route::resource('services', 'ServicesController');
