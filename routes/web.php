@@ -38,4 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kiosko', 'kioskoController');
     
     Route::resource('services', 'ServicesController');
+
+    Route::resource('modules', 'ModulesController');
+
+    Route::resource('diligences', 'DiligencesController');
+
 });

@@ -98,13 +98,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./pages/rtl.html">
+                            <a href="/modules">
                                 <span class="sidebar-mini"> MD </span>
                                 <span class="sidebar-normal"> Modulos </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/diligences">
                                 <span class="sidebar-mini"> TR </span>
                                 <span class="sidebar-normal"> Tramites </span>
                             </a>
