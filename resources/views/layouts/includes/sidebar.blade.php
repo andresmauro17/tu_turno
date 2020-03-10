@@ -78,7 +78,10 @@
                                             'modules.edit',
                                             'diligences.index',
                                             'diligences.create',
-                                            'diligences.edit'
+                                            'diligences.edit',
+                                            'users.index',
+                                            'users.create',
+                                            'users.edit'
                                         ]) }}"
             >
                 <a data-toggle="collapse" href="#pagesExamples">
@@ -96,24 +99,27 @@
                                                                             'modules.edit',
                                                                             'diligences.index',
                                                                             'diligences.create',
-                                                                            'diligences.edit'
+                                                                            'diligences.edit',
+                                                                            'users.index',
+                                                                            'users.create',
+                                                                            'users.edit'
                                                                             ],'in') }}" >
                     <ul class="nav">
                         <li class="{{ areActiveRoutes([
-                                                        'services.index',
-                                                        'services.create',
-                                                        'services.edit'
-                                                       ]) }}">
+                                                    'services.index',
+                                                    'services.create',
+                                                    'services.edit'
+                                                    ]) }}">
                             <a href="/services">
                                 <span class="sidebar-mini"> SE </span>
                                 <span class="sidebar-normal"> Servicios </span>
                             </a>
                         </li>
                         <li class="{{ areActiveRoutes([
-                                                        'modules.index',
-                                                        'modules.create',
-                                                        'modules.edit'
-                                                        ]) }}">
+                                                    'modules.index',
+                                                    'modules.create',
+                                                    'modules.edit'
+                                                    ]) }}">
                             <a href="/modules">
                                 <span class="sidebar-mini"> MD </span>
                                 <span class="sidebar-normal"> Modulos </span>
@@ -129,8 +135,12 @@
                                 <span class="sidebar-normal"> Tramites </span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li class="{{ areActiveRoutes([
+                                                    'users.index',
+                                                    'users.create',
+                                                    'users.edit'
+                                                    ]) }}">
+                            <a href="/users">
                                 <span class="sidebar-mini"> US </span>
                                 <span class="sidebar-normal"> Usuarios </span>
                             </a>

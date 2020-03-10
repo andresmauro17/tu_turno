@@ -6,7 +6,14 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
+
+/**
+ * import global components in vue
+ */
+
+import GlobalComponents from "./globalComponents";
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,3 +37,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+Vue.use(GlobalComponents);
