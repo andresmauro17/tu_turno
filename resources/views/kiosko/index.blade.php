@@ -35,27 +35,28 @@
             <div class="content">
                 <div class="container"> 
                     <div class="row">
-
                         @foreach ($services as $service)
                             <div class="col-md-4">
-                                <form method="#" action="#">
-                                    <div class="card card-profile card-hidden">
-                                        <div class="card-avatar">
-                                            <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
-                                        </div>
-                                        <div class="card-content">
-                                        <h4 class="card-title"><strong>{{$service->name}}</strong></h4>
-                                        </div>
-                                        <div class="form-group label-floating">
-                                            <p class="control-label">
-                                                {{$service->observations}}
-                                            </p>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="button" class="btn btn-rose btn-round">PEDIR TURNO</button>
-                                        </div>
+                                
+                                <div class="card card-profile card-hidden">
+                                    <div class="card-avatar">
+                                        <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
                                     </div>
-                                </form>
+                                    <div class="card-content">
+                                    <h4 class="card-title"><strong>{{$service->name}}</strong></h4>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <p class="control-label">
+                                            {{$service->observations}}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary" href="/pdf">VER HTML DEL PDF</a>
+                                        <a class="btn btn-rose btn-round" 
+                                        href="{{route('imprimir')}}">PEDIR TURNO</a>
+                                    </div>
+                                </div>
+                                
                             </div>
                         @endforeach
 

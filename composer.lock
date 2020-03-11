@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea4e523023dcfcd36041992cb2ff4cfe",
+    "content-hash": "56d57e50346c75f22fb75308accb249c",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -69,6 +69,62 @@
             "time": "2019-03-25T14:20:55+00:00"
         },
         {
+            "name": "barryvdh/laravel-dompdf",
+            "version": "v0.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-dompdf.git",
+                "reference": "d7108f78cf5254a2d8c224542967f133e5a6d4e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/d7108f78cf5254a2d8c224542967f133e5a6d4e8",
+                "reference": "d7108f78cf5254a2d8c224542967f133e5a6d4e8",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "^0.8",
+                "illuminate/support": "^5.5|^6|^7",
+                "php": ">=7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\DomPDF\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "PDF": "Barryvdh\\DomPDF\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\DomPDF\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A DOMPDF Wrapper for Laravel",
+            "keywords": [
+                "dompdf",
+                "laravel",
+                "pdf"
+            ],
+            "time": "2020-02-25T20:44:34+00:00"
+        },
+        {
             "name": "composer/ca-bundle",
             "version": "1.2.6",
             "source": {
@@ -126,16 +182,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.9.3",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b"
+                "reference": "472c917b2a083ec7d2fa25c55fd099d1300e2515"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/1291a16ce3f48bfdeca39d64fca4875098af4d7b",
-                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b",
+                "url": "https://api.github.com/repos/composer/composer/zipball/472c917b2a083ec7d2fa25c55fd099d1300e2515",
+                "reference": "472c917b2a083ec7d2fa25c55fd099d1300e2515",
                 "shasum": ""
             },
             "require": {
@@ -148,17 +204,17 @@
                 "psr/log": "^1.0",
                 "seld/jsonlint": "^1.4",
                 "seld/phar-utils": "^1.0",
-                "symfony/console": "^2.7 || ^3.0 || ^4.0",
-                "symfony/filesystem": "^2.7 || ^3.0 || ^4.0",
-                "symfony/finder": "^2.7 || ^3.0 || ^4.0",
-                "symfony/process": "^2.7 || ^3.0 || ^4.0"
+                "symfony/console": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/filesystem": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/finder": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+                "symfony/process": "^2.7 || ^3.0 || ^4.0 || ^5.0"
             },
             "conflict": {
                 "symfony/console": "2.8.38"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "phpunit/phpunit-mock-objects": "^2.3 || ^3.0"
+                "phpspec/prophecy": "^1.10",
+                "symfony/phpunit-bridge": "^3.4"
             },
             "suggest": {
                 "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages",
@@ -171,7 +227,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.10-dev"
                 }
             },
             "autoload": {
@@ -202,7 +258,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2020-02-04T11:58:49+00:00"
+            "time": "2020-03-10T13:08:05+00:00"
         },
         {
             "name": "composer/semver",
@@ -782,6 +838,72 @@
             "time": "2019-10-30T14:39:59+00:00"
         },
         {
+            "name": "dompdf/dompdf",
+            "version": "v0.8.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/dompdf.git",
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/6782abfc090b132134cd6cea0ec6d76f0fce2c56",
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-mbstring": "*",
+                "phenx/php-font-lib": "^0.5.1",
+                "phenx/php-svg-lib": "^0.3.3",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "ext-gd": "Needed to process images",
+                "ext-gmagick": "Improves image processing performance",
+                "ext-imagick": "Improves image processing performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dompdf\\": "src/"
+                },
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                },
+                {
+                    "name": "Brian Sweeney",
+                    "email": "eclecticgeek@gmail.com"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com"
+                }
+            ],
+            "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
+            "homepage": "https://github.com/dompdf/dompdf",
+            "time": "2020-02-20T03:52:51+00:00"
+        },
+        {
             "name": "dragonmantank/cron-expression",
             "version": "v2.3.0",
             "source": {
@@ -1342,24 +1464,24 @@
         },
         {
             "name": "larapack/hooks",
-            "version": "v1.0.9",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/larapack/hooks.git",
-                "reference": "ade22d7b7065a2e3842cca8c9c5c532f9e520bad"
+                "reference": "ce2c8c078a56036c357f26036174412cb9059f8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/larapack/hooks/zipball/ade22d7b7065a2e3842cca8c9c5c532f9e520bad",
-                "reference": "ade22d7b7065a2e3842cca8c9c5c532f9e520bad",
+                "url": "https://api.github.com/repos/larapack/hooks/zipball/ce2c8c078a56036c357f26036174412cb9059f8e",
+                "reference": "ce2c8c078a56036c357f26036174412cb9059f8e",
                 "shasum": ""
             },
             "require": {
-                "composer/composer": "~1.4"
+                "composer/composer": ">=1.4"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "^6.2|^5.6"
+                "orchestra/testbench": ">=3.0",
+                "phpunit/phpunit": ">=5.6"
             },
             "type": "library",
             "autoload": {
@@ -1383,27 +1505,27 @@
                 "hooks",
                 "laravel"
             ],
-            "time": "2019-09-05T13:00:18+00:00"
+            "time": "2020-03-10T13:15:02+00:00"
         },
         {
             "name": "larapack/voyager-hooks",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/larapack/voyager-hooks.git",
-                "reference": "33beee3c68d858f5e7a33c82a670e01dcdcae392"
+                "reference": "1a54df95b4179a9d26e9aacbd8676c8ccd78be0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/larapack/voyager-hooks/zipball/33beee3c68d858f5e7a33c82a670e01dcdcae392",
-                "reference": "33beee3c68d858f5e7a33c82a670e01dcdcae392",
+                "url": "https://api.github.com/repos/larapack/voyager-hooks/zipball/1a54df95b4179a9d26e9aacbd8676c8ccd78be0e",
+                "reference": "1a54df95b4179a9d26e9aacbd8676c8ccd78be0e",
                 "shasum": ""
             },
             "require": {
                 "larapack/hooks": "~1.0.2"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.0"
+                "orchestra/testbench": ">=3.0"
             },
             "type": "library",
             "extra": {
@@ -1435,7 +1557,7 @@
                 "laravel",
                 "voyager"
             ],
-            "time": "2019-07-06T00:05:24+00:00"
+            "time": "2020-03-04T21:35:18+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1650,16 +1772,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
                 "shasum": ""
             },
             "require": {
@@ -1730,7 +1852,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-08T18:53:20+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2037,6 +2159,83 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "phenx/php-font-lib",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PhenX/php-font-lib.git",
+                "reference": "760148820110a1ae0936e5cc35851e25a938bc97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/760148820110a1ae0936e5cc35851e25a938bc97",
+                "reference": "760148820110a1ae0936e5cc35851e25a938bc97",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FontLib\\": "src/FontLib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse, export and make subsets of different types of font files.",
+            "homepage": "https://github.com/PhenX/php-font-lib",
+            "time": "2017-09-13T16:14:37+00:00"
+        },
+        {
+            "name": "phenx/php-svg-lib",
+            "version": "v0.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PhenX/php-svg-lib.git",
+                "reference": "5fa61b65e612ce1ae15f69b3d223cb14ecc60e32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/5fa61b65e612ce1ae15f69b3d223cb14ecc60e32",
+                "reference": "5fa61b65e612ce1ae15f69b3d223cb14ecc60e32",
+                "shasum": ""
+            },
+            "require": {
+                "sabberworm/php-css-parser": "^8.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5|^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Svg\\": "src/Svg"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse and export to PDF SVG files.",
+            "homepage": "https://github.com/PhenX/php-svg-lib",
+            "time": "2019-09-11T20:02:13+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -2487,6 +2686,51 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "sabberworm/php-css-parser",
+            "version": "8.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+                "reference": "91bcc3e3fdb7386c9a2e0e0aa09ca75cc43f121f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/91bcc3e3fdb7386c9a2e0e0aa09ca75cc43f121f",
+                "reference": "91bcc3e3fdb7386c9a2e0e0aa09ca75cc43f121f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "codacy/coverage": "^1.4",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sabberworm\\CSS": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raphael Schweikert"
+                }
+            ],
+            "description": "Parser for CSS Files written in PHP",
+            "homepage": "http://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+            "keywords": [
+                "css",
+                "parser",
+                "stylesheet"
+            ],
+            "time": "2019-02-22T07:42:52+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -3014,26 +3258,26 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.5",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "266c9540b475f26122b61ef8b23dd9198f5d1cfd"
+                "reference": "3afadc0f57cd74f86379d073e694b0f2cda2a88c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/266c9540b475f26122b61ef8b23dd9198f5d1cfd",
-                "reference": "266c9540b475f26122b61ef8b23dd9198f5d1cfd",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/3afadc0f57cd74f86379d073e694b0f2cda2a88c",
+                "reference": "3afadc0f57cd74f86379d073e694b0f2cda2a88c",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
+                "php": "^7.2.5",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.4-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -3060,7 +3304,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2020-01-21T08:20:44+00:00"
+            "time": "2020-01-21T08:40:24+00:00"
         },
         {
             "name": "symfony/finder",
@@ -4063,16 +4307,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "7739740269ec87303ccb139f8024e948f67f8e01"
+                "reference": "75179876689fc9a46e647c8c354f9a7d7686073e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/7739740269ec87303ccb139f8024e948f67f8e01",
-                "reference": "7739740269ec87303ccb139f8024e948f67f8e01",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/75179876689fc9a46e647c8c354f9a7d7686073e",
+                "reference": "75179876689fc9a46e647c8c354f9a7d7686073e",
                 "shasum": ""
             },
             "require": {
@@ -4124,7 +4368,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2019-12-23T21:54:04+00:00"
+            "time": "2020-03-10T12:55:35+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -5071,16 +5315,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -5130,7 +5374,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

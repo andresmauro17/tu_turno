@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use App\Diligence;
 use Illuminate\Http\Request;
 
 class ModulesController extends Controller
@@ -23,9 +24,10 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('modules.create');
+        $diligences = Diligence::all();
+        return view('modules.create', compact('diligences'));
     }
 
     /**

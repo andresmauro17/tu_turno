@@ -54,5 +54,19 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    @foreach ($diligences as $diligence)
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-lg btn-primary btn-round btn-block">
+                        <i class="material-icons">navigate_next</i> {{$diligence->name}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
     
 @endsection

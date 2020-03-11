@@ -3,6 +3,17 @@
     <div class="row">
         <div class="row">
             <div class="col-md-12">
+
+                <div class="col-lg-5 col-md-6 col-sm-3">
+                    <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
+                        <option disabled selected>Seleccionar Servicio</option>
+                        @foreach ($services as $service)
+                            <option>{{$service->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                
                 <div class="card">
                     <div class="card-header card-header-icon" data-background-color="blue">
                         <i class="material-icons">phone_in_talk</i>
@@ -11,19 +22,6 @@
                     <div class="card-content">
                         <div class="row">
                             <h4 class="card-title">Administrador de Turno {{Route::currentRouteName()}}</h4>
-                            <div class="toolbar">
-                                    <div class="dropdown">
-                                        <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true" >
-                                            Tramite Actual
-                                            <b class="caret"></b>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Facturacion</a></li>
-                                            <li><a href="#">Atencion</a></li>
-                                            <li><a href="#">Aplicacion</a></li>
-                                        </ul>
-                                    </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-7">

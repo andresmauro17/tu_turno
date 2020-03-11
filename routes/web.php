@@ -26,7 +26,6 @@ Route::GET('/', function () {
     return view('new_option');
 });
 
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::GET('/home', 'HomeController@index')->name('home');
@@ -46,3 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController');
 
 });
+
+/*
+    Ruta para imprimir
+*/
+Route::get('/imprimir', 'PdfController@imprimir')->name('imprimir');
+Route::get('/pdf', 'PdfController@index');
