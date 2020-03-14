@@ -41,8 +41,10 @@ class ServicesController extends Controller
         $service -> short_name = $request->input('short_name');
         $service -> observations = $request->input('observations');
         $service -> is_active = $request->input('is_active');
+        //$is_active = Input::has('is_active')? true : false;
         $service -> save();
 
+        //return $request;
         return redirect()->route('services.index');
     }
 
@@ -82,6 +84,7 @@ class ServicesController extends Controller
         $service -> name = $request->input('name');
         $service -> short_name = $request->input('short_name');
         $service -> observations = $request->input('observations');
+        $service -> is_active = $request->input('is_active');
         $service -> save();
 
         return redirect()->route('services.index');

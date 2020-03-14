@@ -17,6 +17,8 @@ class CreateTurnsTable extends Migration
             $table->increments('id');
             $table->dateTime('end_atention');
             
+            $table->boolean('is_active')->nullable()->default(1);
+            
             $table->timestamps();
         });
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
 use Illuminate\Http\Request;
+use App\Client;
 
-class kioskoController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class kioskoController extends Controller
      */
     public function index(Request $request)
     {
-        $services = Service::all();
-        return view('kiosko.index', compact('services'));
+        $clients = Client::all();
+        return view('client.index', compact('clients'));
     }
 
     /**
@@ -25,7 +25,7 @@ class kioskoController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create');
     }
 
     /**
@@ -36,8 +36,17 @@ class kioskoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client();
+        $client -> name = $request->input('name');
+        $client -> lastname = $request->input('lastname');
+        $client -> type_dni = $request->input('type_dni');
+        $client -> dni = $request->input('type_dni');
+        $client -> sex = $request->input('sex');
+        $client -> is_active = $request->input('is_active');
+        $client -> save();
 
+        // return $request;
+        return redirect()->route('client.index');
     }
 
     /**
@@ -59,7 +68,8 @@ class kioskoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        return view('client.edit', compact('client'));
     }
 
     /**
@@ -71,8 +81,16 @@ class kioskoController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        $client = Client::find($id);
+        $client -> name = $request->input('name');
+        $client -> lastname = $request->input('lastname');
+        $client -> type_dni = $request->input('type_dni');
+        $client -> dni = $request->input('type_dni');
+        $client -> sex = $request->input('sex');
+        $client -> is_active = $request->input('is_active');
+        $client -> save();
 
+        return redirect()->route('client.index');
     }
 
     /**
@@ -83,6 +101,9 @@ class kioskoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+
+        return redirect()->route('client.index');
     }
 }

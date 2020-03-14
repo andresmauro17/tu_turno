@@ -72,16 +72,24 @@
                 class="{{ areActiveRoutes([
                                             'services.index',
                                             'services.create',
-                                            'services.edit',
+                                            'services.edit', 
+
                                             'modules.index',
                                             'modules.create',
                                             'modules.edit',
+
                                             'diligences.index',
                                             'diligences.create',
                                             'diligences.edit',
+
                                             'users.index',
                                             'users.create',
-                                            'users.edit'
+                                            'users.edit',
+
+                                            'client.index',
+                                            'client.create',
+                                            'client.edit'
+
                                         ]) }}"
             >
                 <a data-toggle="collapse" href="#pagesExamples">
@@ -94,15 +102,22 @@
                                                                             'services.index',
                                                                             'services.create',
                                                                             'services.edit',
+
                                                                             'modules.index',
                                                                             'modules.create',
                                                                             'modules.edit',
+
                                                                             'diligences.index',
                                                                             'diligences.create',
                                                                             'diligences.edit',
+
                                                                             'users.index',
                                                                             'users.create',
-                                                                            'users.edit'
+                                                                            'users.edit',
+                                                                            
+                                                                            'client.index',
+                                                                            'client.create',
+                                                                            'client.edit'
                                                                             ],'in') }}" >
                     <ul class="nav">
                         <li class="{{ areActiveRoutes([
@@ -143,6 +158,16 @@
                             <a href="/users">
                                 <span class="sidebar-mini"> US </span>
                                 <span class="sidebar-normal"> Usuarios </span>
+                            </a>
+                        </li>
+                        <li class="{{ areActiveRoutes([
+                                                    'client.index',
+                                                    'client.create',
+                                                    'client.edit'
+                            ]) }}">
+                            <a href="/clients">
+                                <span class="sidebar-mini"> CL </span>
+                                <span class="sidebar-normal"> Clientes </span>
                             </a>
                         </li>
                     </ul>

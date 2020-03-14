@@ -10,9 +10,9 @@
 
                 <div class="card-content">
                     <div class="row">
-                        <h4 class="card-title">Usuarios</h4>
+                        <h4 class="card-title">Tramites</h4>
                         <div class="toolbar text-right">
-                                <a href="/users/create" class="btn btn-primary btn-just-icon btn-round">
+                                <a href="/clients/create" class="btn btn-primary btn-just-icon btn-round">
                                     <i class="material-icons">add</i>
                                 </a>
                         </div>
@@ -22,30 +22,40 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Email</th>
+                                    <th>Apellido</th>
+                                    <th>Documento</th>
+                                    <th>Numero</th>
+                                    <th>Sexo</th>
                                     <th>Estado</th>
                                     <th class="disabled-sorting text-right">Actions</th>
                                 </tr>
+                                
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Email</th>
+                                    <th>Apellido</th>
+                                    <th>Documento</th>
+                                    <th>Numero</th>
+                                    <th>Sexo</th>
                                     <th>Estado</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($clients as $client)
                                     <tr>
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->is_active}}</td>
+                                        <td>{{$client->name}}</td>
+                                        <td>{{$client->lastname}}</td>
+                                        <td>{{$client->type_dni}}</td>
+                                        <td>{{$client->dni}}</td>
+                                        <td>{{$client->sex}}</td>
+                                        <td>{{$client->is_active}}</td>
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}
                                             
-                                            <a href="/users/{{$user->id}}/edit" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
+                                            <a href="/clients/{{$client->id}}/edit" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
                                             {{-- <a href="/services/create" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i></a> --}}
                                             <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
                                         </td>

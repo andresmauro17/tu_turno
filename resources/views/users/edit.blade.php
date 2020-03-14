@@ -39,6 +39,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <label class="col-md-3"></label>
+
+                    <div class="col-md-9">
+                        <div class="checkbox form-horizontal-checkbox">
+                            <label>
+                                <input type="checkbox" name="is_active" value="1">
+                                Estado
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="row">
                     <label class="col-md-3"></label>

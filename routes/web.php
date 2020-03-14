@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::GET('/tv', 'TvController@index')->name('tv');
     
-    Route::resource('kiosko', 'kioskoController');
+    Route::resource('kiosko', 'TurnController');
     
     Route::resource('services', 'ServicesController');
 
@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('diligences', 'DiligencesController');
 
     Route::resource('users', 'UsersController');
+    
+    Route::resource('clients', 'ClientController');
 
 });
 

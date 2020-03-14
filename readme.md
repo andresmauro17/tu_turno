@@ -76,4 +76,4 @@ php artisan db:seed
 ## 3.	installing voyager for admin
   
 php artisan voyager:install
-php artisan voyager:admin your@email.com --create
+php artisan voyager:admin admin@mail.com --create

@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends \TCG\Voyager\Models\User
 {
+    public function moduls(){
+        return $this->hasOne(Module::class);
+    }
+    
     use Notifiable;
 
     /**
@@ -16,7 +20,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_active'
     ];
 
     /**
@@ -36,4 +40,5 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

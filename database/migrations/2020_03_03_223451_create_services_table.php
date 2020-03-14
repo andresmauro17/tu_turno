@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name', 50);
             $table->text('observations')->nullable();
             $table->string('short_name', 4);
-            $table->boolean('is_active')->nullable()->default(true);
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
         });
     }

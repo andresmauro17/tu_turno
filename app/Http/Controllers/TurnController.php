@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Module;
-use App\Diligence;
+use App\Service;
 use Illuminate\Http\Request;
 
-class ModulesController extends Controller
+class TurnController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $modules = Module::all();
-        return view('modules.index', compact('modules'));
+        $services = Service::all();
+        return view('kiosko.index', compact('services'));
     }
 
     /**
@@ -24,10 +23,9 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $diligences = Diligence::all();
-        return view('modules.create', compact('diligences'));
+        //
     }
 
     /**
@@ -38,12 +36,7 @@ class ModulesController extends Controller
      */
     public function store(Request $request)
     {
-        $module = new Module();
-        $module -> name = $request->input('name');
-        $module -> is_active = $request->input('is_active');
-        $module -> save();
-
-        return redirect()->route('modules.index');
+        //
     }
 
     /**
@@ -65,8 +58,7 @@ class ModulesController extends Controller
      */
     public function edit($id)
     {
-        $module = Module::find($id);
-        return view('modules.edit', compact('module'));
+        //
     }
 
     /**
@@ -78,12 +70,7 @@ class ModulesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $module = Module::find($id);
-        $module -> name = $request->input('name');
-        $module -> is_active = $request->input('is_active');
-        $module -> save();
-
-        return redirect()->route('modules.index');
+        //
     }
 
     /**
@@ -94,9 +81,6 @@ class ModulesController extends Controller
      */
     public function destroy($id)
     {
-        $module = Module::find($id);
-        $module->delete();
-
-        return redirect()->route('modules.index');
+        //
     }
 }
