@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Diligence;
+use App\Module;
 use Illuminate\Http\Request;
 
 class DiligencesController extends Controller
@@ -14,8 +15,9 @@ class DiligencesController extends Controller
      */
     public function index(Request $request)
     {
+        $modules = Module::all();
         $diligences = Diligence::all();
-        return view('diligences.index', compact('diligences'));
+        return view('diligences.index', compact('diligences', 'modules'));
     }
 
     /**
@@ -25,7 +27,8 @@ class DiligencesController extends Controller
      */
     public function create()
     {
-        return view('diligences.create');
+        $modules = Module::all();
+        return view('diligences.create', compact('modules'));
     }
 
     /**
@@ -38,6 +41,7 @@ class DiligencesController extends Controller
     {
         $diligence = new Diligence();
         $diligence -> name = $request->input('name');
+        $diligence -> module_id = $request-> input('module_id');
         $diligence -> save();
 
         return redirect()->route('diligences.index');
@@ -62,8 +66,9 @@ class DiligencesController extends Controller
      */
     public function edit($id)
     {
+        $modules = Module::all();
         $diligence = Diligence::find($id);
-        return view('diligences.edit', compact('diligence'));
+        return view('diligences.edit', compact('diligence','modules'));
     }
 
     /**
@@ -77,6 +82,7 @@ class DiligencesController extends Controller
     {
         $diligence = Diligence::find($id);
         $diligence -> name = $request->input('name');
+        $diligence -> module_id = $request-> input('module_id');
         $diligence -> save();
 
         return redirect()->route('diligences.index');

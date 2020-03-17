@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $clients = Client::all();
-        return view('client.index', compact('clients'));
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        return view('clients.create');
     }
 
     /**
@@ -40,13 +40,12 @@ class ClientController extends Controller
         $client -> name = $request->input('name');
         $client -> lastname = $request->input('lastname');
         $client -> type_dni = $request->input('type_dni');
-        $client -> dni = $request->input('type_dni');
-        $client -> sex = $request->input('sex');
+        $client -> dni = $request->input('dni');        $client -> sex = $request->input('sex');
         $client -> is_active = $request->input('is_active');
         $client -> save();
 
         // return $request;
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -69,7 +68,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client = Client::find($id);
-        return view('client.edit', compact('client'));
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -85,12 +84,13 @@ class ClientController extends Controller
         $client -> name = $request->input('name');
         $client -> lastname = $request->input('lastname');
         $client -> type_dni = $request->input('type_dni');
-        $client -> dni = $request->input('type_dni');
+        $client -> dni = $request->input('dni');
         $client -> sex = $request->input('sex');
         $client -> is_active = $request->input('is_active');
         $client -> save();
 
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
+        
     }
 
     /**
@@ -104,6 +104,6 @@ class ClientController extends Controller
         $client = Client::find($id);
         $client->delete();
 
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 }

@@ -86,9 +86,9 @@
                                             'users.create',
                                             'users.edit',
 
-                                            'client.index',
-                                            'client.create',
-                                            'client.edit'
+                                            'clients.index',
+                                            'clients.create',
+                                            'clients.edit'
 
                                         ]) }}"
             >
@@ -115,9 +115,9 @@
                                                                             'users.create',
                                                                             'users.edit',
                                                                             
-                                                                            'client.index',
-                                                                            'client.create',
-                                                                            'client.edit'
+                                                                            'clients.index',
+                                                                            'clients.create',
+                                                                            'clients.edit'
                                                                             ],'in') }}" >
                     <ul class="nav">
                         <li class="{{ areActiveRoutes([
@@ -161,9 +161,9 @@
                             </a>
                         </li>
                         <li class="{{ areActiveRoutes([
-                                                    'client.index',
-                                                    'client.create',
-                                                    'client.edit'
+                                                    'clients.index',
+                                                    'clients.create',
+                                                    'clients.edit'
                             ]) }}">
                             <a href="/clients">
                                 <span class="sidebar-mini"> CL </span>

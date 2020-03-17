@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name')->nullable();
             $table->string('lastname')->nullable();
             $table->enum('type_dni', ['CC', 'TI', 'RC', 'CE', 'AS', 'MS', 'PA']);
-            $table->string('dni');
+            $table->string('dni')->unique();
             $table->enum('sex', ['F', 'M']);
 
             $table->boolean('is_active')->nullable()->default(1);

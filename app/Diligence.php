@@ -9,8 +9,8 @@ class Diligence extends Model
 {
     public function module()
     {
-        return $this->belongsTo('App\Module');
+        return $this->belongsTo(Module::class);
     }
     
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'module_id'];
 }

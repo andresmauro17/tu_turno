@@ -24,10 +24,9 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $diligences = Diligence::all();
-        return view('modules.create', compact('diligences'));
+        return view('modules.create');
     }
 
     /**
@@ -65,8 +64,9 @@ class ModulesController extends Controller
      */
     public function edit($id)
     {
+        $diligences = Diligence::all();
         $module = Module::find($id);
-        return view('modules.edit', compact('module'));
+        return view('modules.edit', compact('module', 'diligences'));
     }
 
     /**

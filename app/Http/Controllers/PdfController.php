@@ -12,7 +12,7 @@ class PdfController extends Controller
         // $pdf = \PDF::loadView('imprimir', compact('today'));
         $pdf = \PDF::loadView('pdf', compact('services'));
 
-        return $pdf->download('turno.pdf');
+        return $pdf->stream('turno.pdf');
    }
 
    public function index(Request $request){

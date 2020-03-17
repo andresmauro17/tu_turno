@@ -16,6 +16,10 @@ class CreateDiligencesTable extends Migration
         Schema::create('diligences', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->integer('module_id')->unsigned()->nullable();
+
+            $table->foreign('module_id')->references('id')->on('modules');
+
             $table->timestamps();
         });
     }

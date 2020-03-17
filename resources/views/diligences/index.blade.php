@@ -22,12 +22,14 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Modulo Asignado</th>
                                     <th class="disabled-sorting text-right">Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Modulo Asignado</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </tfoot>
@@ -35,6 +37,7 @@
                                 @foreach ($diligences as $diligence)
                                     <tr>
                                         <td>{{$diligence->name}}</td>
+                                        <td>{{$diligence->module->id}}</td>
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

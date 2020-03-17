@@ -15,7 +15,8 @@
                         </a>
                 </div>
             </div>
-            <form class="form-horizontal" method="POST" action="/clients">
+            <form class="form-horizontal" method="POST" action="/clients/{{$client->id}}">
+                @method('PUT')
                 @csrf
                 <div class="row">
                     <label class="col-md-3 label-on-left">Nombre</label>
@@ -23,7 +24,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" value="{{$client->name}}">
                         </div>
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="lastname" class="form-control">
+                            <input type="text" name="lastname" class="form-control" value="{{$client->lastname}}">
                         </div>
                     </div>
                 </div>
@@ -43,9 +44,8 @@
                     <label class="col-md-3 label-on-left">DNI</label>
 
                     <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" name="type_dni">
-                            <option disabled selected>Tipo Documento</option>
-                            <option value="2">CC </option>
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$client->type_dni}}" data-size="7" name="type_dni">
+                            <option value="1">CC </option>
                             <option value="2">TI </option>
                             <option value="3">RC</option>
                             <option value="4">CE</option>
@@ -62,7 +62,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="dni" class="form-control">
+                            <input type="text" name="dni" class="form-control" value="{{$client->dni}}">
                         </div>
                     </div>
                 </div>
@@ -71,9 +71,8 @@
                     <label class="col-md-3 label-on-left">Sexo</label>
 
                     <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" name="sex">
-                            <option disabled selected>Seleccionar Sexo</option>
-                            <option value="2">F</option>
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$client->sex}}" data-size="2" name="sex">
+                            <option value="1">F</option>
                             <option value="2">M</option>
                         </select>
                     </div>
