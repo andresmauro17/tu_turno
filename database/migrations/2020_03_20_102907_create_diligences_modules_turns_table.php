@@ -24,6 +24,9 @@ class CreateDiligencesModulesTurnsTable extends Migration
 
             $table->integer('turn_id')->unsigned();
             $table->foreign('turn_id')->references('id')->on('turns');
+
+            $table->dateTime('time_atention');
+            $table->dateTime('end_atention');
  
             $table->timestamps();
         });
