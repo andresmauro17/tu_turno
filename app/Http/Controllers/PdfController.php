@@ -11,7 +11,7 @@ class PdfController extends Controller
         //$today = Carbon::now()->format('d/m/Y');
         // $pdf = \PDF::loadView('imprimir', compact('today'));
         $pdf = \PDF::loadView('pdf', compact('services'));
-
+        $pdf -> setPaper('a4', 'landscape');
         return $pdf->stream('turno.pdf');
    }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTurnsDiligencesTable extends Migration
+class CreateDiligencesServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateTurnsDiligencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('turns_diligences', function (Blueprint $table) {
+        Schema::create('diligences_services', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('turn_id')->unsigned();
-            $table->foreign('turn_id')->references('id')->on('turns');
-
+            
             $table->integer('diligence_id')->unsigned();
             $table->foreign('diligence_id')->references('id')->on('diligences');
 
-            $table->dateTime('time_atention');
-            $table->dateTime('end_atention');
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services');
 
+            $table->integer('order');
+            
             $table->timestamps();
         });
     }
@@ -36,7 +36,7 @@ class CreateTurnsDiligencesTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-
-        Schema::dropIfExists('turns_diligences');
+        
+        Schema::dropIfExists('diligences_services');
     }
 }

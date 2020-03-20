@@ -41,7 +41,7 @@ class DiligencesController extends Controller
     {
         $diligence = new Diligence();
         $diligence -> name = $request->input('name');
-        $diligence -> module_id = $request-> input('module_id');
+        // $diligence -> module_id = $request-> input('module_id');
         $diligence -> save();
 
         return redirect()->route('diligences.index');

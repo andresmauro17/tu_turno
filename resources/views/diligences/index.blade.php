@@ -37,7 +37,7 @@
                                 @foreach ($diligences as $diligence)
                                     <tr>
                                         <td>{{$diligence->name}}</td>
-                                        <td>{{$diligence->module->id}}</td>
+                                        {{-- <td>{{$diligence->module->id}}</td> --}}
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

@@ -14,11 +14,13 @@ class CreateForeingToTurnsTable extends Migration
     public function up()
     {
         Schema::table('turns', function (Blueprint $table) {
-            $table->integer('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('services');
-
+            
             $table->integer('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('clients');
+
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services');
+            
         });
     }
 
