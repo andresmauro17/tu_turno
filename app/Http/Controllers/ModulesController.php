@@ -13,9 +13,10 @@ class ModulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $modules = Module::all();
+        $modules = Module::with('user', 'diligences')->get();
+        
         return view('modules.index', compact('modules'));
     }
 
@@ -26,7 +27,8 @@ class ModulesController extends Controller
      */
     public function create()
     {
-        return view('modules.create');
+        $diligences = Diligence::all();
+        return view('modules.create', compact('diligences'));
     }
 
     /**
@@ -36,12 +38,23 @@ class ModulesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
+        
+        // $module = Module::findOrFail(1);
+        // $module->diligences()->attach(1);
+
         $module = new Module();
         $module -> name = $request->input('name');
         $module -> is_active = $request->input('is_active');
         $module -> save();
-
+        
+        $diligences = $request->input('diligences');
+        if ($diligences) {
+            foreach ($diligences as $position => $diligence) {
+                $module -> diligences()->attach($diligence);
+            }
+        }
+        
         return redirect()->route('modules.index');
     }
 
@@ -83,6 +96,13 @@ class ModulesController extends Controller
         $module -> is_active = $request->input('is_active');
         $module -> save();
 
+        $diligences = $request->input('diligences');
+        if ($diligences) {
+            foreach ($diligences as $position => $diligence) {
+                $module -> diligences()->sync($diligence);
+            }
+        }
+        
         return redirect()->route('modules.index');
     }
 

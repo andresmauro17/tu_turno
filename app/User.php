@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Module;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends \TCG\Voyager\Models\User
 {
-    public function moduls(){
+    public function module(){
         return $this->hasOne(Module::class);
     }
     
@@ -20,7 +21,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_active'
+        'name', 'email', 'password', 'is_active', 'module_id'
     ];
 
     /**

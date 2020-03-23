@@ -28,16 +28,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Modulo Actual: {{$diligence->module->id}}" data-size="7" name="module_id">
-                            @foreach ($modules as $module)
-                                <option>{{$module->id}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
                 
                 <div class="row">
                     <label class="col-md-3"></label>

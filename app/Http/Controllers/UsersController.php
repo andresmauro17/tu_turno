@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Module;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
+        // $users = User::with('module')->get();
         return view('users.index', compact('users'));
     }
 
@@ -26,7 +28,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $modules = Module::all();
+        return view('users.create', compact('modules'));
         //return view('auth.register');
     }
 
@@ -44,6 +47,7 @@ class UsersController extends Controller
         $user -> password = bcrypt($request->input('password'));
         $user -> remember_token = Str::random(60);
         $user -> is_active = $request->input('is_active');
+        $user -> module_id = $request->input('module_id');
         $user -> save();
 
         return redirect()->route('users.index');
@@ -66,10 +70,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-        return view('users.edit', compact('user'));
+        $modules = Module::all();
+        // $user = User::find($id);
+        return view('users.edit', compact('user', 'modules'));
     }
 
     /**
@@ -85,6 +90,8 @@ class UsersController extends Controller
         $user -> name = $request->input('name');
         $user -> email = $request->input('email');
         $user -> is_active = $request->input('is_active');
+        $user -> module_id = $request->input('module_id');
+
         $user -> save();
 
         return redirect()->route('users.index');

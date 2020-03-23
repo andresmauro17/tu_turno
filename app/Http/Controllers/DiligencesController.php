@@ -66,9 +66,8 @@ class DiligencesController extends Controller
      */
     public function edit($id)
     {
-        $modules = Module::all();
         $diligence = Diligence::find($id);
-        return view('diligences.edit', compact('diligence','modules'));
+        return view('diligences.edit', compact('diligence'));
     }
 
     /**

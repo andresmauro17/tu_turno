@@ -24,6 +24,7 @@
                                     <th>Nombre</th>
                                     <th>Email</th>
                                     <th>Estado</th>
+                                    {{-- <th>Modulo</th> --}}
                                     <th class="disabled-sorting text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -32,6 +33,7 @@
                                     <th>Nombre</th>
                                     <th>Email</th>
                                     <th>Estado</th>
+                                    {{-- <th>Modulo</th> --}}
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </tfoot>
@@ -41,6 +43,11 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->is_active}}</td>
+                                        {{-- @if ($user->module)
+                                            <td>{{$user->module->name}}</td>
+                                        @else
+                                            <td></td>
+                                        @endif --}}
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

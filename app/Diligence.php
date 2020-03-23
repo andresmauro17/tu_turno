@@ -2,14 +2,13 @@
 
 namespace App;
 
-use App\Module;
 use Illuminate\Database\Eloquent\Model;
 
 class Diligence extends Model
 {
-    public function module()
+    public function modules()
     {
-        return $this->hasMany(Module::class);
+        return $this->belongsToMany(Module::class, 'diligences_modules')->withTimestamps();
     }
     
     protected $fillable = ['name'];

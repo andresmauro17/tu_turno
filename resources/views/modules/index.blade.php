@@ -23,6 +23,8 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Estado</th>
+                                    <th>Usuario</th>
+                                    <th>Tramite</th>
                                     <th class="disabled-sorting text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -30,6 +32,8 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Estado</th>
+                                    <th>Usuario</th>
+                                    <th>Tramite</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </tfoot>
@@ -38,6 +42,23 @@
                                     <tr>
                                         <td>{{$module->name}}</td>
                                         <td>{{$module->is_active}}</td>
+                                        @if ($module->user)
+                                            <td>{{$module->user->name}}</td>
+                                        @else
+                                            <td></td>
+                                        @endif
+
+                                        @if ($module->diligences)
+                                            <td>
+                                                @foreach ($module->diligences as $diligence)
+                                                    {{$diligence->name}}, 
+                                                @endforeach
+                                            </td>
+                                        @else
+                                            <td></td>
+                                        @endif  
+                                        
+                                        
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

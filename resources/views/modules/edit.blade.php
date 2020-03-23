@@ -29,45 +29,38 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <label class="col-md-3"></label>
-
-                    <div class="col-md-9">
-                        <div class="checkbox form-horizontal-checkbox">
-                            <label>
-                                <input type="checkbox" name="is_active" value="1">
-                                Estado
-                            </label>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <legend>Seleccionar Tramites</legend>
+                            <div class="row">
+                                <div class="col-lg-12 ">
+                                    <select class="selectpicker" data-style="select-with-transition" multiple title="Tramites Actuales" data-size="7" name="diligences[]">
+                                        
+                                        @foreach ($diligences as $diligence)
+                                            <option value="{{$diligence->id}}"> {{$diligence->name}} </option> 
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
+                @include('checkBox.check')
+
                 <div class="row">
                     <label class="col-md-3"></label>
 
                     <div class="col-md-9">
                         <div class="form-group form-button">
-                            <button type="submit" class="btn btn-fill btn-primary">Actualizar</button>
+                            <button type="submit" class="btn btn-fill btn-primary">Guardar</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-</div>
-
-<div class="row">
-    @foreach ($diligences as $diligence)
-        <div class="col-md-3">
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-lg btn-primary btn-round btn-block">
-                        <i class="material-icons">navigate_next</i> {{$diligence->name}}
-                    </button>
-                </div>
-            </div>
-        </div>
-    @endforeach
 </div>
 
 @endsection

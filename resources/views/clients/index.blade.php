@@ -10,7 +10,7 @@
 
                 <div class="card-content">
                     <div class="row">
-                        <h4 class="card-title">Tramites</h4>
+                        <h4 class="card-title">Clientes</h4>
                         <div class="toolbar text-right">
                                 <a href="/clients/create" class="btn btn-primary btn-just-icon btn-round">
                                     <i class="material-icons">add</i>

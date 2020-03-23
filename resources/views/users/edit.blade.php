@@ -41,17 +41,17 @@
                 </div>
 
                 <div class="row">
-                    <label class="col-md-3"></label>
-
-                    <div class="col-md-9">
-                        <div class="checkbox form-horizontal-checkbox">
-                            <label>
-                                <input type="checkbox" name="is_active" value="1">
-                                Estado
-                            </label>
-                        </div>
+                    <div class="col-lg-8 col-md-offset-3">
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7" name="module_id">
+                            <option disabled selected>Seleccionar Modulo</option>
+                            @foreach ($modules as $module)
+                                <option>{{$module->id}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
+                
+                @include('checkBox.check')
                 
                 <div class="row">
                     <label class="col-md-3"></label>
