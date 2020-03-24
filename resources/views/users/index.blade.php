@@ -42,12 +42,13 @@
                                     <tr>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->is_active}}</td>
-                                        {{-- @if ($user->module)
-                                            <td>{{$user->module->name}}</td>
+
+                                        @if ($user->is_active == 0)
+                                            <td> <strong> NA </strong></td>
                                         @else
-                                            <td></td>
-                                        @endif --}}
+                                            <td><strong> ACTIVO </strong></td>
+                                        @endif
+
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

@@ -16,5 +16,5 @@ class Module extends Model
         return $this->belongsToMany(Diligence::class, 'diligences_modules')->withTimestamps();
     }  
     
-    protected $fillable = ['name', 'is_active'];
+    protected $fillable = ['name', 'description', 'is_active'];
 }

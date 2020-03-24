@@ -24,7 +24,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Observacines</th>
+                                                <th>Descripcion</th>
                                                 <th>Iniciales</th>
                                                 <th>Estado</th>
                                                 <th>Tramite</th>
@@ -34,7 +34,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Nombre</th>
-                                                <th>Observacines</th>
+                                                <th>Descripcion</th>
                                                 <th>Iniciales</th>
                                                 <th>Estado</th>
                                                 <th>Tramite</th>
@@ -45,9 +45,16 @@
                                             @foreach ($services as $service)
                                                 <tr>
                                                     <td>{{$service->name}}</td>
-                                                    <td>{{$service->observations}}</td>
+                                                    <td>{{$service->description}}</td>
                                                     <td>{{$service->short_name}}</td>
-                                                    <td>{{$service->is_active}}</td>
+
+                                                    @if ($service->is_active == 0)
+                                                        <td> <strong> NA </strong></td>
+                                                    @else
+                                                        <td><strong> ACTIVO </strong></td>
+                                                    @endif
+                                                    
+                                                    
                                                     @if ($service->diligences)
                                                         <td>
                                                             @foreach ($service->diligences as $diligence)

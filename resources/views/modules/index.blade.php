@@ -22,6 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Descripcion</th>
                                     <th>Estado</th>
                                     <th>Usuario</th>
                                     <th>Tramite</th>
@@ -31,6 +32,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Descripcion</th>
                                     <th>Estado</th>
                                     <th>Usuario</th>
                                     <th>Tramite</th>
@@ -41,7 +43,14 @@
                                 @foreach ($modules as $module)
                                     <tr>
                                         <td>{{$module->name}}</td>
-                                        <td>{{$module->is_active}}</td>
+                                        <td>{{$module->description}}</td>
+                                        
+                                        @if ($module->is_active == 0)
+                                            <td> <strong> NA </strong></td>
+                                        @else
+                                            <td><strong> ACTIVO </strong></td>
+                                        @endif
+
                                         @if ($module->user)
                                             <td>{{$module->user->name}}</td>
                                         @else

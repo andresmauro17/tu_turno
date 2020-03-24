@@ -28,6 +28,18 @@
                     </div>
                     
                 </div>
+
+                <div class="row">
+                    <label class="col-md-3 label-on-left">Descripcion</label>
+
+                    <div class="col-md-9">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="description" class="form-control">
+                        </div>
+                    </div>
+                    
+                </div>
                 
                 <div class="col-md-12">
                     <div class="card">
@@ -46,6 +58,24 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <legend>Seleccionar Usuario</legend>
+                            <div class="row">
+                                <div class="col-lg-12 ">
+                                    <select class="selectpicker" data-style="select-with-transition" multiple title="Tramites Actuales" data-size="7" name="users[]">
+                                        
+                                        @foreach ($users as $user)
+                                            <option value="{{$user->id}}"> {{$user->name}} </option> 
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
 
                 @include('checkBox.check')
 

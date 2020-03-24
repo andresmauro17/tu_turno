@@ -44,7 +44,7 @@ class ServicesController extends Controller
         $service = new Service();
         $service -> name = $request->input('name');
         $service -> short_name = $request->input('short_name');
-        $service -> observations = $request->input('observations');
+        $service -> description = $request->input('description');
         $service -> is_active = $request->input('is_active');
         // $service -> order = $request->input('order');
         //$is_active = Input::has('is_active')? true : false;
@@ -97,7 +97,7 @@ class ServicesController extends Controller
         $service = Service::find($id);
         $service -> name = $request->input('name');
         $service -> short_name = $request->input('short_name');
-        $service -> observations = $request->input('observations');
+        $service -> description = $request->input('description');
         $service -> is_active = $request->input('is_active');
         $service -> save();
 

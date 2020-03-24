@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Module;
 use App\Diligence;
+use App\User;
 use Illuminate\Http\Request;
 
 class ModulesController extends Controller
@@ -27,10 +28,10 @@ class ModulesController extends Controller
      */
     public function create()
     {
-        // $diligences = Diligence::all();
+        $users = User::all();
         $diligences = Diligence::orderBy('name')->get();
 
-        return view('modules.create', compact('diligences'));
+        return view('modules.create', compact('diligences', 'users'));
     }
 
     /**
@@ -47,6 +48,7 @@ class ModulesController extends Controller
 
         $module = new Module();
         $module -> name = $request->input('name');
+        $module -> description = $request->input('description');
         $module -> is_active = $request->input('is_active');
         $module -> save();
         
@@ -96,6 +98,7 @@ class ModulesController extends Controller
     {
         $module = Module::find($id);
         $module -> name = $request->input('name');
+        $module -> description = $request->input('description');
         $module -> is_active = $request->input('is_active');
         $module -> save();
 
