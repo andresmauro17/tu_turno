@@ -29,6 +29,18 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <label class="col-md-3 label-on-left">Descripcion</label>
+
+                    <div class="col-md-9">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="description" class="form-control" value="{{$module->description}}">
+                        </div>
+                    </div>
+                    
+                </div>
+                
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-content">

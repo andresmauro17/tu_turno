@@ -50,7 +50,13 @@
                                         <td>{{$client->type_dni}}</td>
                                         <td>{{$client->dni}}</td>
                                         <td>{{$client->sex}}</td>
-                                        <td>{{$client->is_active}}</td>
+                                        
+                                        @if ($client->is_active == 0)
+                                            <td> <strong> NA </strong></td>
+                                        @else
+                                            <td><strong> ACTIVO </strong></td>
+                                        @endif
+
                                         <td class="text-right">
 
                                             {{-- <a href="#" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a> --}}

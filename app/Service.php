@@ -11,5 +11,5 @@ class Service extends Model
         return $this->belongsToMany(Diligence::class, 'diligences_services')->withTimestamps();
     }
     
-    protected $fillable = ['name', 'observations', 'short_name', 'is_active'];
+    protected $fillable = ['name', 'description', 'short_name', 'is_active'];
 }

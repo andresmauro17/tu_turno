@@ -4,7 +4,7 @@
     <div class="col-md-9">
         <div class="checkbox form-horizontal-checkbox">
             <label>
-                <input type="checkbox" name="is_active" value="1">
+                <input checked type="checkbox" name="is_active" value="1">
                 Es Activo?
             </label>
         </div>
