@@ -82,6 +82,8 @@ class ModulesController extends Controller
         // $diligences = Diligence::all();
         $diligences = Diligence::orderBy('name')->get();
         $module = Module::find($id);
+        // $moduleDiligence = $module->diligences()->get();
+        //dd($moduleDiligence);
         return view('modules.edit', compact('module', 'diligences'));
     }
 
