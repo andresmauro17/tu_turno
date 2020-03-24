@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diligence extends Model
 {
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'diligences_services')->withTimestamps();
+    }
+    
     public function modules()
     {
         return $this->belongsToMany(Module::class, 'diligences_modules')->withTimestamps();

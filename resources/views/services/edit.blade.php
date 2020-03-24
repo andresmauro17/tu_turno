@@ -51,6 +51,24 @@
                     </div>
                 </div>
 
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <legend>Seleccionar Tramites</legend>
+                            <div class="row">
+                                <div class="col-lg-12 ">
+                                    <select class="selectpicker" data-style="select-with-transition" multiple title="Tramites Actuales" data-size="7" name="diligences[]">
+                                        
+                                        @foreach ($diligences as $diligence)
+                                            <option value="{{$diligence->id}}"> {{$diligence->name}} </option> 
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 @include('checkBox.check')
 
                 <div class="row">

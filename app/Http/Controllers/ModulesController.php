@@ -27,7 +27,9 @@ class ModulesController extends Controller
      */
     public function create()
     {
-        $diligences = Diligence::all();
+        // $diligences = Diligence::all();
+        $diligences = Diligence::orderBy('name')->get();
+
         return view('modules.create', compact('diligences'));
     }
 
@@ -77,7 +79,8 @@ class ModulesController extends Controller
      */
     public function edit($id)
     {
-        $diligences = Diligence::all();
+        // $diligences = Diligence::all();
+        $diligences = Diligence::orderBy('name')->get();
         $module = Module::find($id);
         return view('modules.edit', compact('module', 'diligences'));
     }

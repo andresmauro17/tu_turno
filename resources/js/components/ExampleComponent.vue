@@ -1,12 +1,11 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="places-sweet-alerts">
+            <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
+                    <div class="card-content text-center">
+                        <h5>A warning message, with a function attached to the "Confirm" Button...</h5>
+                        <button class="btn btn-rose btn-fill" onclick="demo.showSwal('warning-message-and-confirmation')">Try me!</button>
                     </div>
                 </div>
             </div>

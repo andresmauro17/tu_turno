@@ -22,7 +22,7 @@ class CreateDiligencesServicesTable extends Migration
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services');
 
-            $table->integer('order');
+            $table->integer('order')->nullable();
             
             $table->timestamps();
         });

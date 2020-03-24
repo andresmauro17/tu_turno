@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\Diligence;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -14,8 +15,8 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
-        $services = Service::all();
-        return view('services.index', compact('services'));
+        $services = Service::with('diligences')->get();
+        return view('services.index', compact('services', 'diligences'));
     }
 
     /**
@@ -25,7 +26,11 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+        // $diligences = Diligence::all();
+        $diligences = Diligence::orderBy('name')->get();
+
+        return view('services.create', compact('diligences'));
+        
     }
 
     /**
@@ -41,8 +46,16 @@ class ServicesController extends Controller
         $service -> short_name = $request->input('short_name');
         $service -> observations = $request->input('observations');
         $service -> is_active = $request->input('is_active');
+        // $service -> order = $request->input('order');
         //$is_active = Input::has('is_active')? true : false;
         $service -> save();
+
+        $diligences = $request->input('diligences');
+        if ($diligences) {
+            foreach ($diligences as $position => $diligence) {
+                $service -> diligences()->attach($diligence);
+            }
+        }
 
         //return $request;
         return redirect()->route('services.index');
@@ -67,8 +80,9 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
+        $diligences = Diligence::orderBy('name')->get();
         $service = Service::find($id);
-        return view('services.edit', compact('service'));
+        return view('services.edit', compact('service', 'diligences'));
     }
 
     /**
@@ -87,6 +101,12 @@ class ServicesController extends Controller
         $service -> is_active = $request->input('is_active');
         $service -> save();
 
+        $diligences = $request->input('diligences');
+        if ($diligences) {
+            foreach ($diligences as $position => $diligence) {
+                $service -> diligences()->sync($diligence);
+            }
+        }
         return redirect()->route('services.index');
     }
 

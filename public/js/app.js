@@ -1923,7 +1923,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -67087,16 +67086,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "places-sweet-alerts" }, [
+        _c("div", { staticClass: "col-md-3" }, [
           _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
+            _c("div", { staticClass: "card-content text-center" }, [
+              _c("h5", [
+                _vm._v(
+                  'A warning message, with a function attached to the "Confirm" Button...'
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-rose btn-fill",
+                  attrs: {
+                    onclick: "demo.showSwal('warning-message-and-confirmation')"
+                  }
+                },
+                [_vm._v("Try me!")]
               )
             ])
           ])
@@ -119531,8 +119539,8 @@ if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/aletop/Escritorio/tu_turno/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu_turno/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/aletop/Escritorio/tu_turno/tu_turno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu_turno/tu_turno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
