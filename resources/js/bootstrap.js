@@ -57,8 +57,8 @@ require('./vendor/jquery.select-bootstrap.js');
 
 require('./vendor/jquery.datatables.js');
 
-// Sweet Alert 2 plugin, full documentation here: https://limonte.github.io/sweetalert2/
-require('./vendor/sweetalert2.js');
+// // Sweet Alert 2 plugin, full documentation here: https://limonte.github.io/sweetalert2/
+// require('./vendor/sweetalert2.js');
 
 // Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput
 require('./vendor/jasny-bootstrap.min.js');

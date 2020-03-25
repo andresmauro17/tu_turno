@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\Diligence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ServicesController extends Controller
 {
@@ -15,7 +16,9 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
+        Log::info('hi from index');
         $services = Service::with('diligences')->get();
+        // return response()->json($services);
         return view('services.index', compact('services', 'diligences'));
     }
 
@@ -69,7 +72,7 @@ class ServicesController extends Controller
      */
     public function show($id)
     {
-        //
+        Log::info('hi from show');
     }
 
     /**
@@ -118,9 +121,10 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
-        $service->delete();
-
-        return redirect()->route('services.index');
+        Log::info('hi from destory');
+        // $service = Service::find($id);
+        // // $service->delete();
+        // return response()->json($service);
+        // return redirect()->route('services.index');
     }
 }

@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::resource('kiosko', 'TurnController');
     
-    Route::resource('services', 'ServicesController');
+    
 
     Route::resource('modules', 'ModulesController');
 
@@ -53,3 +53,5 @@ Route::group(['middleware' => 'auth'], function () {
 */
 Route::get('/imprimir', 'PdfController@imprimir')->name('imprimir');
 Route::get('/pdf', 'PdfController@index');
+
+Route::resource('services', 'ServicesController');
