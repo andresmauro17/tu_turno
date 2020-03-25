@@ -68639,6 +68639,19 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-axios/dist/vue-axios.min.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vue-axios/dist/vue-axios.min.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?undefined:_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):undefined}();
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -80862,6 +80875,10 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _globalComponents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globalComponents */ "./resources/js/globalComponents.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -80873,6 +80890,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 /**
  * import global components in vue
  */
+
+
 
 
 /**
@@ -80895,6 +80914,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.use(_globalComponents__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
@@ -81083,6 +81103,102 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/atending/AtendingCardComponent.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/atending/AtendingCardComponent.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+ // ES6 Modules or TypeScript
+
+
+var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("atending-card-component", {
+  data: function data() {
+    return {
+      currentTurn: "",
+      turnState: "",
+      turnTimeAtention: "",
+      turnsWaiting: "",
+      waitQueueTime: "",
+      atendedTurns: "",
+      averageTime: ""
+    };
+  },
+  mounted: function mounted() {
+    console.log('hi from AtendingCardComponent'); // this.currentTurn="VA012"
+    // this.turnState='en atencion'
+    // this.turnTimeAtention="00:12:04"
+    // this.turnsWaiting="4"
+    // this.waitQueueTime="00:12:04"
+    // this.atendedTurns="8"
+    // this.averageTime="00:12:04"
+  },
+  methods: {
+    nexTurn: function nexTurn() {
+      console.log("nexTurn");
+    },
+    callAgain: function callAgain() {
+      console.log("callAgain");
+    },
+    atendTurn: function atendTurn() {
+      console.log("atendTurn");
+    },
+    finishTurn: function finishTurn() {
+      console.log("finishturn");
+    },
+    cancelTurn: function cancelTurn() {
+      console.log("cancelTurn");
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (AtendingCardComponent);
+
+/***/ }),
+
+/***/ "./resources/js/components/atending/AtendingComponent.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/atending/AtendingComponent.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AtendingCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AtendingCardComponent */ "./resources/js/components/atending/AtendingCardComponent.js");
+ // ES6 Modules or TypeScript
+
+
+
+var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("atending-component", {
+  components: {
+    AtendingCardComponent: _AtendingCardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['userModule'],
+  data: function data() {
+    return {
+      selectDiligence: null
+    };
+  },
+  mounted: function mounted() {
+    console.log('hi from AtendingComponent'); // console.log(this.userModule)
+  },
+  methods: {}
+});
+/* harmony default export */ __webpack_exports__["default"] = (AtendingComponent);
+
+/***/ }),
+
 /***/ "./resources/js/components/services/ServiceIndexComponent.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/services/ServiceIndexComponent.js ***!
@@ -81170,10 +81286,12 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/services/ServiceIndexComponent */ "./resources/js/components/services/ServiceIndexComponent.js");
+/* harmony import */ var _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/atending/AtendingComponent */ "./resources/js/components/atending/AtendingComponent.js");
+
 
 var GlobalComponents = {
   install: function install(Vue) {
-    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (GlobalComponents);
