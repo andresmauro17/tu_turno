@@ -24,10 +24,8 @@
                                                 </p>
                                             </div>
                                             <div class="card-footer">
-                                                <a class="btn btn-primary" href="/pdf">VER HTML DEL PDF</a>
-                                                <a class="btn btn-rose btn-round" 
-                                                href="{{route('imprimir')}}">PEDIR TURNO</a>
-                                                <button class="btn btn-rose btn-round" v-on:click="takeAturn"> Imprimir</button>
+                                                {{-- <a class="btn btn-primary" href="/pdf">VER HTML DEL PDF</a>                                                 --}}
+                                                <button class="btn btn-primary btn-round" v-on:click="takeAturn"> PEDIR TURNO</button>
                                             </div>
                                         </div>
                                     </kiosk-card-component>

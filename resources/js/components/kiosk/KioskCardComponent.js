@@ -16,6 +16,11 @@ const KioskCardComponent = Vue.component("kiosk-card-component",{
     methods: {
        takeAturn(){
         console.log('hi from takeAturn')
+
+        Vue.axios.post('api/kiosk/takeAturn',this.service).then((response) => {
+            console.log(response.data)
+            window.open("/imprimir");
+        })
        }
     },
 });

@@ -81225,6 +81225,10 @@ var KioskCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("k
   methods: {
     takeAturn: function takeAturn() {
       console.log('hi from takeAturn');
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.axios.post('api/kiosk/takeAturn', this.service).then(function (response) {
+        console.log(response.data);
+        window.open("/imprimir");
+      });
     }
   }
 });

@@ -11,11 +11,13 @@
     <div class="container">
         <div class="content">
             <div class="form-group">
-                <img src="images/logo.png" alt="">
+                <img width="300"  src="images/logo.png" alt="">
             </div>
-            @foreach ($services as $service)
-                <p>{{$service->short_name}}</p>
-            @endforeach
+            <br>
+            <h1>Turno</h1>
+            <h1>{{$turn->consecutive_string}}</h1>
+            <br>
+            <small>Sistema TuTurno, todos los derechos reservados MDO Partners s.a.s</small>
         </div>
         
             
