@@ -72,7 +72,6 @@
                                                         <a href="/services/{{$service->id}}/edit" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
                                                         {{-- <a href="/services/create" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i></a> --}}
                                                         <a href="#" @click.prevent="deleteitem()" class="btn btn-simple btn-danger btn-icon "><i class="material-icons">close</i></a>
-                                                        <button class="btn btn-primary btn-fill" onclick='Swal({ title:"Good job!", text: "You clicked the button!", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"})'>Try me!</button>
                                                     </td>
                                                 </tr>
                                             @endforeach

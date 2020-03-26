@@ -81199,6 +81199,69 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
 
 /***/ }),
 
+/***/ "./resources/js/components/kiosk/KioskCardComponent.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/kiosk/KioskCardComponent.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var KioskCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("kiosk-card-component", {
+  props: [],
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    console.log('hi from KioskCardComponent');
+  },
+  methods: {}
+});
+/* harmony default export */ __webpack_exports__["default"] = (KioskCardComponent);
+
+/***/ }),
+
+/***/ "./resources/js/components/kiosk/KioskComponent.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/kiosk/KioskComponent.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _KioskCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KioskCardComponent */ "./resources/js/components/kiosk/KioskCardComponent.js");
+
+
+
+var KioskComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("kiosk-component", {
+  components: {
+    KioskCardComponent: _KioskCardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: [],
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    console.log('hi from KioskComponent');
+  },
+  methods: {}
+});
+/* harmony default export */ __webpack_exports__["default"] = (KioskComponent);
+
+/***/ }),
+
 /***/ "./resources/js/components/services/ServiceIndexComponent.js":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/services/ServiceIndexComponent.js ***!
@@ -81287,11 +81350,14 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/services/ServiceIndexComponent */ "./resources/js/components/services/ServiceIndexComponent.js");
 /* harmony import */ var _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/atending/AtendingComponent */ "./resources/js/components/atending/AtendingComponent.js");
+/* harmony import */ var _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/kiosk/KioskComponent */ "./resources/js/components/kiosk/KioskComponent.js");
+
 
 
 var GlobalComponents = {
   install: function install(Vue) {
     Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]);
+    Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (GlobalComponents);
