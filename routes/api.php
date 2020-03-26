@@ -30,4 +30,6 @@ Route::get('/', function () {
 // });
 Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
+Route::get('atending/getData', 'Api\AtendingController@getData');
+
 

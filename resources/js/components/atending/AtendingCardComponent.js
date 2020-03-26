@@ -3,6 +3,9 @@ import Vue from "vue"
 import swal from 'sweetalert2'
 
 const AtendingCardComponent = Vue.component("atending-card-component",{
+    props:[
+        'atendingData'
+    ],
     data() {
         return {
             currentTurn:"",
@@ -17,14 +20,21 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
     },
     mounted:function(){
         console.log('hi from AtendingCardComponent')
+        
+
+    },
+    watch: {
+        atendingData: function (newData, oldData) {
+          
         // this.currentTurn="VA012"
         // this.turnState='en atencion'
         // this.turnTimeAtention="00:12:04"
-        // this.turnsWaiting="4"
+        this.turnsWaiting = newData.turnsWaiting
         // this.waitQueueTime="00:12:04"
         // this.atendedTurns="8"
         // this.averageTime="00:12:04"
-    },
+        }
+      },
     methods: {
        nexTurn:()=>{
         console.log("nexTurn")

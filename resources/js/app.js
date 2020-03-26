@@ -15,8 +15,7 @@ window.Vue = require('vue');
 
 import GlobalComponents from "./globalComponents";
 
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -40,5 +39,4 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-Vue.use(VueAxios, axios);
 Vue.use(GlobalComponents);

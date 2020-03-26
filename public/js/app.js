@@ -68639,19 +68639,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vue-axios/dist/vue-axios.min.js":
-/*!******************************************************!*\
-  !*** ./node_modules/vue-axios/dist/vue-axios.min.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?undefined:_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):undefined}();
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -80865,6 +80852,35 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/api/index.js":
+/*!***********************************!*\
+  !*** ./resources/js/api/index.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var urlIn = window.location.href;
+var arr = urlIn.split("/");
+var currentUrl = arr[0] + "//" + arr[2] + "/api";
+console.log("la url es:");
+console.log(currentUrl);
+var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+  baseURL: currentUrl //send a pseudo params for the browser doesnt take past cache when back
+  // params: {
+  //     pseudoParam: new Date().getTime()
+  //   }
+
+});
+instance.defaults.headers.common['Access-Control-Allow-Headers'] = 'X-CSRF-Token';
+/* harmony default export */ __webpack_exports__["default"] = (instance);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -80875,10 +80891,6 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _globalComponents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./globalComponents */ "./resources/js/globalComponents.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -80890,8 +80902,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 /**
  * import global components in vue
  */
-
-
 
 
 /**
@@ -80914,7 +80924,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
-Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.use(_globalComponents__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
@@ -81120,6 +81129,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("atending-card-component", {
+  props: ['atendingData'],
   data: function data() {
     return {
       currentTurn: "",
@@ -81132,13 +81142,17 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
     };
   },
   mounted: function mounted() {
-    console.log('hi from AtendingCardComponent'); // this.currentTurn="VA012"
-    // this.turnState='en atencion'
-    // this.turnTimeAtention="00:12:04"
-    // this.turnsWaiting="4"
-    // this.waitQueueTime="00:12:04"
-    // this.atendedTurns="8"
-    // this.averageTime="00:12:04"
+    console.log('hi from AtendingCardComponent');
+  },
+  watch: {
+    atendingData: function atendingData(newData, oldData) {
+      // this.currentTurn="VA012"
+      // this.turnState='en atencion'
+      // this.turnTimeAtention="00:12:04"
+      this.turnsWaiting = newData.turnsWaiting; // this.waitQueueTime="00:12:04"
+      // this.atendedTurns="8"
+      // this.averageTime="00:12:04"
+    }
   },
   methods: {
     nexTurn: function nexTurn() {
@@ -81176,7 +81190,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _AtendingCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AtendingCardComponent */ "./resources/js/components/atending/AtendingCardComponent.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
  // ES6 Modules or TypeScript
+
 
 
 
@@ -81187,13 +81203,28 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
   props: ['userModule'],
   data: function data() {
     return {
-      selectDiligence: null
+      selectDiligence: null,
+      atendingData: {}
     };
   },
   mounted: function mounted() {
-    console.log('hi from AtendingComponent'); // console.log(this.userModule)
+    self = this;
+    console.log('hi from AtendingComponent');
+    this.getAtendingData(); // console.log(this.userModule)
   },
-  methods: {}
+  methods: {
+    getAtendingData: function getAtendingData() {
+      var _this = this;
+
+      self = this;
+      console.log('atending data');
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('atending/getData').then(function (response) {
+        console.log(response.data); // console.log(self)
+
+        _this.atendingData = response.data;
+      });
+    }
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (AtendingComponent);
 
@@ -81212,6 +81243,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
+
 
 
 var KioskCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("kiosk-card-component", {
@@ -81225,7 +81258,7 @@ var KioskCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("k
   methods: {
     takeAturn: function takeAturn() {
       console.log('hi from takeAturn');
-      vue__WEBPACK_IMPORTED_MODULE_0___default.a.axios.post('api/kiosk/takeAturn', this.service).then(function (response) {
+      _api__WEBPACK_IMPORTED_MODULE_2__["default"].post('kiosk/takeAturn', this.service).then(function (response) {
         console.log(response.data);
         window.open("/imprimir");
       });
