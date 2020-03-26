@@ -8,6 +8,7 @@ const KioskComponent = Vue.component("kiosk-component",{
         KioskCardComponent
     },
     props:[
+        'services'
     ],
     data() {
         return {

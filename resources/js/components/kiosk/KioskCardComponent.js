@@ -3,6 +3,7 @@ import swal from 'sweetalert2'
 
 const KioskCardComponent = Vue.component("kiosk-card-component",{
     props:[
+        'service'
     ],
     data() {
         return {
@@ -13,7 +14,9 @@ const KioskCardComponent = Vue.component("kiosk-card-component",{
         console.log('hi from KioskCardComponent')
     },
     methods: {
-       
+       takeAturn(){
+        console.log('hi from takeAturn')
+       }
     },
 });
 

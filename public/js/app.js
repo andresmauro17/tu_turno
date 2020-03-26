@@ -81215,14 +81215,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var KioskCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("kiosk-card-component", {
-  props: [],
+  props: ['service'],
   data: function data() {
     return {};
   },
   mounted: function mounted() {
     console.log('hi from KioskCardComponent');
   },
-  methods: {}
+  methods: {
+    takeAturn: function takeAturn() {
+      console.log('hi from takeAturn');
+    }
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (KioskCardComponent);
 
@@ -81249,7 +81253,7 @@ var KioskComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("kiosk
   components: {
     KioskCardComponent: _KioskCardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: [],
+  props: ['services'],
   data: function data() {
     return {};
   },
