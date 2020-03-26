@@ -59,23 +59,15 @@
                     </div>
                 </div>
 
-                {{-- <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <legend>Seleccionar Usuario</legend>
-                            <div class="row">
-                                <div class="col-lg-12 ">
-                                    <select class="selectpicker" data-style="select-with-transition" multiple title="Tramites Actuales" data-size="7" name="users[]">
-                                        
-                                        @foreach ($users as $user)
-                                            <option value="{{$user->id}}"> {{$user->name}} </option> 
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-1">
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar Usuario" data-size="7" name="user_id">
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </div> --}}
+                </div>
 
                 @include('checkBox.check')
 

@@ -45,16 +45,16 @@
                                         <td>{{$module->name}}</td>
                                         <td>{{$module->description}}</td>
                                         
-                                        @if ($module->is_active == 0)
-                                            <td> <strong> NA </strong></td>
-                                        @else
+                                        @if ($module->is_active)
                                             <td><strong> ACTIVO </strong></td>
+                                        @else
+                                            <td> <strong> NA </strong></td>
                                         @endif
 
                                         @if ($module->user)
                                             <td>{{$module->user->name}}</td>
                                         @else
-                                            <td></td>
+                                            <td> <strong> NULL </strong></td>
                                         @endif
 
                                         @if ($module->diligences)
@@ -64,7 +64,7 @@
                                                 @endforeach
                                             </td>
                                         @else
-                                            <td></td>
+                                            <td> <strong> NA </strong></td>
                                         @endif  
                                         
                                         

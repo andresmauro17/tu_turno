@@ -107,7 +107,7 @@ class ServicesController extends Controller
         $diligences = $request->input('diligences');
         if ($diligences) {
             foreach ($diligences as $position => $diligence) {
-                $service -> diligences()->sync($diligence);
+                $service -> diligences()->attach($diligence);
             }
         }
         return redirect()->route('services.index');

@@ -17,7 +17,7 @@ class ModulesController extends Controller
     public function index()
     {
         $modules = Module::with('user', 'diligences')->get();
-        
+        // dd($modules);
         return view('modules.index', compact('modules'));
     }
 
@@ -45,11 +45,13 @@ class ModulesController extends Controller
         
         // $module = Module::findOrFail(1);
         // $module->diligences()->attach(1);
+        $users = User::all();
 
         $module = new Module();
         $module -> name = $request->input('name');
         $module -> description = $request->input('description');
         $module -> is_active = $request->input('is_active');
+        $module -> user_id = $request->input('user_id');
         $module -> save();
         
         $diligences = $request->input('diligences');
@@ -59,7 +61,7 @@ class ModulesController extends Controller
             }
         }
         
-        return redirect()->route('modules.index');
+        return redirect()->route('modules.index', compact('users'));
     }
 
     /**
@@ -81,12 +83,13 @@ class ModulesController extends Controller
      */
     public function edit($id)
     {
-        // $diligences = Diligence::all();
+        $users = User::all();
+
         $diligences = Diligence::orderBy('name')->get();
         $module = Module::find($id);
         // $moduleDiligence = $module->diligences()->get();
         //dd($moduleDiligence);
-        return view('modules.edit', compact('module', 'diligences'));
+        return view('modules.edit', compact('module', 'diligences', 'users'));
     }
 
     /**
@@ -102,12 +105,13 @@ class ModulesController extends Controller
         $module -> name = $request->input('name');
         $module -> description = $request->input('description');
         $module -> is_active = $request->input('is_active');
+        $module -> user_id = $request->input('user_id');
         $module -> save();
 
         $diligences = $request->input('diligences');
         if ($diligences) {
             foreach ($diligences as $position => $diligence) {
-                $module -> diligences()->sync($diligence);
+                $module -> diligences()->attach([$diligence,]);
             }
         }
         
