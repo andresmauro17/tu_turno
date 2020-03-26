@@ -47,7 +47,6 @@ class UsersController extends Controller
         $user -> password = bcrypt($request->input('password'));
         $user -> remember_token = Str::random(60);
         $user -> is_active = $request->input('is_active');
-        $user -> module_id = $request->input('module_id');
         $user -> save();
 
         return redirect()->route('users.index');
@@ -90,7 +89,6 @@ class UsersController extends Controller
         $user -> name = $request->input('name');
         $user -> email = $request->input('email');
         $user -> is_active = $request->input('is_active');
-        $user -> module_id = $request->input('module_id');
 
         $user -> save();
 

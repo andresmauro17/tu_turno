@@ -63,6 +63,35 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <label class="col-md-3 label-on-left">Usuarios</label>
+
+                    <div class="col-lg-8 ">
+                        @if ($module->user)
+                            <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$module->user->name}}" data-size="7" name="user_id">
+                                {{-- ACA ES DONDE NO SE COMO HACER LA VALIDACION EN LA RELACION --}}
+                                
+                                @foreach ($users as $user)
+                                    @if($module->user_id == $user->id)  
+                                    {{-- @if ($user->name == $module->user->name)
+                                        <option disabled>{{$user->name}}</option> --}}
+                                        <option disabled>{{$user->name}}</option>
+                                    @else
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        @else
+                            <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar Usuario" data-size="7" name="user_id">
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+
+                </div>
+
                 @include('checkBox.check')
 
                 <div class="row">

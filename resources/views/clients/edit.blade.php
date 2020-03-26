@@ -44,7 +44,7 @@
                     <label class="col-md-3 label-on-left">DNI</label>
 
                     <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$client->type_dni}}" data-size="8" name="type_dni">
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar DNI" data-size="8" name="type_dni">
                             <option selected>{{$client->type_dni}}</option>
                             <option value="1">CC </option>
                             <option value="2">TI </option>
@@ -72,7 +72,7 @@
                     <label class="col-md-3 label-on-left">Sexo</label>
 
                     <div class="col-lg-5 col-md-6 col-sm-3">
-                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$client->sex}}" data-size="3" name="sex">
+                        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar Sexo" data-size="3" name="sex">
                             <option selected>{{$client->sex}}</option>
                             <option value="1">F</option>
                             <option value="2">M</option>

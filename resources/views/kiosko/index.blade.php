@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="form-group label-floating">
                                         <p class="control-label">
-                                            {{$service->observations}}
+                                            {{$service->description}}
                                         </p>
                                     </div>
                                     <div class="card-footer">
