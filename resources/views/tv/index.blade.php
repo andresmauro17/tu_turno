@@ -1,40 +1,46 @@
 @extends('layouts.layout')
 
 @section('app')
-	<div class="row">
-		<div class="col-md-8" style="padding-top: 3%">
-			<div class="card">
-				<div class="card-header card-header-icon" data-background-color="blue">
-					<i class="material-icons">announcement</i>
-				</div>
-				<div class="card-content text-center">
-					<h4><strong>Informacion Publicitaria</strong></h4>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="indice">
-		<iframe   width="870" height="520" src="https://www.youtube.com/embed/qIDzPUt20F4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-	
-	<div id="contenido">
-		<div class="row">
-			@foreach ($modules as $module)
-				<div class="col">
+	<tv-component inline-template>
+		<div>
+			<div class="row">
+				<div class="col-md-8" style="padding-top: 3%">
 					<div class="card">
 						<div class="card-header card-header-icon" data-background-color="blue">
-							<i class="material-icons">all_inbox</i>
+							<i class="material-icons">announcement</i>
 						</div>
 						<div class="card-content text-center">
-							<h4><strong>{{strtoupper($module->name)}}</strong></h4>
-							<h3>TURNO ACTUAL A53</h3>
-							<h4>TURNO ANTERIOR A52</h4>									
+							<h4><strong>Informacion Publicitaria</strong></h4>
 						</div>
 					</div>
 				</div>
-			@endforeach
+			</div>
+			<div id="indice">
+				<iframe   width="870" height="520" src="https://www.youtube.com/embed/qIDzPUt20F4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			
+			<div id="contenido">
+				<div class="row">
+					@foreach ($modules as $module)
+						<div class="col">
+							<tv-module-card-component inline-template>
+								<div class="card">
+									<div class="card-header card-header-icon" data-background-color="blue">
+										<i class="material-icons">all_inbox</i>
+									</div>
+									<div class="card-content text-center">
+										<h4><strong>{{strtoupper($module->name)}}</strong></h4>
+										<h3>TURNO ACTUAL A53</h3>
+										<h4>TURNO ANTERIOR A52</h4>									
+									</div>
+								</div>
+							</tv-module-card-component>
+						</div>
+					@endforeach
+				</div>
+			</div>
 		</div>
-	</div>
+	</tv-component>
 @endsection
 
 
