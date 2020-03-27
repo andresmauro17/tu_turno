@@ -84,7 +84,6 @@ class ModulesController extends Controller
     public function edit($id)
     {
         $users = User::all();
-
         $diligences = Diligence::orderBy('name')->get();
         $module = Module::find($id);
         // $moduleDiligence = $module->diligences()->get();

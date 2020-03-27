@@ -60,7 +60,11 @@
                                     <select class="selectpicker" data-style="select-with-transition" multiple title="Tramites Actuales" data-size="7" name="diligences[]">
                                         
                                         @foreach ($diligences as $diligence)
-                                            <option value="{{$diligence->id}}"> {{$diligence->name}} </option> 
+                                            @if($service->diligences->find($diligence->id))
+                                                <option selected value="{{$diligence->id}}"> {{$diligence->name}} </option>
+                                            @else
+                                                <option value="{{$diligence->id}}"> {{$diligence->name}} </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
