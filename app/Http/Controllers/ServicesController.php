@@ -95,8 +95,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
+        
         $service = Service::find($id);
         $service -> name = $request->input('name');
         $service -> short_name = $request->input('short_name');
@@ -104,12 +106,52 @@ class ServicesController extends Controller
         $service -> is_active = $request->input('is_active');
         $service -> save();
 
-        $diligences = $request->input('diligences');
-        if ($diligences) {
-            foreach ($diligences as $position => $diligence) {
-                $service -> diligences()->attach($diligence);
+        $diligences_all = Diligence::all();
+
+        $diligences_exist = $service->diligences;
+
+        $diligences_selected = collect($request->input('diligences'));
+        // dump($diligences_selected);
+
+            foreach ($diligences_all as $position => $diligence) {
+                // dump("-------------------");
+                $diligences_exist_found = $diligences_exist->find($diligence->id);
+
+                $diligences_selected_found_position = null;
+                $diligences_selected_found_position = $diligences_selected->search($diligence->id);
+                // $diligences_selected_found_position = false;
+
+                $diligences_selected_found = null;
+                if(is_numeric($diligences_selected_found_position)){
+                    // dump("entro");
+                    $diligences_selected_found = $diligences_selected[ $diligences_selected_found_position ];
+                }
+                
+                
+                
+                // dump("diligence->name");
+                // dump($diligence->name);
+
+                // dump("diligences_exist_found");
+                // dump($diligences_exist_found);
+
+                // dump("diligences_selected_found_position");
+                // dump($diligences_selected_found_position);
+
+                // dump("diligences_selected_found");
+                // dump($diligences_selected_found);
+                if($diligences_exist_found && $diligences_selected_found){
+                    // dump("IF");
+                }elseif($diligences_exist_found && !$diligences_selected_found){
+                    $service -> diligences()->detach($diligence->id);
+                    // dump("ElseID");
+                }elseif(!$diligences_exist_found && $diligences_selected_found){
+                    // dump("ElseIf 2");
+                    $service -> diligences()->attach($diligence->id);
+                }
+                
             }
-        }
+            // dd("Stop");
         return redirect()->route('services.index');
     }
 
