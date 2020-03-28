@@ -1,22 +1,22 @@
 import Vue from "vue"
-import swal from 'sweetalert2'
+import swal from "sweetalert2"
 import axios from "../../api/index"
+import HijoMio from "./HijoMio"
 
-
-const ServiceIndexConponent = Vue.component("service-index-component",{
+const ModuleIndexComponent = Vue.component("module-index-component", {
     
     props:[
-        "services"
+        "modules"
     ],
     
     data() {
         return {
-        
+            
         }
     },
 
     methods: {
-        borrar(service_id){
+        borrar(module_id){
 
             swal({
                 title: 'Estas Seguro?',
@@ -30,9 +30,9 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 buttonsStyling: false
             }).then(function() {
                 // hace la peticion al backend para borrar
-                    axios.delete(`services/${service_id}`).then(function(response){
+                    axios.delete(`modules/${module_id}`).then(function(response){
                         console.log(response)
-                        // location.reload();
+                        location.reload();
                     })
 
                 // cuando termine de hacer la peticion
@@ -66,6 +66,8 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
             })
         } 
     },
+
 });
 
-export default ServiceIndexConponent;
+
+export default ModuleIndexComponent;

@@ -28,6 +28,10 @@ Route::get('/', function () {
 
 // Route::group(['prefix' => 'api'], function () {
 // });
+Route::delete('services/{service}', 'Api\ServicesController@destroy');
+
+Route::delete('modules/{module}', 'Api\ModulesController@destroy');
+
 Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
 Route::get('atending/getData', 'Api\AtendingController@getData');

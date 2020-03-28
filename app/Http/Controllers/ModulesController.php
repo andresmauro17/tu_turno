@@ -17,7 +17,7 @@ class ModulesController extends Controller
     public function index()
     {
         $modules = Module::with('user', 'diligences')->get();
-        // dd($modules);
+        // dump($modules);
         return view('modules.index', compact('modules'));
     }
 
@@ -107,14 +107,53 @@ class ModulesController extends Controller
         $module -> user_id = $request->input('user_id');
         $module -> save();
 
-        $diligences = $request->input('diligences');
-        if ($diligences) {
-            foreach ($diligences as $position => $diligence) {
-                $module -> diligences()->attach([$diligence,]);
+        $diligences_all = Diligence::all();
+
+        $diligences_exist = $module->diligences;
+
+        $diligences_selected = collect($request->input('diligences'));
+        // dump($diligences_selected);
+
+            foreach ($diligences_all as $position => $diligence) {
+                // dump("-------------------");
+                $diligences_exist_found = $diligences_exist->find($diligence->id);
+
+                $diligences_selected_found_position = null;
+                $diligences_selected_found_position = $diligences_selected->search($diligence->id);
+                // $diligences_selected_found_position = false;
+
+                $diligences_selected_found = null;
+                if(is_numeric($diligences_selected_found_position)){
+                    // dump("entro");
+                    $diligences_selected_found = $diligences_selected[ $diligences_selected_found_position ];
+                }
+                
+                
+                
+                // dump("diligence->name");
+                // dump($diligence->name);
+
+                // dump("diligences_exist_found");
+                // dump($diligences_exist_found);
+
+                // dump("diligences_selected_found_position");
+                // dump($diligences_selected_found_position);
+
+                // dump("diligences_selected_found");
+                // dump($diligences_selected_found);
+                if($diligences_exist_found && $diligences_selected_found){
+                    // dump("IF");
+                }elseif($diligences_exist_found && !$diligences_selected_found){
+                    $module -> diligences()->detach($diligence->id);
+                    // dump("ElseID");
+                }elseif(!$diligences_exist_found && $diligences_selected_found){
+                    // dump("ElseIf 2");
+                    $module -> diligences()->attach($diligence->id);
+                }
+                
             }
-        }
-        
-        return redirect()->route('modules.index');
+            // dd("Stop");
+        // return redirect()->route('modules.index');
     }
 
     /**

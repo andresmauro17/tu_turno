@@ -163,10 +163,10 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        Log::info('hi from destory');
-        // $service = Service::find($id);
-        // // $service->delete();
+        // Log::info('hi from destory');
+        $service = Service::find($id);
+        $service->delete();
         // return response()->json($service);
-        // return redirect()->route('services.index');
+        return redirect()->route('services.index');
     }
 }
