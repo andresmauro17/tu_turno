@@ -26,8 +26,6 @@ class SetEndAtentionFieldNullableInTurnsTable extends Migration
      */
     public function down()
     {
-        Schema::table('turns', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

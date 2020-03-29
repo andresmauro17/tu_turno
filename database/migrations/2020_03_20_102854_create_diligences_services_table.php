@@ -38,5 +38,6 @@ class CreateDiligencesServicesTable extends Migration
         Schema::disableForeignKeyConstraints();
         
         Schema::dropIfExists('diligences_services');
+        Schema::enableForeignKeyConstraints();
     }
 }

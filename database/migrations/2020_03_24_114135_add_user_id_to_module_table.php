@@ -32,15 +32,16 @@ class AddUserIdToModuleTable extends Migration
      */
     public function down()
     {
-        // Schema::table('modules', function (Blueprint $table) {
-        //     $table->dropForeign('modules_user_id_foreign');
-        //     $table->dropColumn('user_id');
-        // });
-
+        Schema::disableForeignKeyConstraints();
         Schema::table('users', function (Blueprint $table) {
             $table->integer('module_id')->unsigned()->nullable();
             $table->foreign('module_id')->references('id')->on('modules');
             
         });
+        Schema::table('modules', function (Blueprint $table) {
+            $table->dropForeign('modules_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
+        Schema::enableForeignKeyConstraints();
     }
 }

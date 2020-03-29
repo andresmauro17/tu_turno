@@ -81445,7 +81445,8 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       }).then(function () {
         // hace la peticion al backend para borrar
         _api_index__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("services/".concat(service_id)).then(function (response) {
-          console.log(response); // location.reload();
+          console.log(response);
+          location.reload();
         }); // cuando termine de hacer la peticion
 
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({

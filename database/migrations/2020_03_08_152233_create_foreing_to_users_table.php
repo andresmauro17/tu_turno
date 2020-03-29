@@ -27,10 +27,11 @@ class CreateForeingToUsersTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('users', function (Blueprint $table) {
-            
             $table->dropForeign('users_module_id_foreign');
             $table->dropColumn('module_id');
         });
+        Schema::enableForeignKeyConstraints();
     }
 }

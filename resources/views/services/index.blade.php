@@ -51,10 +51,10 @@
                                             <td>@{{service.short_name}}</td>
 
                                             <td v-if="service.is_active">
-                                                <strong> NA </strong>
+                                                <strong> ACTIVO </strong>
                                             </td>
                                             <td v-else>
-                                                <strong> ACTIVO </strong>
+                                                <strong> NA </strong>
                                             </td>
 
                                             <td v-if="service.diligences">

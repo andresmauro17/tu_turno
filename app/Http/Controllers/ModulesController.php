@@ -153,7 +153,7 @@ class ModulesController extends Controller
                 
             }
             // dd("Stop");
-        // return redirect()->route('modules.index');
+        return redirect()->route('modules.index');
     }
 
     /**

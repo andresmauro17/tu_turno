@@ -32,7 +32,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 // hace la peticion al backend para borrar
                     axios.delete(`services/${service_id}`).then(function(response){
                         console.log(response)
-                        // location.reload();
+                        location.reload();
                     })
 
                 // cuando termine de hacer la peticion
