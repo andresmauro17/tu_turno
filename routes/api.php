@@ -32,6 +32,12 @@ Route::delete('services/{service}', 'Api\ServicesController@destroy');
 
 Route::delete('modules/{module}', 'Api\ModulesController@destroy');
 
+Route::delete('diligences/{diligence}', 'Api\DiligencesController@destroy');
+
+Route::delete('users/{user}', 'Api\UsersController@destroy');
+
+Route::delete('clients/{client}', 'Api\ClientsController@destroy');
+
 Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
 Route::get('atending/getData', 'Api\AtendingController@getData');

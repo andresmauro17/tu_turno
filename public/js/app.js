@@ -81230,6 +81230,154 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
 
 /***/ }),
 
+/***/ "./resources/js/components/clients/ClientIndexComponent.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/clients/ClientIndexComponent.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/index */ "./resources/js/api/index.js");
+
+
+
+var ClientIndexComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("client-index-component", {
+  props: ["clients"],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    borrar: function borrar(client_id) {
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+        title: 'Estas Seguro?',
+        text: 'No podras revertirlo',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false
+      }).then(function () {
+        // hace la peticion al backend para borrar
+        _api_index__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("clients/".concat(client_id)).then(function (response) {
+          console.log(response);
+          location.reload();
+        }); // cuando termine de hacer la peticion
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+          title: 'Borrado!',
+          text: 'El registro ha sido borrado.',
+          type: 'success',
+          confirmButtonClass: "btn btn-success",
+          buttonsStyling: false
+        })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop); //cuando no la termina muestr hubo un error
+        // swal({
+        //     title: 'Hubo un errror!',
+        //     text: 'El registro no fue borrado.',
+        //     type: 'warning',
+        //     confirmButtonClass: "btn btn-success",
+        //     buttonsStyling: false
+        //     }).catch(swal.noop)
+      }, function (dismiss) {
+        // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+        if (dismiss === 'cancel') {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+            title: 'Cancelado',
+            text: 'No Hicimos nada :)',
+            type: 'error',
+            confirmButtonClass: "btn btn-info",
+            buttonsStyling: false
+          })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+        }
+      });
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (ClientIndexComponent);
+
+/***/ }),
+
+/***/ "./resources/js/components/diligences/DiligenceIndexComponent.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/diligences/DiligenceIndexComponent.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/index */ "./resources/js/api/index.js");
+
+
+
+var DiligenceIndexComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("diligence-index-component", {
+  props: ["diligences"],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    borrar: function borrar(diligence_id) {
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+        title: 'Estas Seguro?',
+        text: 'No podras revertirlo',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false
+      }).then(function () {
+        // hace la peticion al backend para borrar
+        _api_index__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("diligences/".concat(diligence_id)).then(function (response) {
+          console.log(response);
+          location.reload();
+        }); // cuando termine de hacer la peticion
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+          title: 'Borrado!',
+          text: 'El registro ha sido borrado.',
+          type: 'success',
+          confirmButtonClass: "btn btn-success",
+          buttonsStyling: false
+        })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop); //cuando no la termina muestr hubo un error
+        // swal({
+        //     title: 'Hubo un errror!',
+        //     text: 'El registro no fue borrado.',
+        //     type: 'warning',
+        //     confirmButtonClass: "btn btn-success",
+        //     buttonsStyling: false
+        //     }).catch(swal.noop)
+      }, function (dismiss) {
+        // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+        if (dismiss === 'cancel') {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+            title: 'Cancelado',
+            text: 'No Hicimos nada :)',
+            type: 'error',
+            confirmButtonClass: "btn btn-info",
+            buttonsStyling: false
+          })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+        }
+      });
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (DiligenceIndexComponent);
+
+/***/ }),
+
 /***/ "./resources/js/components/kiosk/KioskCardComponent.js":
 /*!*************************************************************!*\
   !*** ./resources/js/components/kiosk/KioskCardComponent.js ***!
@@ -81548,6 +81696,80 @@ var TvModuleCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
 
 /***/ }),
 
+/***/ "./resources/js/components/users/UserIndexComponent.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/users/UserIndexComponent.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/index */ "./resources/js/api/index.js");
+
+
+
+var UserIndexComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("user-index-component", {
+  props: ["users"],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    borrar: function borrar(user_id) {
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+        title: 'Estas Seguro?',
+        text: 'No podras revertirlo',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false
+      }).then(function () {
+        // hace la peticion al backend para borrar
+        _api_index__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("users/".concat(user_id)).then(function (response) {
+          console.log(response);
+          location.reload();
+        }); // cuando termine de hacer la peticion
+
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+          title: 'Borrado!',
+          text: 'El registro ha sido borrado.',
+          type: 'success',
+          confirmButtonClass: "btn btn-success",
+          buttonsStyling: false
+        })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop); //cuando no la termina muestr hubo un error
+        // swal({
+        //     title: 'Hubo un errror!',
+        //     text: 'El registro no fue borrado.',
+        //     type: 'warning',
+        //     confirmButtonClass: "btn btn-success",
+        //     buttonsStyling: false
+        //     }).catch(swal.noop)
+      }, function (dismiss) {
+        // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+        if (dismiss === 'cancel') {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+            title: 'Cancelado',
+            text: 'No Hicimos nada :)',
+            type: 'error',
+            confirmButtonClass: "btn btn-info",
+            buttonsStyling: false
+          })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+        }
+      });
+    }
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (UserIndexComponent);
+
+/***/ }),
+
 /***/ "./resources/js/globalComponents.js":
 /*!******************************************!*\
   !*** ./resources/js/globalComponents.js ***!
@@ -81562,6 +81784,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/kiosk/KioskComponent */ "./resources/js/components/kiosk/KioskComponent.js");
 /* harmony import */ var _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/tv/TvComponent */ "./resources/js/components/tv/TvComponent.js");
 /* harmony import */ var _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modules/ModuleIndexComponent */ "./resources/js/components/modules/ModuleIndexComponent.js");
+/* harmony import */ var _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/diligences/DiligenceIndexComponent */ "./resources/js/components/diligences/DiligenceIndexComponent.js");
+/* harmony import */ var _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/users/UserIndexComponent */ "./resources/js/components/users/UserIndexComponent.js");
+/* harmony import */ var _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/clients/ClientIndexComponent */ "./resources/js/components/clients/ClientIndexComponent.js");
+
+
+
 
 
 
@@ -81569,7 +81797,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var GlobalComponents = {
   install: function install(Vue) {
-    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]), Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]), Vue.component("TvComponent", _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__["default"]), Vue.component("ModuleIndexComponent", _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"]);
+    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]), Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]), Vue.component("TvComponent", _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__["default"]), Vue.component("ModuleIndexComponent", _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"]), Vue.component("DiligenceIndexComponent", _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__["default"]);
+    Vue.component("UserIndexComponent", _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__["default"]);
+    Vue.component("ClientIndexComponent", _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__["default"]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (GlobalComponents);
