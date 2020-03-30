@@ -6,6 +6,7 @@ use App\User;
 use App\Module;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\ErrorsUserRequest;
 
 class UsersController extends Controller
 {
@@ -39,7 +40,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ErrorsUserRequest $request)
     {
         $user = new User();
         $user -> name = $request->input('name');
@@ -49,7 +50,7 @@ class UsersController extends Controller
         $user -> is_active = $request->input('is_active');
         $user -> save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('status', 'Usuario Creado Satisfactoritamente');
     }
 
     /**
@@ -83,16 +84,18 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorsUserRequest $request, $id)
     {
         $user = User::find($id);
         $user -> name = $request->input('name');
         $user -> email = $request->input('email');
+        $user -> password = bcrypt($request->input('password'));
+        $user -> remember_token = Str::random(60);
         $user -> is_active = $request->input('is_active');
 
         $user -> save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('status', 'Usuario Actualizado Satisfactoriamente');
     }
 
     /**

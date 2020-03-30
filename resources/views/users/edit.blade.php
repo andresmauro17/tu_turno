@@ -15,6 +15,9 @@
                         </a>
                 </div>
             </div>
+
+            @include('common.errors')
+
             <form class="form-horizontal" method="POST" action="/users/{{$user->id}}">
                 @method('PUT')
                 @csrf
@@ -36,6 +39,17 @@
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
                             <input type="text" name="email" class="form-control" value="{{$user->email}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3 label-on-left">Contraseña</label>
+
+                    <div class="col-md-9">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="password" class="form-control" value="{{$user->password}}">
                         </div>
                     </div>
                 </div>

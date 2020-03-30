@@ -6,6 +6,7 @@ use App\Service;
 use App\Diligence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\ErrorsServiceRequest;
 
 class ServicesController extends Controller
 {
@@ -42,8 +43,8 @@ class ServicesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(ErrorsServiceRequest $request)
+    {        
         $service = new Service();
         $service -> name = $request->input('name');
         $service -> short_name = $request->input('short_name');
@@ -61,7 +62,7 @@ class ServicesController extends Controller
         }
 
         //return $request;
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('status', 'Servicio Creado Satisfactoriamente');
     }
 
     /**
@@ -96,7 +97,7 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(ErrorsServiceRequest $request, $id)
     {
         
         $service = Service::find($id);
@@ -152,7 +153,7 @@ class ServicesController extends Controller
                 
             }
             // dd("Stop");
-        return redirect()->route('services.index');
+        return redirect()->route('services.index')->with('status', 'Servicio Actualizado Satisfactoriamente');
     }
 
     /**

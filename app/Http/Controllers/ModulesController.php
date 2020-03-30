@@ -6,6 +6,7 @@ use App\Module;
 use App\Diligence;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ErrorsModuleRequest;
 
 class ModulesController extends Controller
 {
@@ -40,9 +41,8 @@ class ModulesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {        
-        
+    public function store(ErrorsModuleRequest $request)
+    {       
         // $module = Module::findOrFail(1);
         // $module->diligences()->attach(1);
         $users = User::all();
@@ -61,7 +61,7 @@ class ModulesController extends Controller
             }
         }
         
-        return redirect()->route('modules.index', compact('users'));
+        return redirect()->route('modules.index', compact('users'))->with('status', 'Modulo Creado Satisfactoriamente');
     }
 
     /**
@@ -98,7 +98,7 @@ class ModulesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorsModuleRequest $request, $id)
     {
         $module = Module::find($id);
         $module -> name = $request->input('name');
@@ -153,7 +153,7 @@ class ModulesController extends Controller
                 
             }
             // dd("Stop");
-        return redirect()->route('modules.index');
+        return redirect()->route('modules.index')->with('status', 'Modulo Actualizado Satisfactoriamente');
     }
 
     /**

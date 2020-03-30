@@ -8,7 +8,7 @@
                     <div class="card-header card-header-icon" data-background-color="blue">
                         <i class="material-icons">assignment</i>
                     </div>
-    
+
                     <div class="card-content">
                         <div class="row">
                             <h4 class="card-title">Clientes</h4>
@@ -18,6 +18,9 @@
                                     </a>
                             </div>
                         </div>
+
+                        @include('common.success')
+
                         <div class="material-datatables">
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>

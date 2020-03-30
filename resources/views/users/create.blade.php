@@ -15,6 +15,9 @@
                         </a>
                 </div>
             </div>
+
+            @include('common.errors')
+
             <form class="form-horizontal" method="POST" action="/users">
                 @csrf
                 <div class="row">
