@@ -120206,8 +120206,8 @@ var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

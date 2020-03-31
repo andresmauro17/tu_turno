@@ -68,8 +68,8 @@
                                             <td v-else></td>
 
                                             <td class="text-right">
-                                                {{-- ANDRES DIJO Q TE SOLUCIONABA --}}
-                                                <a href="" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
+                                                {{-- ANDRES DIJO Q ya se soluciono --}}
+                                                <a v-bind:href="`/services/${ service.id }/edit/`" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
                                     
                                                 <button  @click.prevent="borrar(service.id)" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
                                             </td>
