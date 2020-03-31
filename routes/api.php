@@ -30,6 +30,8 @@ Route::get('/', function () {
 // });
 Route::delete('services/{service}', 'Api\ServicesController@destroy');
 
+Route::post('services', 'Api\ServicesController@reset');
+
 Route::delete('modules/{module}', 'Api\ModulesController@destroy');
 
 Route::delete('diligences/{diligence}', 'Api\DiligencesController@destroy');

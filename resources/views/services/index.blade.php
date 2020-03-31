@@ -8,11 +8,18 @@
                     <div class="card-header card-header-icon" data-background-color="blue">
                         <i class="material-icons">assignment</i>
                     </div>
-    
+                    
                     <div class="card-content">
                         <div class="row">
                             <h4 class="card-title">Servicios</h4>
                             <div class="toolbar text-right">
+
+                                    <label>Reiniciar Contador</label>                     
+                                    <button  @click.prevent="reiniciar" class="btn btn-danger btn-just-icon btn-round">
+                                        <i class="material-icons">close</i>
+                                    </button>
+
+                                    <label for="">Añadir Nuevo Servicio</label>
                                     <a href="/services/create" class="btn btn-primary btn-just-icon btn-round">
                                         <i class="material-icons">add</i>
                                     </a>
@@ -68,7 +75,6 @@
                                             <td v-else></td>
 
                                             <td class="text-right">
-                                                {{-- ANDRES DIJO Q ya se soluciono --}}
                                                 <a v-bind:href="`/services/${ service.id }/edit/`" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
                                     
                                                 <button  @click.prevent="borrar(service.id)" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>

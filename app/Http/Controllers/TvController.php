@@ -11,7 +11,6 @@ class TvController extends Controller
     public function index(){
         $modules = Module::all();
         
-        
         return view('tv.index',compact('modules'));
     }
     

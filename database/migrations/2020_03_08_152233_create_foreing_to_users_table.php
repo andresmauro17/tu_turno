@@ -15,8 +15,10 @@ class CreateForeingToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('module_id')->unsigned()->nullable();
-            $table->foreign('module_id')->references('id')->on('modules');
-            
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules')
+                ->onDelete('cascade');
         });
     }
 
@@ -27,11 +29,9 @@ class CreateForeingToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign('users_module_id_foreign');
             $table->dropColumn('module_id');
         });
-        Schema::enableForeignKeyConstraints();
     }
 }

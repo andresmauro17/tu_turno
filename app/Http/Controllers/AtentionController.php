@@ -14,7 +14,6 @@ class AtentionController extends Controller
        
         $services = Service::all();
         $module = Auth::User()->module()->with('diligences')->get()[0];
-        // dd($module);
 
         return view('turns.atention', compact('services','module'));
     }

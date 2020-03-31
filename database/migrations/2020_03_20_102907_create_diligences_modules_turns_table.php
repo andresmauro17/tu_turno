@@ -17,13 +17,22 @@ class CreateDiligencesModulesTurnsTable extends Migration
             $table->increments('id');
 
             $table->integer('diligence_id')->unsigned();
-            $table->foreign('diligence_id')->references('id')->on('diligences');
+            $table->foreign('diligence_id')
+                ->references('id')
+                ->on('diligences')
+                ->onDelete('cascade');
 
             $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules')
+                ->onDelete('cascade');
 
             $table->integer('turn_id')->unsigned();
-            $table->foreign('turn_id')->references('id')->on('turns');
+            $table->foreign('turn_id')
+                ->references('id')
+                ->on('turns')
+                ->onDelete('cascade');
 
             $table->dateTime('time_atention');
             $table->dateTime('end_atention');
@@ -38,10 +47,7 @@ class CreateDiligencesModulesTurnsTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::disableForeignKeyConstraints();
-        
+    {       
         Schema::dropIfExists('diligences_modules_turns');
-        Schema::enableForeignKeyConstraints();
     }
 }

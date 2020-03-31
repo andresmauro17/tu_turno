@@ -91,8 +91,8 @@
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                     @endif
                                 @endforeach
-                            @endif
-                        </select>
+                            </select>
+                        @endif
                     </div>
 
                 </div>

@@ -17,10 +17,16 @@ class CreateDiligencesServicesTable extends Migration
             $table->increments('id');
             
             $table->integer('diligence_id')->unsigned();
-            $table->foreign('diligence_id')->references('id')->on('diligences');
+            $table->foreign('diligence_id')
+                ->references('id')
+                ->on('diligences')
+                ->onDelete('cascade');
 
             $table->integer('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')
+                ->references('id')
+                ->on('services')
+                ->onDelete('cascade');
 
             $table->integer('order')->nullable();
             
@@ -34,10 +40,7 @@ class CreateDiligencesServicesTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::disableForeignKeyConstraints();
-        
+    {        
         Schema::dropIfExists('diligences_services');
-        Schema::enableForeignKeyConstraints();
     }
 }

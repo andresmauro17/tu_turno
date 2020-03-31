@@ -17,10 +17,16 @@ class CreateDiligencesModulesTable extends Migration
             $table->increments('id');
 
             $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules')
+                ->onDelete('cascade');
 
             $table->integer('diligence_id')->unsigned();
-            $table->foreign('diligence_id')->references('id')->on('diligences');
+            $table->foreign('diligence_id')
+                ->references('id')
+                ->on('diligences')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -32,10 +38,7 @@ class CreateDiligencesModulesTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::disableForeignKeyConstraints();
-        
+    {        
         Schema::dropIfExists('diligences_modules');
-        Schema::enableForeignKeyConstraints();
     }
 }

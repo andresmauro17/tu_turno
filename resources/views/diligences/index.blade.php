@@ -44,8 +44,7 @@
                                             <td>@{{diligence.name}}</td>
     
                                             <td class="text-right">
-                                                {{-- ANDRES DIJO Q TE SOLUCIONABA --}}
-                                                <a href="`/diligences/@{diligence.id}/edit`" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
+                                                <a v-bind:href="`/diligences/${ diligence.id }/edit/`" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
     
                                                 <button  @click.prevent="borrar(diligence.id)" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
                                             </td>                                            

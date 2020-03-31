@@ -16,10 +16,16 @@ class CreateForeingToTurnsTable extends Migration
         Schema::table('turns', function (Blueprint $table) {
             
             $table->integer('client_id')->unsigned();
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('client_id')
+                ->references('id')
+                ->on('clients')
+                ->onDelete('cascade');
 
             $table->integer('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('service_id')
+                ->references('id')
+                ->on('services')
+                ->onDelete('cascade');
             
         });
     }
@@ -31,7 +37,6 @@ class CreateForeingToTurnsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::table('turns', function (Blueprint $table) {
             $table->dropForeign('turns_client_id_foreign');
             $table->dropForeign('turns_service_id_foreign');
@@ -39,7 +44,5 @@ class CreateForeingToTurnsTable extends Migration
             $table->dropColumn('service_id');
             $table->dropColumn('client_id');
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 }
