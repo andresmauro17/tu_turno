@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Diligence;
 use App\Module;
 use Illuminate\Http\Request;
+use App\Http\Requests\ErrorsDiligenceRequest;
 
 class DiligencesController extends Controller
 {
@@ -37,13 +38,13 @@ class DiligencesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ErrorsDiligenceRequest $request)
     {
         $diligence = new Diligence();
         $diligence -> name = $request->input('name');
         $diligence -> save();
 
-        return redirect()->route('diligences.index');
+        return redirect()->route('diligences.index')->with('status', 'Tramite Creado Satisfactoriamente');
     }
 
     /**
@@ -76,13 +77,13 @@ class DiligencesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorsDiligenceRequest $request, $id)
     {
         $diligence = Diligence::find($id);
         $diligence -> name = $request->input('name');
         $diligence -> save();
 
-        return redirect()->route('diligences.index');
+        return redirect()->route('diligences.index')->with('status', 'Tramite Actualizado Satisfactoriamente');
     }
 
     /**

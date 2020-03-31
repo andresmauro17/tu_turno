@@ -31,12 +31,15 @@ class CreateForeingToTurnsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('turns', function (Blueprint $table) {
-            $table->dropForeign('turns_service_id_foreign');
             $table->dropForeign('turns_client_id_foreign');
+            $table->dropForeign('turns_service_id_foreign');
             
             $table->dropColumn('service_id');
             $table->dropColumn('client_id');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 }

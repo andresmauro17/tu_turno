@@ -36,5 +36,6 @@ class CreateDiligencesModulesTable extends Migration
         Schema::disableForeignKeyConstraints();
         
         Schema::dropIfExists('diligences_modules');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -42,5 +42,6 @@ class CreateDiligencesModulesTurnsTable extends Migration
         Schema::disableForeignKeyConstraints();
         
         Schema::dropIfExists('diligences_modules_turns');
+        Schema::enableForeignKeyConstraints();
     }
 }

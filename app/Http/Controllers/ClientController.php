@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Http\Requests\ErrorsClientRequest;
 
 class ClientController extends Controller
 {
@@ -34,18 +35,19 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(ErrorsClientRequest $request)
+    {        
         $client = new Client();
         $client -> name = $request->input('name');
         $client -> lastname = $request->input('lastname');
         $client -> type_dni = $request->input('type_dni');
-        $client -> dni = $request->input('dni');        $client -> sex = $request->input('sex');
+        $client -> dni = $request->input('dni');        
+        $client -> sex = $request->input('sex');
         $client -> is_active = $request->input('is_active');
         $client -> save();
 
         // return $request;
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('status', 'Cliente Creado Satisfactoriamente');
     }
 
     /**
@@ -78,7 +80,7 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorsClientRequest $request, $id)
     {
         $client = Client::find($id);
         $client -> name = $request->input('name');
@@ -89,7 +91,7 @@ class ClientController extends Controller
         $client -> is_active = $request->input('is_active');
         $client -> save();
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('status', 'Cliente Actualizado Satisfactoriamente');
         
     }
 

@@ -6,6 +6,7 @@ use App\Module;
 use App\Diligence;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ErrorsModuleRequest;
 
 class ModulesController extends Controller
 {
@@ -17,7 +18,7 @@ class ModulesController extends Controller
     public function index()
     {
         $modules = Module::with('user', 'diligences')->get();
-        // dd($modules);
+        // dump($modules);
         return view('modules.index', compact('modules'));
     }
 
@@ -40,9 +41,8 @@ class ModulesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {        
-        
+    public function store(ErrorsModuleRequest $request)
+    {       
         // $module = Module::findOrFail(1);
         // $module->diligences()->attach(1);
         $users = User::all();
@@ -61,7 +61,7 @@ class ModulesController extends Controller
             }
         }
         
-        return redirect()->route('modules.index', compact('users'));
+        return redirect()->route('modules.index', compact('users'))->with('status', 'Modulo Creado Satisfactoriamente');
     }
 
     /**
@@ -84,7 +84,6 @@ class ModulesController extends Controller
     public function edit($id)
     {
         $users = User::all();
-
         $diligences = Diligence::orderBy('name')->get();
         $module = Module::find($id);
         // $moduleDiligence = $module->diligences()->get();
@@ -99,7 +98,7 @@ class ModulesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorsModuleRequest $request, $id)
     {
         $module = Module::find($id);
         $module -> name = $request->input('name');
@@ -108,14 +107,53 @@ class ModulesController extends Controller
         $module -> user_id = $request->input('user_id');
         $module -> save();
 
-        $diligences = $request->input('diligences');
-        if ($diligences) {
-            foreach ($diligences as $position => $diligence) {
-                $module -> diligences()->attach([$diligence,]);
+        $diligences_all = Diligence::all();
+
+        $diligences_exist = $module->diligences;
+
+        $diligences_selected = collect($request->input('diligences'));
+        // dump($diligences_selected);
+
+            foreach ($diligences_all as $position => $diligence) {
+                // dump("-------------------");
+                $diligences_exist_found = $diligences_exist->find($diligence->id);
+
+                $diligences_selected_found_position = null;
+                $diligences_selected_found_position = $diligences_selected->search($diligence->id);
+                // $diligences_selected_found_position = false;
+
+                $diligences_selected_found = null;
+                if(is_numeric($diligences_selected_found_position)){
+                    // dump("entro");
+                    $diligences_selected_found = $diligences_selected[ $diligences_selected_found_position ];
+                }
+                
+                
+                
+                // dump("diligence->name");
+                // dump($diligence->name);
+
+                // dump("diligences_exist_found");
+                // dump($diligences_exist_found);
+
+                // dump("diligences_selected_found_position");
+                // dump($diligences_selected_found_position);
+
+                // dump("diligences_selected_found");
+                // dump($diligences_selected_found);
+                if($diligences_exist_found && $diligences_selected_found){
+                    // dump("IF");
+                }elseif($diligences_exist_found && !$diligences_selected_found){
+                    $module -> diligences()->detach($diligence->id);
+                    // dump("ElseID");
+                }elseif(!$diligences_exist_found && $diligences_selected_found){
+                    // dump("ElseIf 2");
+                    $module -> diligences()->attach($diligence->id);
+                }
+                
             }
-        }
-        
-        return redirect()->route('modules.index');
+            // dd("Stop");
+        return redirect()->route('modules.index')->with('status', 'Modulo Actualizado Satisfactoriamente');
     }
 
     /**

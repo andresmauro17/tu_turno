@@ -1,22 +1,20 @@
 import Vue from "vue"
-import swal from 'sweetalert2'
+import swal from "sweetalert2"
 import axios from "../../api/index"
 
-
-const ServiceIndexConponent = Vue.component("service-index-component",{
-    
+const UserIndexComponent = Vue.component("user-index-component", {
     props:[
-        "services"
+        "users"
     ],
     
     data() {
         return {
-        
+            
         }
     },
 
     methods: {
-        borrar(service_id){
+        borrar(user_id){
 
             swal({
                 title: 'Estas Seguro?',
@@ -30,7 +28,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 buttonsStyling: false
             }).then(function() {
                 // hace la peticion al backend para borrar
-                    axios.delete(`services/${service_id}`).then(function(response){
+                    axios.delete(`users/${user_id}`).then(function(response){
                         console.log(response)
                         location.reload();
                     })
@@ -66,6 +64,8 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
             })
         } 
     },
+
 });
 
-export default ServiceIndexConponent;
+
+export default UserIndexComponent;
