@@ -81218,9 +81218,16 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
 
       self = this;
       console.log('atending data');
-      _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('atending/getData').then(function (response) {
-        console.log(response.data); // console.log(self)
+      var diligenceId;
 
+      if (this.userModule.diligences.length == 1) {
+        diligenceId = this.userModule.diligences[0].id;
+      } else {// need to define this
+      }
+
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].get("atending/".concat(diligenceId, "/getData")).then(function (response) {
+        // console.log(response.data)
+        // console.log(self)
         _this.atendingData = response.data;
       });
     }

@@ -30,8 +30,16 @@ const AtendingComponent = Vue.component("atending-component",{
         getAtendingData:function(){
             self=this
             console.log('atending data')
-            api.get('atending/getData').then((response) => {
-                console.log(response.data)
+            
+            let diligenceId
+            if(this.userModule.diligences.length == 1){
+                diligenceId = this.userModule.diligences[0].id
+            }else{
+                // need to define this
+            }
+
+            api.get(`atending/${diligenceId}/getData`).then((response) => {
+                // console.log(response.data)
                 // console.log(self)
                 this.atendingData = response.data
             

@@ -30,6 +30,6 @@ Route::get('/', function () {
 // });
 Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
-Route::get('atending/getData', 'Api\AtendingController@getData');
+Route::get('atending/{diligence_id}/getData', 'Api\AtendingController@getData');
 
 
