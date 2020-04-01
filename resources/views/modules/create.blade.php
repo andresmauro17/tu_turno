@@ -63,12 +63,22 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-1">
+                    <label class="col-md-3 label-on-left">Usuarios</label>
+
+                    <div class="col-lg-8">
+
                         <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar Usuario" data-size="7" name="user_id">
                             @foreach ($users as $user)
-                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                {{-- entrar a la propiedad de un arreglo
+                                <option disabled>{{$user->module["name"]}}</option> --}}
+                                @if($user->module["user_id"] == $user->id || $user->module)
+                                    <option disabled>{{$user->name}}</option>
+                                @else
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endif
                             @endforeach
                         </select>
+
                     </div>
                 </div>
 

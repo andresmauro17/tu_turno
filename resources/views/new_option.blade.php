@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">IPS Farallones</a>
+            <a class="navbar-brand" href="/">Tu Turno</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -54,7 +54,7 @@
      </div>
 </nav>
 <div class="wrapper wrapper-full-page">
-    <div class="full-page login-page" filter-color="black" data-image="{{asset('img/login.jpeg')}}">
+    <div class="full-page login-page" filter-color="black" data-image="{{asset('img/vacua-bebe.jpg')}}">
     <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
         <div class="content">
             <div class="container">

@@ -18,10 +18,10 @@ class ModulesController extends Controller
     }
 
     public function create()
-    {
-        $users = User::all();
+    {   
+        $users = User::with('module')->get();
         $diligences = Diligence::orderBy('name')->get();
-
+        // dd($users);
         return view('modules.create', compact('diligences', 'users'));
     }
 

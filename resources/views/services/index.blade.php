@@ -13,16 +13,9 @@
                         <div class="row">
                             <h4 class="card-title">Servicios</h4>
                             <div class="toolbar text-right">
-
-                                    <label>Reiniciar Contador</label>                     
-                                    <button  @click.prevent="reiniciar" class="btn btn-danger btn-just-icon btn-round">
-                                        <i class="material-icons">close</i>
-                                    </button>
-
-                                    <label for="">Añadir Nuevo Servicio</label>
-                                    <a href="/services/create" class="btn btn-primary btn-just-icon btn-round">
-                                        <i class="material-icons">add</i>
-                                    </a>
+                                <a href="/services/create" class="btn btn-primary btn-just-icon btn-round">
+                                    <i class="material-icons">add</i>
+                                </a>
                             </div>
                         </div>
 
@@ -75,9 +68,18 @@
                                             <td v-else></td>
 
                                             <td class="text-right">
-                                                <a v-bind:href="`/services/${ service.id }/edit/`" class="btn btn-simple btn-info btn-icon"><i class="material-icons">edit</i></a>
+
+                                                <button  @click.prevent="reiniciar" class="btn btn-danger btn-just-icon btn-round">
+                                                    <i class="material-icons">swap_calls</i>
+                                                </button>
+
+                                                <a v-bind:href="`/services/${ service.id }/edit/`" class="btn btn-simple btn-info btn-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
                                     
-                                                <button  @click.prevent="borrar(service.id)" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
+                                                <button  @click.prevent="borrar(service.id)" class="btn btn-simple btn-danger btn-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </template>
