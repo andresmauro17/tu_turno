@@ -81631,7 +81631,7 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         }
       });
     },
-    reiniciar: function reiniciar(consecutive_number) {
+    reiniciar: function reiniciar(service_id) {
       sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
         title: 'REINICIARAS EL CONTADOR?',
         text: 'No podras revertirlo',
@@ -81643,14 +81643,13 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         cancelButtonClass: "btn btn-danger",
         buttonsStyling: false
       }).then(function () {
-        // hace la peticion al backend para borrar
-        // axios.delete(`${service.consecutive_number}`).then(function(response){
-        //     console.log(response)
-        //     location.reload();
-        // })
-        // cuando termine de hacer la peticion
+        // hace la peticion al backend para reinicar
+        _api_index__WEBPACK_IMPORTED_MODULE_2__["default"].put("services/".concat(service_id, "/reset"), {}).then(function (response) {
+          console.log(response); // location.reload();
+        }); // cuando termine de hacer la peticion
+
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
-          title: 'BORRADO!',
+          title: 'REINICIADO!',
           text: 'El contador se a reiniciado.',
           type: 'success',
           confirmButtonClass: "btn btn-success",

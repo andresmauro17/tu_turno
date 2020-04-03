@@ -10,7 +10,22 @@ use App\Service;
 
 class ServicesController extends AppBaseController
 {
-    public function destroy($id)
+    public function reset(Request $request, $id){
+        Log::info('Api\ServicesController@reset');
+        Log::info($request);
+        Log::info($id);
+        
+        $service = Service::find($id);
+        // log::info($service);
+        $service->consecutive_number = 0;
+        $service->save();
+
+        // dd($service);
+        return response()->json($service, 200);     
+        
+    }
+    
+    public function destroy($id)  
     {
         Log::info("estoy vivo en service");
         Log::info($id);

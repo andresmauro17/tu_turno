@@ -31,6 +31,7 @@
                                         <th>Iniciales</th>
                                         <th>Estado</th>
                                         <th>Tramite</th>
+                                        <th>Consecutivo</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                 </thead>
@@ -42,6 +43,7 @@
                                         <th>Iniciales</th>
                                         <th>Estado</th>
                                         <th>Tramite</th>
+                                        <th>Consecutivo</th>
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </tfoot>
@@ -67,9 +69,11 @@
                                             </td>
                                             <td v-else></td>
 
+                                            <td >@{{service.consecutive_number}}</td>
+
                                             <td class="text-right">
 
-                                                <button  @click.prevent="reiniciar" class="btn btn-danger btn-just-icon btn-round">
+                                                <button  @click.prevent="reiniciar(service.id)" class="btn btn-danger btn-just-icon btn-round">
                                                     <i class="material-icons">swap_calls</i>
                                                 </button>
 

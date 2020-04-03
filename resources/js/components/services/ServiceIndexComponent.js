@@ -67,7 +67,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
         },
 
 
-        reiniciar(consecutive_number){
+        reiniciar(service_id){
 
             swal({
                 title: 'REINICIARAS EL CONTADOR?',
@@ -80,15 +80,15 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 cancelButtonClass: "btn btn-danger",
                 buttonsStyling: false
             }).then(function() {
-                // hace la peticion al backend para borrar
-                    // axios.delete(`${service.consecutive_number}`).then(function(response){
-                    //     console.log(response)
-                    //     location.reload();
-                    // })
+                // hace la peticion al backend para reinicar
+                    axios.put(`services/${service_id}/reset`, {}).then(function(response){
+                        console.log(response)
+                        location.reload();
+                    })
 
                 // cuando termine de hacer la peticion
                     swal({
-                        title: 'BORRADO!',
+                        title: 'REINICIADO!',
                         text: 'El contador se a reiniciado.',
                         type: 'success',
                         confirmButtonClass: "btn btn-success",
