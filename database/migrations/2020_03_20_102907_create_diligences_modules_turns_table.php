@@ -16,19 +16,25 @@ class CreateDiligencesModulesTurnsTable extends Migration
         Schema::create('diligences_modules_turns', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('diligence_id')->unsigned();
+            $table->integer('diligence_id')
+                ->unsigned();
+
             $table->foreign('diligence_id')
                 ->references('id')
                 ->on('diligences')
                 ->onDelete('cascade');
 
-            $table->integer('module_id')->unsigned();
+            $table->integer('module_id')
+                ->unsigned();
+
             $table->foreign('module_id')
                 ->references('id')
                 ->on('modules')
                 ->onDelete('cascade');
 
-            $table->integer('turn_id')->unsigned();
+            $table->integer('turn_id')
+                ->unsigned();
+
             $table->foreign('turn_id')
                 ->references('id')
                 ->on('turns')

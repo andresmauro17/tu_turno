@@ -25,7 +25,6 @@
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th>Documento</th>
@@ -38,7 +37,6 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th>Documento</th>
@@ -51,7 +49,6 @@
                                 <tbody>
                                     <template v-for="client in clients">
                                         <tr>
-                                            <td>@{{client.id}}</td>
                                             <td>@{{client.name}}</td>
                                             <td>@{{client.lastname}}</td>
                                             <td>@{{client.type_dni}}</td>

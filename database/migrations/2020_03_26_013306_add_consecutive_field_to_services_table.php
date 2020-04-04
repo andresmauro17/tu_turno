@@ -14,7 +14,9 @@ class AddConsecutiveFieldToServicesTable extends Migration
     public function up()
     {
         Schema::table('services', function (Blueprint $table) {
-            $table->integer('consecutive_number')->unsigned()->default(0);
+            $table->integer('consecutive_number')
+                ->unsigned()
+                ->default(0);
         });
     }
 

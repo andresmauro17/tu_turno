@@ -25,7 +25,6 @@
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Descripcion</th>
                                         <th>Iniciales</th>
@@ -37,7 +36,6 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Descripcion</th>
                                         <th>Iniciales</th>
@@ -50,7 +48,6 @@
                                 <tbody>
                                     <template v-for="service in services">
                                         <tr>
-                                            <td>@{{service.id}}</td>
                                             <td>@{{service.name}}</td>
                                             <td>@{{service.description}}</td>
                                             <td>@{{service.short_name}}</td>

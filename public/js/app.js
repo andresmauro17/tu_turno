@@ -81637,7 +81637,7 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         text: 'No podras revertirlo',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Si, borrar!',
+        confirmButtonText: 'Si, Reiniciar!',
         cancelButtonText: 'No, cancelar',
         confirmButtonClass: "btn btn-success",
         cancelButtonClass: "btn btn-danger",
@@ -81645,7 +81645,8 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       }).then(function () {
         // hace la peticion al backend para reinicar
         _api_index__WEBPACK_IMPORTED_MODULE_2__["default"].put("services/".concat(service_id, "/reset"), {}).then(function (response) {
-          console.log(response); // location.reload();
+          console.log(response);
+          location.reload();
         }); // cuando termine de hacer la peticion
 
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
@@ -81657,7 +81658,7 @@ var ServiceIndexConponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop); //cuando no la termina muestr hubo un error
         // swal({
         //     title: 'Hubo un errror!',
-        //     text: 'El registro no fue borrado.',
+        //     text: 'El contador no fue reinicido.',
         //     type: 'warning',
         //     confirmButtonClass: "btn btn-success",
         //     buttonsStyling: false

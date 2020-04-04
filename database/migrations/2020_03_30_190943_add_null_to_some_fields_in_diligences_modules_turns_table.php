@@ -15,11 +15,18 @@ class AddNullToSomeFieldsInDiligencesModulesTurnsTable extends Migration
     {
         Schema::table('diligences_modules_turns', function (Blueprint $table) {
             
+            $table->integer('module_id')
+                ->unsigned()
+                ->nullable()
+                ->change();
 
-            $table->integer('module_id')->unsigned()->nullable()->change();
-            $table->dateTime('time_atention')->nullable()->change();
-            $table->dateTime('end_atention')->nullable()->change();
- 
+            $table->dateTime('time_atention')
+                ->nullable()
+                ->change();
+
+            $table->dateTime('end_atention')
+                ->nullable()
+                ->change();
 
         });
     }

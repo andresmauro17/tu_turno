@@ -16,13 +16,17 @@ class CreateDiligencesServicesTable extends Migration
         Schema::create('diligences_services', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->integer('diligence_id')->unsigned();
+            $table->integer('diligence_id')
+                ->unsigned();
+
             $table->foreign('diligence_id')
                 ->references('id')
                 ->on('diligences')
                 ->onDelete('cascade');
 
-            $table->integer('service_id')->unsigned();
+            $table->integer('service_id')
+                ->unsigned();
+
             $table->foreign('service_id')
                 ->references('id')
                 ->on('services')

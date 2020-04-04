@@ -74,7 +74,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 text: 'No podras revertirlo',
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Si, borrar!',
+                confirmButtonText: 'Si, Reiniciar!',
                 cancelButtonText: 'No, cancelar',
                 confirmButtonClass: "btn btn-success",
                 cancelButtonClass: "btn btn-danger",
@@ -97,7 +97,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
                 //cuando no la termina muestr hubo un error
                     // swal({
                     //     title: 'Hubo un errror!',
-                    //     text: 'El registro no fue borrado.',
+                    //     text: 'El contador no fue reinicido.',
                     //     type: 'warning',
                     //     confirmButtonClass: "btn btn-success",
                     //     buttonsStyling: false

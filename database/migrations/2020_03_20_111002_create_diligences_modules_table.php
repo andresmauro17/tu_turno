@@ -16,13 +16,17 @@ class CreateDiligencesModulesTable extends Migration
         Schema::create('diligences_modules', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('module_id')->unsigned();
+            $table->integer('module_id')
+                ->unsigned();
+
             $table->foreign('module_id')
                 ->references('id')
                 ->on('modules')
                 ->onDelete('cascade');
 
-            $table->integer('diligence_id')->unsigned();
+            $table->integer('diligence_id')
+                ->unsigned();
+
             $table->foreign('diligence_id')
                 ->references('id')
                 ->on('diligences')

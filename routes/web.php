@@ -18,12 +18,15 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Auth::routes();
 
+Route::GET('vistas', function () {
+    return view('passwords.login');
+});
 
 Route::GET('/', function () {
     if (Auth::check()) {
-        return redirect('/home');
+        return redirect('/login');
     }
-    return view('new_option');
+    return redirect('/login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -52,5 +55,4 @@ Route::group(['middleware' => 'auth'], function () {
     Ruta para imprimir
 */
 Route::get('/imprimir', 'PdfController@imprimir')->name('imprimir');
-Route::get('/pdf', 'PdfController@index');
 

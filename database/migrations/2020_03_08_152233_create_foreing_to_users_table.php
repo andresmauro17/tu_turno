@@ -14,7 +14,11 @@ class CreateForeingToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('module_id')->unsigned()->nullable();
+
+            $table->integer('module_id')
+                ->unsigned()
+                ->nullable();
+
             $table->foreign('module_id')
                 ->references('id')
                 ->on('modules')

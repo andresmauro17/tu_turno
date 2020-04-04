@@ -15,13 +15,17 @@ class CreateForeingToTurnsTable extends Migration
     {
         Schema::table('turns', function (Blueprint $table) {
             
-            $table->integer('client_id')->unsigned();
+            $table->integer('client_id')
+                ->unsigned();
+
             $table->foreign('client_id')
                 ->references('id')
                 ->on('clients')
                 ->onDelete('cascade');
 
-            $table->integer('service_id')->unsigned();
+            $table->integer('service_id')
+                ->unsigned();
+
             $table->foreign('service_id')
                 ->references('id')
                 ->on('services')

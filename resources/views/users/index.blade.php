@@ -25,7 +25,6 @@
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Estado</th>
@@ -34,7 +33,6 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Estado</th>
@@ -44,7 +42,6 @@
                                 <tbody>
                                     <template v-for="user in users">
                                         <tr>
-                                            <td>@{{user.id}}</td>
                                             <td>@{{user.name}}</td>
                                             <td>@{{user.email}}</td>
 

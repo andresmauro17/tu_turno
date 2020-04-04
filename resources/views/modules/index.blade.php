@@ -25,7 +25,6 @@
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
                                         <th>Nombre</th>
                                         <th>Descripcion</th>
                                         <th>Estado</th>
@@ -36,7 +35,6 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th>id</th>
                                         <th>Nombre</th>
                                         <th>Descripcion</th>
                                         <th>Estado</th>
@@ -48,7 +46,6 @@
                                 <tbody>
                                     <template v-for="module in modules">
                                         <tr>
-                                            <td>@{{module.id}}</td>
                                             <td>@{{module.name}}</td>
                                             <td>@{{module.description}}</td>
                                             

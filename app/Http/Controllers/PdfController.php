@@ -18,9 +18,4 @@ class PdfController extends Controller
         $pdf -> setPaper('a4', 'landscape');
         return $pdf->stream('turno.pdf');
    }
-
-   public function index(Request $request){
-       $services = Service::all();
-       return view('pdf', compact('services'));
-   }
 }

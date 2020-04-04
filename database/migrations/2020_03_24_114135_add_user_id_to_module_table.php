@@ -20,7 +20,11 @@ class AddUserIdToModuleTable extends Migration
         });
 
         Schema::table('modules', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->nullable();
+
+            $table->integer('user_id')
+                ->unsigned()
+                ->nullable();
+
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
@@ -36,8 +40,13 @@ class AddUserIdToModuleTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('module_id')->unsigned()->nullable();
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->integer('module_id')
+                ->unsigned()
+                ->nullable();
+
+            $table->foreign('module_id')
+                ->references('id')
+                ->on('modules');
             
         });
         Schema::table('modules', function (Blueprint $table) {

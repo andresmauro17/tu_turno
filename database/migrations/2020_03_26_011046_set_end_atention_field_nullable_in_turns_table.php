@@ -14,8 +14,14 @@ class SetEndAtentionFieldNullableInTurnsTable extends Migration
     public function up()
     {
         Schema::table('turns', function (Blueprint $table) {
-            $table->dateTime('end_atention')->nullable()->change();
-            $table->integer('client_id')->unsigned()->nullable()->change();
+            $table->dateTime('end_atention')
+                ->nullable()
+                ->change();
+
+            $table->integer('client_id')
+                ->unsigned()
+                ->nullable()
+                ->change();
         });
     }
 

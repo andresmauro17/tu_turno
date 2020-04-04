@@ -15,13 +15,23 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('lastname')->nullable();
+
+            $table->string('name')
+                ->nullable();
+
+            $table->string('lastname')
+                ->nullable();
+
             $table->enum('type_dni', ['CC', 'TI', 'RC', 'CE', 'AS', 'MS', 'PA']);
-            $table->string('dni')->unique();
+
+            $table->string('dni')
+                ->unique();
+
             $table->enum('sex', ['F', 'M']);
 
-            $table->boolean('is_active')->nullable()->default(1);
+            $table->boolean('is_active')
+                ->nullable()
+                ->default(1);
             
             $table->timestamps();
         });

@@ -26,7 +26,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" value="{{ old('name')}}">
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="description" class="form-control">
+                            <input type="text" name="description" class="form-control" value="{{ old('description')}}">
                         </div>
                     </div>
                 </div>
@@ -48,21 +48,10 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="short_name" class="form-control">
+                            <input type="text" name="short_name" class="form-control" value="{{ old('short_name')}}" placeholder="Maximo 3 caracteres">
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="row">
-                    <label class="col-md-3 label-on-left">Orden</label>
-
-                    <div class="col-md-9">
-                        <div class="form-group label-floating is-empty">
-                            <label class="control-label"></label>
-                            <input type="text" name="order" class="form-control">
-                        </div>
-                    </div>
-                </div> --}}
 
                 <div class="row">
                     <div class="col-md-12">
