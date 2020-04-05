@@ -26,7 +26,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" placeholder="Nombre del Modulo">
                         </div>
                     </div>
                     
@@ -38,7 +38,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="description" class="form-control">
+                            <input type="text" name="description" class="form-control" placeholder="Descripcion del Modulo">
                         </div>
                     </div>
                     

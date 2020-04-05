@@ -18,10 +18,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Auth::routes();
 
-Route::GET('vistas', function () {
-    return view('passwords.login');
-});
-
 Route::GET('/', function () {
     if (Auth::check()) {
         return redirect('/login');

@@ -26,7 +26,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name')}}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name')}}" placeholder="Nombre del servicio">
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="description" class="form-control" value="{{ old('description')}}">
+                            <input type="text" name="description" class="form-control" value="{{ old('description')}}" placeholder="Descripcion del Servicio">
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name')}}">
+                            <input type="text" name="name" class="form-control" value="{{ old('name')}}" placeholder="Nombre del Cliente">
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="lastname" class="form-control" value="{{ old('lastname')}}">
+                            <input type="text" name="lastname" class="form-control" value="{{ old('lastname')}}" placeholder="Apellido del Cliente">
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="col-md-9">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
-                            <input type="text" name="dni" class="form-control" value="{{ old('dni')}}">
+                            <input type="text" name="dni" class="form-control" value="{{ old('dni')}}" placeholder="1222333444">
                         </div>
                     </div>
                 </div>
