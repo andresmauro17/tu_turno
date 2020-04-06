@@ -77,3 +77,44 @@ php artisan db:seed
   
 php artisan voyager:install
 php artisan voyager:admin admin@mail.com --create
+
+
+## procedur take a turn
+
+1. imprimir turno
+    - INSERT INTO turns (is_active, created_at, service_id, consecutive_string  ) 
+        VALUES (1, '2020-mm-dd hh:mm:ss', service_id, service_shortname + service_consecutivenumber);
+
+    - INSERT INTO diligences_modules_turns (diligence_id, turn_id, created_at  ) 
+        VALUES (proxima_diligencia_del_servicio, turn_id, '2020-mm-dd hh:mm:ss);
+
+2. siguiente (LLAMAR)
+    -   UPDATE diligences_modules_turns AS dmt
+        SET module_id = module_id, time_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
+        WHERE dmt.module_id = null, dmt.diligence_id = la misma diligencia del modulo 
+        ORDER BY ID LIMIT 1 ;// el primero de la lista
+
+2. atender turno
+    -   UPDATE diligences_modules_turns
+        SET time_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
+        WHERE dmt.module_id = sea el mismo modulo , time_atention = null
+        ;
+
+2. finalizar tramite
+    -   UPDATE diligences_modules_turns
+        SET END_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
+        WHERE dmt.module_id = sea el mismo modulo , time_atention = algo
+        ;
+
+2. finalizar 
+    -   UPDATE diligences_modules_turns
+        SET END_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
+        WHERE dmt.module_id = sea el mismo modulo , time_atention = algo
+        ;
+    -   UPDATE turns
+        SET end_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
+        WHERE dmt.module_id = sea el mismo modulo , time_atention = algo
+        ;
+
+
+

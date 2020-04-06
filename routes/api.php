@@ -44,4 +44,6 @@ Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
 Route::get('atending/{diligence_id}/getData', 'Api\AtendingController@getData');
 
+Route::get('tv/get-data', 'Api\TVController@getData');
+
 

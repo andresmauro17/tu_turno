@@ -81695,13 +81695,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TvModuleCardComponent */ "./resources/js/components/tv/TvModuleCardComponent.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
+/* harmony import */ var _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TvModuleCardComponent */ "./resources/js/components/tv/TvModuleCardComponent.js");
+
 
 
 
 var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-component", {
   components: {
-    TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+    TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: [],
   data: function data() {
@@ -81709,8 +81711,17 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
   },
   mounted: function mounted() {
     console.log('hi from TvComponent');
+    this.traerDatos();
   },
-  methods: {}
+  methods: {
+    traerDatos: function traerDatos() {
+      console.log('elecutar traerDatos');
+      _api__WEBPACK_IMPORTED_MODULE_2__["default"].get('tv/get-data').then(function (response) {
+        console.log(' esta es mi response');
+        console.log(response.data);
+      });
+    }
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (TvComponent);
 
@@ -120251,8 +120262,8 @@ var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

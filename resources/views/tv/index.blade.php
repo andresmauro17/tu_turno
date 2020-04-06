@@ -16,7 +16,7 @@
 				</div>
 			</div>
 			<div id="indice">
-				<iframe   width="870" height="520" src="https://www.youtube.com/embed/qIDzPUt20F4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				{{-- <iframe   width="870" height="520" src="https://www.youtube.com/embed/qIDzPUt20F4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
 			</div>
 			
 			<div id="contenido">
@@ -31,7 +31,7 @@
 									<div class="card-content text-center">
 										<h4><strong>{{strtoupper($module->name)}}</strong></h4>
 										<h3>TURNO ACTUAL A53</h3>
-										<h4>TURNO ANTERIOR A52</h4>									
+										{{-- <h4>TURNO ANTERIOR A52</h4>									 --}}
 									</div>
 								</div>
 							</tv-module-card-component>
