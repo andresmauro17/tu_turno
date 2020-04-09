@@ -15,9 +15,9 @@ const GlobalComponents = {
         Vue.component("KioskComponent", KioskComponent),
         Vue.component("TvComponent", TvComponent),
         Vue.component("ModuleIndexComponent", ModuleIndexComponent),
-        Vue.component("DiligenceIndexComponent", DiligenceIndexComponent)
-        Vue.component("UserIndexComponent", UserIndexComponent);
-        Vue.component("ClientIndexComponent", ClientIndexComponent);
+        Vue.component("DiligenceIndexComponent", DiligenceIndexComponent),
+        Vue.component("UserIndexComponent", UserIndexComponent),
+        Vue.component("ClientIndexComponent", ClientIndexComponent)
     }
 }
 

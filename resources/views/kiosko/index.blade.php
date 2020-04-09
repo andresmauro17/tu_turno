@@ -9,22 +9,24 @@
                         <template v-for="service in services">
                             <div class="col-md-4">
                                 <kiosk-card-component :service="service" inline-template>
-                                    <div class="card card-profile card-hidden">
-                                        <div class="card-avatar">
-                                            <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
+                                    <a v-on:click="takeAturn">
+                                        <div class="card card-profile card-hidden">
+                                            <div class="card-avatar">
+                                                <img style="height: 150px; width: 150px;" class="avatar" src="{{asset('img/vacua-bebe.jpg')}}" alt="...">
+                                            </div>
+                                            <div class="card-content">
+                                            <h4 class="card-title"><strong>@{{`${service.name}`}}</strong></h4>
+                                            </div>
+                                            <div class="form-group label-floating">
+                                                <p class="control-label">
+                                                    @{{`${service.description}`}}
+                                                </p>
+                                            </div>
+                                            {{-- <div class="card-footer">
+                                                <button class="btn btn-primary btn-round" v-on:click="takeAturn"> PEDIR TURNO</button>
+                                            </div> --}}
                                         </div>
-                                        <div class="card-content">
-                                        <h4 class="card-title"><strong>@{{`${service.name}`}}</strong></h4>
-                                        </div>
-                                        <div class="form-group label-floating">
-                                            <p class="control-label">
-                                                @{{`${service.description}`}}
-                                            </p>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button class="btn btn-primary btn-round" v-on:click="takeAturn"> PEDIR TURNO</button>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </kiosk-card-component>
                             </div>
                         </template>

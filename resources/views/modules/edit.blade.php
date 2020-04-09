@@ -73,6 +73,7 @@
 
                         @if ($module->user)
                             <select class="selectpicker" data-style="btn btn-primary btn-round" title="{{$module->user->name}}" data-size="7" name="user_id">
+                                <option selected value="{{$module->user->id}}">{{$module->user->name}}</option>
                                 <option value="">QUITAR USUARIO</option>
                                 @foreach ($users as $user)
                                     @if($module->user_id == $user->id || $user->module)

@@ -18,6 +18,8 @@
             <h1>{{$turn->consecutive_string}}</h1>
             <br>
             <small>Sistema TuTurno, todos los derechos reservados MDO Partners s.a.s</small>
+            <br>
+            <small>{{$turn->created_at}}</small>
         </div>
         
             

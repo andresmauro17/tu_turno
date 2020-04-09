@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('app')
-	<tv-component inline-template>
+	<tv-component inline-template v-bind:modules="{{$modules}}">
 		<div>
 			<div class="row">
 				<div class="col-md-8" style="padding-top: 3%">
@@ -11,6 +11,7 @@
 						</div>
 						<div class="card-content text-center">
 							<h4><strong>Informacion Publicitaria</strong></h4>
+							<h4>@{{hours}}</h4>
 						</div>
 					</div>
 				</div>
@@ -21,22 +22,23 @@
 			
 			<div id="contenido">
 				<div class="row">
-					@foreach ($modules as $module)
+					<template v-for="module in modulesLocal">
 						<div class="col">
-							<tv-module-card-component inline-template>
-								<div class="card">
-									<div class="card-header card-header-icon" data-background-color="blue">
+							<tv-module-card-component inline-template v-bind:module="module">
+								<div class="card" @click.prevent="notification" v-bind:class="noti">
+									<div class="card-header card-header-icon " data-background-color="blue">
 										<i class="material-icons">all_inbox</i>
 									</div>
 									<div class="card-content text-center">
-										<h4><strong>{{strtoupper($module->name)}}</strong></h4>
-										<h3>TURNO ACTUAL A53</h3>
+										<h4><strong>@{{module.module_name}}</strong></h4>
+										<h3>@{{module.consecutive_string}}</h3>
 										{{-- <h4>TURNO ANTERIOR A52</h4>									 --}}
 									</div>
 								</div>
 							</tv-module-card-component>
 						</div>
-					@endforeach
+					</template>	
+
 				</div>
 			</div>
 		</div>

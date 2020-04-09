@@ -11,7 +11,7 @@ const ServiceIndexConponent = Vue.component("service-index-component",{
     
     data() {
         return {
-        
+            
         }
     },
 

@@ -81696,29 +81696,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
-/* harmony import */ var _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TvModuleCardComponent */ "./resources/js/components/tv/TvModuleCardComponent.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TvModuleCardComponent */ "./resources/js/components/tv/TvModuleCardComponent.js");
 
 
 
+
+moment__WEBPACK_IMPORTED_MODULE_3___default.a.lang('es');
 
 var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-component", {
   components: {
-    TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
+    TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  props: [],
+  props: ["modules"],
   data: function data() {
-    return {};
+    return {
+      modulesLocal: [],
+      hours: ''
+    };
   },
   mounted: function mounted() {
-    console.log('hi from TvComponent');
+    var _this = this;
+
+    // console.log('hi from TvComponent')
+    this.getHour();
+    setInterval(function () {
+      _this.getHour();
+    }, 1000), this.modulesLocal = this.modules;
     this.traerDatos();
   },
   methods: {
+    getHour: function getHour() {
+      this.hours = moment__WEBPACK_IMPORTED_MODULE_3___default()().format('MMMM Do YYYY, h:mm:ss a');
+    },
     traerDatos: function traerDatos() {
-      console.log('elecutar traerDatos');
+      var _this2 = this;
+
+      //    console.log('elecutar traerDatos')
       _api__WEBPACK_IMPORTED_MODULE_2__["default"].get('tv/get-data').then(function (response) {
-        console.log(' esta es mi response');
-        console.log(response.data);
+        _this2.modulesLocal = response.data; // console.log(' esta es mi response')
+        // console.log(response.data)
       });
     }
   }
@@ -81746,14 +81764,22 @@ __webpack_require__.r(__webpack_exports__);
 var TvModuleCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-module-card-component", {
   components: {// KioskCardComponent
   },
-  props: [],
+  props: ["module"],
   data: function data() {
-    return {};
+    return {
+      noti: ''
+    };
   },
   mounted: function mounted() {
     console.log('hi from TvModuleCardComponent');
   },
-  methods: {}
+  methods: {
+    notification: function notification() {
+      if (!this.noti) {
+        this.noti = 'alert alert-warning';
+      } else this.noti = '';
+    }
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (TvModuleCardComponent);
 
@@ -81860,9 +81886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var GlobalComponents = {
   install: function install(Vue) {
-    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]), Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]), Vue.component("TvComponent", _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__["default"]), Vue.component("ModuleIndexComponent", _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"]), Vue.component("DiligenceIndexComponent", _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__["default"]);
-    Vue.component("UserIndexComponent", _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__["default"]);
-    Vue.component("ClientIndexComponent", _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]), Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]), Vue.component("TvComponent", _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__["default"]), Vue.component("ModuleIndexComponent", _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"]), Vue.component("DiligenceIndexComponent", _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__["default"]), Vue.component("UserIndexComponent", _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__["default"]), Vue.component("ClientIndexComponent", _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__["default"]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (GlobalComponents);
@@ -120262,8 +120286,8 @@ var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
