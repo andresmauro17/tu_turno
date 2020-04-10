@@ -7,13 +7,14 @@
                     {{-- <h1>hola {{$module->diligences}}</h1> --}}
                     <div class="col-lg-5 col-md-6 col-sm-3" v-if="userModule.diligences.length > 1 ">
                         <select v-model="selectDiligence" class="selectpicker" data-style="btn btn-primary btn-round"  data-size="7">
+                            <option :value="0">Seleccione una diligencia</option>
                             <template v-for="diligence in userModule.diligences">
-                                <option>@{{diligence.name}}</option>
+                                <option :value="diligence.id">@{{diligence.name}}</option>
                             </template>                            
                         </select>
                     </div>
 
-                    <atending-card-component inline-template :atending-data = "atendingData">
+                    <atending-card-component inline-template :user-module="userModule" :atending-data = "atendingData">
                         <div class="card">
                             <div class="card-header card-header-icon" data-background-color="blue">
                                 <i class="material-icons">phone_in_talk</i>
@@ -54,14 +55,14 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-12">
                                                 <h4 class="text-center"><b>Turnos Atendidos:</b></h4>
-                                                <p class="text-center">@{{turnState}}</p>
+                                                <p class="text-center">@{{atendedTurns}}</p>
                                             </div>
-                                            <div class="col-sm-6">
+                                            {{-- <div class="col-sm-6">
                                                 <h4 class="text-center"><b>Tiempo promedio</b></h4>
                                                 <p class="text-center">@{{averageTime}}</p>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <hr>
                                         

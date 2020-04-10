@@ -19,6 +19,13 @@ const AtendingComponent = Vue.component("atending-component",{
 
         }
     },
+    watch:{
+        selectDiligence: function (newData, oldData) {
+            console.log('change a diligence');
+            this.getAtendingData()
+         
+        }
+    },
     mounted(){
         self = this
         console.log('hi from AtendingComponent')
@@ -31,15 +38,15 @@ const AtendingComponent = Vue.component("atending-component",{
             self=this
             console.log('atending data')
             
-            let diligenceId
+            let diligenceId = this.selectDiligence
             if(this.userModule.diligences.length == 1){
                 diligenceId = this.userModule.diligences[0].id
             }else{
                 // need to define this
             }
 
-            api.get(`atending/${diligenceId}/getData`).then((response) => {
-                // console.log(response.data)
+            api.get(`atending/${diligenceId}/getData/${this.userModule.id}`).then((response) => {
+                console.log(response.data)
                 // console.log(self)
                 this.atendingData = response.data
             

@@ -116,5 +116,9 @@ php artisan voyager:admin admin@mail.com --create
         WHERE dmt.module_id = sea el mismo modulo , time_atention = algo
         ;
 
+turnos
 
+cuando se quiere resetear el contador de los turnos, se setea a 0 el consecutive_number en la tabla servicios y se actualiza los turnos de ese servicio  donde el copnsecutivo_string sea igual al del servicio, actualizar el campo is_active a 0
+
+los turnos is_active=0 son los que ya no tendra en cuenta el sistema
 

@@ -15,72 +15,30 @@ use PhpParser\Node\Stmt\Foreach_;
 
 class AtendingController extends AppBaseController
 {
-    public function getData(Request $request,$diligence_id){
+    public function getData($diligence_id,$module_id){
         Log::info('Api\AtendingController@takeATurn');
         Log::info($diligence_id);
-        
-        $diligence = Diligence::find($diligence_id);
-        // Log::info($diligence);
-        $services = $diligence->services();
-        // Log::info($services->get());
-        
-        // $serviceArray = [];
-        // foreach ($services->get() as $key => $service) {
-        //     array_push($serviceArray,$service->id);
-        // }
-       
-        // turnos
-        // services
-        // diligences_services
+        Log::info($module_id);
+        $turns = [];
 
-        // $turns = DB::table('diligences')
-        // ->select(
-        //     'diligences.id as diligenceId','diligences.name as diligenceName',
-        //     'ds.service_id',
-        //     's.name as serviceName',
-        //     't.id as turnId'
-        // )->join('diligences_services as ds','ds.diligence_id','=','diligences.id')
-        // ->join('services as s', 's.id', '=', 'ds.service_id')
-        // ->leftjoin('turns as t','t.id', '=', 's.id')
-        // ->where('diligences.id', $diligence_id)
-        // ;
-
-        //  dump('diigence is');
-        //  dump($diligence_id);
-
-        $turns = DB::table('turns')
+        $turns = DB::table('turns AS t')
         ->select(
-            'turns.id As turnID','turns.consecutive_string As turn','turns.created_at AS  CreatedAt','turns.service_id AS  serviceId',
-            'services.name As serviceName',
-            'diligences_services.diligence_id As diligenceId'
-        )->join('services', 'turns.service_id', '=', 'services.id')
-        ->join('diligences_services','diligences_services.service_id', '=' ,'services.id')
-        ->where('turns.is_active',true)
-        ->where('diligences_services.diligence_id','=', $diligence_id )
-        ->orderBy('turns.id','asc')
-        ;
+            't.id as turn_id', 't.end_atention', 't.is_active', 't.created_at as printed_at', 't.service_id', 't.consecutive_string',
+            'dmt.diligence_id', 'dmt.module_id', 'dmt.time_atention', 'dmt.end_atention'
+        )
+        ->Join('diligences_modules_turns AS dmt','dmt.turn_id','=', 't.id')
+        ->whereRaw('t.is_active = 1
+        AND dmt.diligence_id = '.$diligence_id.' 
+        AND (dmt.module_id = '.$module_id.' or dmt.module_id is null)')
+        ->get();
 
         // dump($turns);
 
-        foreach ($turns->get() as $key => $value) {
-            dump($value);
-        }
+        // foreach ($turns as $key => $value) {
+        //     dump($value);
+        // }
 
-        dd('stop');
-        
-
-        
-
-        $turns = Turn::where('is_active',true);
-        $turnsWaiting = $turns->count();
-
-        // Log::info($request);
-        
-        $response = [
-            'turnsWaiting' => $turnsWaiting
-        ];
-        
-        return response()->json($response, 200);
+        return response()->json(["turns"=>$turns], 200);
 
     }
 }
