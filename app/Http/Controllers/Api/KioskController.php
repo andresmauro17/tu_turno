@@ -9,14 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 use App\Turn;
 use App\Service;
+use App\Diligence;
 
 class KioskController extends AppBaseController
 {
     public function takeATurn(Request $request){
         Log::info('Api\KioskController@takeATurn');
-        // Log::info($request);
+        Log::info($request);
         
         $service = Service::find($request->id);
+        
+        $diligenceFirst = $service->diligences->first();
+        Log::info($diligenceFirst->name);
+
+        if(!$diligenceFirst){
+            return response()->json(["message"=>"debe asignar una diligencia"], 200);
+        }
 
         $turno = New Turn;
         $turno->is_active = true;
@@ -27,7 +35,7 @@ class KioskController extends AppBaseController
 
         DB::table('diligences_modules_turns')->insert([
             'turn_id'           => $turno->id,
-            'diligence_id'          => 1,
+            'diligence_id'          => $diligenceFirst->id,
             'created_at' => \Carbon\Carbon::now()
         ]);
 
