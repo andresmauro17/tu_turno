@@ -2,7 +2,7 @@ import Vue from "vue"
 import swal from 'sweetalert2'
 import axios from '../../api'
 import moment from 'moment'
-moment.lang('es');
+moment.locale('es');
 
 import TvModuleCardComponent from './TvModuleCardComponent'
 
@@ -25,7 +25,8 @@ const TvComponent = Vue.component("tv-component",{
 
     mounted:function(){
         // console.log('hi from TvComponent')
-
+        let widthSize = document.getElementById("video-iframe").offsetWidth;
+        document.getElementById("video-iframe").style.height = `${widthSize*0.6}px`;
         this.getHour();
         setInterval(() => {
             this.getHour()
