@@ -14,7 +14,13 @@
                         </select>
                     </div>
 
-                    <atending-card-component inline-template :user-module="userModule" :atending-data = "atendingData">
+                    <atending-card-component 
+                        inline-template 
+                        :user-module="userModule" 
+                        :atending-data = "atendingData" 
+                        :current-diligence = "selectDiligence"
+                        @reloaddata = "getAtendingData"
+                    >
                         <div class="card">
                             <div class="card-header card-header-icon" data-background-color="blue">
                                 <i class="material-icons">phone_in_talk</i>
@@ -70,7 +76,7 @@
                                     <div class="col-md-5">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button @click="nexTurn" class="btn btn-lg btn-primary btn-round btn-block">
+                                                <button @click="nextTurn" class="btn btn-lg btn-primary btn-round btn-block">
                                                     <i class="material-icons">navigate_next</i> Siguiente
                                                 </button>
                                                 <br>

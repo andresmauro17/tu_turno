@@ -42,6 +42,10 @@ Route::delete('clients/{client}', 'Api\ClientsController@destroy');
 
 Route::post('kiosk/takeAturn', 'Api\KioskController@takeATurn');
 
+Route::post('atending/next-turn', 'Api\AtendingController@nextTurn');
+Route::post('atending/atend-turn', 'Api\AtendingController@atendTurn');
+Route::post('atending/finish-turn', 'Api\AtendingController@finishTurn');
+Route::post('atending/cancel-turn', 'Api\AtendingController@cancelTurn');
 Route::get('atending/{diligence_id}/getData/{module_id}', 'Api\AtendingController@getData');
 
 Route::get('tv/get-data', 'Api\TVController@getData');

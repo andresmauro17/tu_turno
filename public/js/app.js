@@ -81127,14 +81127,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
- // ES6 Modules or TypeScript
+
 
 
 
 var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("atending-card-component", {
-  props: ['atendingData', 'userModule'],
+  props: ['atendingData', 'userModule', 'currentDiligence'],
   data: function data() {
     return {
       currentTurnObject: {},
@@ -81152,7 +81153,6 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
   mounted: function mounted() {
     var _this = this;
 
-    console.log('hi from AtendingCardComponent');
     this.setData();
     setInterval(function () {
       _this.incrementWaitQueueTime();
@@ -81169,10 +81169,6 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
     setData: function setData(turns) {
       var _this2 = this;
 
-      // console.log('setData method')
-      // console.log(turns)
-      console.log('----------------');
-      console.log('calculating data');
       var turnsWaiting = 0;
       var turnsAtended = 0;
       var firstQueueTurnCreatedAt = "";
@@ -81182,10 +81178,6 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
 
       if (turns) {
         turns.map(function (turn) {
-          // console.log('module_id=',turn.module_id)
-          // console.log('printed_at=',turn.printed_at)
-          // console.log(typeof turn.module_id)
-          // console.log('turnsWaiting= ', turnsWaiting)
           if (_this2.checkIsNull(turn.module_id)) {
             turnsWaiting++;
 
@@ -81194,8 +81186,8 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
             }
           }
 
-          if (turn.module_id = _this2.userModule.id) {
-            if (_this2.checkIsNull(turn.end_atention) && !_this2.checkIsNull(turn.time_atention)) {
+          if (turn.module_id == _this2.userModule.id) {
+            if (_this2.checkIsNull(turn.end_atention) && (_this2.checkIsNull(turn.time_atention) || !_this2.checkIsNull(turn.time_atention))) {
               _this2.currentTurnObject = turn;
             }
 
@@ -81212,14 +81204,20 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         this.waitQueueTime = this.formatChron(this.waitQueueTimeMills);
       }
 
-      if (!Object.keys(this.currentTurnObject).length === 0) {
-        console.log('entra en el if');
+      if (!Object.keys(this.currentTurnObject).length == 0) {
+        if (this.checkIsNull(this.currentTurnObject.time_atention)) {
+          this.turnState = 'llamado';
+          this.turnTimeAtentionMills = "";
+          this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
+        } else {
+          this.turnState = 'en atencion';
+          time_atention = this.currentTurnObject.time_atention;
+          time_atention = new Date(time_atention);
+          this.turnTimeAtentionMills = Date.now() - time_atention;
+          this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
+        }
+
         this.currentTurn = this.currentTurnObject.consecutive_string;
-        this.turnState = 'en atencion';
-        time_atention = this.currentTurnObject.time_atention;
-        time_atention = new Date(time_atention);
-        this.turnTimeAtentionMills = Date.now() - time_atention;
-        this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
       }
 
       this.turnsWaiting = turnsWaiting;
@@ -81227,8 +81225,6 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       this.averageTime = "00:12:04";
     },
     formatChron: function formatChron(value) {
-      // console.log('formatChron')
-      // console.log(value)
       var seconds = moment__WEBPACK_IMPORTED_MODULE_2___default.a.duration(value).seconds();
       var minutes = moment__WEBPACK_IMPORTED_MODULE_2___default.a.duration(value).minutes();
       var hours = Math.trunc(moment__WEBPACK_IMPORTED_MODULE_2___default.a.duration(value).asHours());
@@ -81239,23 +81235,33 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       return _typeof(value) == "object";
     },
     incrementWaitQueueTime: function incrementWaitQueueTime() {
-      // console.log('incrementWaitQueueTime');
-      // console.log(typeof this.waitQueueTimeMills)
       if (typeof this.waitQueueTimeMills == "number") {
         this.waitQueueTimeMills = this.waitQueueTimeMills + 1000;
         this.waitQueueTime = this.formatChron(this.waitQueueTimeMills);
       }
     },
     incrementTurnTimeAtention: function incrementTurnTimeAtention() {
-      // console.log('incrementTurnTimeAtention');
-      // console.log(typeof this.turnTimeAtentionMills)
       if (typeof this.turnTimeAtentionMills == "number") {
         this.turnTimeAtentionMills = this.turnTimeAtentionMills + 1000;
         this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
       }
     },
-    nexTurn: function nexTurn() {
-      console.log("nexTurn");
+    nextTurn: function nextTurn() {
+      var _this3 = this;
+
+      var data = {
+        'module': this.userModule.id,
+        'current_diligence': this.currentDiligence
+      };
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/next-turn", data).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.message) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()(response.data.message);
+        }
+
+        _this3.$emit('reloaddata');
+      });
     },
     callAgain: function callAgain() {
       console.log("callAgain");
@@ -81290,7 +81296,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _AtendingCardComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AtendingCardComponent */ "./resources/js/components/atending/AtendingCardComponent.js");
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api */ "./resources/js/api/index.js");
- // ES6 Modules or TypeScript
 
 
 
@@ -81308,21 +81313,18 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
   },
   watch: {
     selectDiligence: function selectDiligence(newData, oldData) {
-      console.log('change a diligence');
       this.getAtendingData();
     }
   },
   mounted: function mounted() {
     self = this;
-    console.log('hi from AtendingComponent');
-    this.getAtendingData(); // console.log(this.userModule)
+    this.getAtendingData();
   },
   methods: {
     getAtendingData: function getAtendingData() {
       var _this = this;
 
       self = this;
-      console.log('atending data');
       var diligenceId = this.selectDiligence;
 
       if (this.userModule.diligences.length == 1) {
@@ -81331,8 +81333,7 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
       }
 
       _api__WEBPACK_IMPORTED_MODULE_3__["default"].get("atending/".concat(diligenceId, "/getData/").concat(this.userModule.id)).then(function (response) {
-        console.log(response.data); // console.log(self)
-
+        // console.log(response.data)
         _this.atendingData = response.data;
       });
     }
@@ -81808,7 +81809,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-moment__WEBPACK_IMPORTED_MODULE_3___default.a.lang('es');
+moment__WEBPACK_IMPORTED_MODULE_3___default.a.locale('es');
 
 var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-component", {
   components: {
@@ -81825,6 +81826,8 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
     var _this = this;
 
     // console.log('hi from TvComponent')
+    var widthSize = document.getElementById("video-iframe").offsetWidth;
+    document.getElementById("video-iframe").style.height = "".concat(widthSize * 0.6, "px");
     this.getHour();
     setInterval(function () {
       _this.getHour();
