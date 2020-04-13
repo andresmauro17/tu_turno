@@ -46,7 +46,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <h4 class="text-center"><b>Tiempo de atencion</b></h4>
-                                                <p class="text-center">@{{turnTimeAtention}}</p>
+                                                <p  v-bind:class="`text-center ${excedstresholdatend()} `">@{{turnTimeAtention}}</p>
                                             </div>
                                         </div>
                                         <hr>
@@ -57,7 +57,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <h4 class="text-center"><b>Tiempo de espera</b></h4>
-                                                <p class="text-center">@{{waitQueueTime}}</p>
+                                                <p v-bind:class="`text-center ${excedstresholdwait()} `">@{{waitQueueTime}}</p>
                                             </div>
                                         </div>
                                         <hr>

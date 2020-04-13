@@ -81148,7 +81148,9 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       waitQueueTime: "",
       waitQueueTimeMills: "",
       atendedTurns: "",
-      averageTime: ""
+      averageTime: "",
+      maxTresholdTowait: 600000,
+      maxTresholdToAtend: 300000
     };
   },
   mounted: function mounted() {
@@ -81255,6 +81257,20 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       if (typeof this.turnTimeAtentionMills == "number") {
         this.turnTimeAtentionMills = this.turnTimeAtentionMills + 1000;
         this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
+      }
+    },
+    excedstresholdatend: function excedstresholdatend() {
+      if (this.turnTimeAtentionMills >= this.maxTresholdToAtend) {
+        return "bg-danger text-danger";
+      } else {
+        return "";
+      }
+    },
+    excedstresholdwait: function excedstresholdwait() {
+      if (this.waitQueueTimeMills >= this.maxTresholdTowait) {
+        return "bg-danger text-danger";
+      } else {
+        return "";
       }
     },
     nextTurn: function nextTurn() {

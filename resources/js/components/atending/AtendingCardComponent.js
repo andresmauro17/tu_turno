@@ -22,7 +22,9 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             waitQueueTime:"",
             waitQueueTimeMills:"",
             atendedTurns:"",
-            averageTime:""
+            averageTime:"",
+            maxTresholdTowait:600000,
+            maxTresholdToAtend:300000
 
         }
     },
@@ -136,6 +138,20 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
                 this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills)
             }
             
+        },
+        excedstresholdatend(){
+            if(this.turnTimeAtentionMills >= this.maxTresholdToAtend){
+                return "bg-danger text-danger"
+            }else{
+                return ""
+            }
+        },
+        excedstresholdwait(){
+            if(this.waitQueueTimeMills >= this.maxTresholdTowait){
+                return "bg-danger text-danger"
+            }else{
+                return ""
+            }
         },
         nextTurn:function(){
             let data = {'module':this.userModule.id, 'current_diligence':this.currentDiligence}
