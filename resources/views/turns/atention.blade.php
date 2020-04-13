@@ -20,22 +20,23 @@
                         :atending-data = "atendingData" 
                         :current-diligence = "selectDiligence"
                         @reloaddata = "getAtendingData"
+                       
                     >
-                        <div class="card">
+                        <div class="card" v-if="currentDiligence">
                             <div class="card-header card-header-icon" data-background-color="blue">
                                 <i class="material-icons">phone_in_talk</i>
                             </div>
             
                             <div class="card-content">
                                 <div class="row">
-                                    <h4 class="card-title">Administrador de Turno {{Route::currentRouteName()}}</h4>
+                                    <h4 class="card-title">Administrador de Turno | <b>Modulo: </b> @{{userModule.name}}</h4>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <h2 class="text-center"><i class="material-icons">face</i> Turno Actual</h2>
-                                                <p class="text-center"> <b>@{{currentTurn}}</b></p>
+                                                <h2 class="text-center"><b>@{{currentTurn}}</b></h2>
                                             </div>
                                         </div>
                                         <div class="row">

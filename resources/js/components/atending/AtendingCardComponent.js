@@ -13,6 +13,7 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
     data() {
         return {
             currentTurnObject:{},
+            FirstTurnInQueue : {},
             currentTurn:"",
             turnState:"",
             turnTimeAtentionMills:"",
@@ -38,40 +39,64 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
         }
       },
     methods: {
-        setData(turns){
-            let turnsWaiting = 0
-            let turnsAtended = 0
-            let firstQueueTurnCreatedAt = ""
-            let time_atention = ""
+        clearData(){
+            this.FirstTurnInQueue = {}
+            this.currentTurn=""
             this.waitQueueTimeMills = ""
-            this.waitQueueTime = "00:00:00"
+            this.turnTimeAtentionMills = ""
+            this.waitQueueTime = "0:0:0"
+            this.turnsWaiting= 0;
+            this.atendedTurns= 0;
+            this.turnState = ""
+            this.turnTimeAtention = "0:0:0"
+
+            this.FirstTurnInQueue = {}
+            this.currentTurnObject = {}
+        },
+        setData(turns){
+            this.clearData()
+            let turnsWaitingCount = 0
+            let turnsAtendedCount = 0
+            
+            
+           
             if(turns){
                 turns.map(turn => {
+                    
+                    //if turn has module as null is a turn in queue
                     if(this.checkIsNull(turn.module_id)){
-                        turnsWaiting++
-                        if(turnsWaiting == 1){
-                            firstQueueTurnCreatedAt = turn.printed_at 
+                        turnsWaitingCount++
+                        if(turnsWaitingCount == 1){
+                            this.FirstTurnInQueue = turn
                         }
                     }
-                    if(turn.module_id == this.userModule.id ){
+                    // if turn has the same module is a taked turn or atendend turn
+                    else if(turn.module_id == this.userModule.id ){
+                        // if is a taked is atending or called
                         if(this.checkIsNull(turn.end_atention) && (this.checkIsNull(turn.time_atention) || !this.checkIsNull(turn.time_atention))){
                             this.currentTurnObject = turn
                         }
+
+                        // if is a attended turn
                         if(!this.checkIsNull(turn.end_atention) && !this.checkIsNull(turn.time_atention)){
-                            turnsAtended++
+                            turnsAtendedCount++
                         }
                     }
 
                 });
             }
+
+            this.turnsWaiting=turnsWaitingCount
+            this.atendedTurns=turnsAtendedCount
             
-            if(firstQueueTurnCreatedAt){
-                firstQueueTurnCreatedAt = new Date(firstQueueTurnCreatedAt);
-                this.waitQueueTimeMills = Date.now() - firstQueueTurnCreatedAt
+            // if there is a firs turn in queue
+            if(!Object.keys(this.FirstTurnInQueue).length == 0){
+                console.log('if there is a firs turn in queue')
+                this.waitQueueTimeMills = Date.now() - new Date( this.FirstTurnInQueue.printed_at )
                 this.waitQueueTime = this.formatChron(this.waitQueueTimeMills)
             }
             
-
+            // if there is a turn taked or taking
             if(!Object.keys(this.currentTurnObject).length == 0 ){
                 if(this.checkIsNull(this.currentTurnObject.time_atention)){
                     this.turnState='llamado'
@@ -79,18 +104,14 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
                     this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills)
                 }else{
                     this.turnState='en atencion'
-                    time_atention = this.currentTurnObject.time_atention
-                    time_atention = new Date(time_atention);
-                    this.turnTimeAtentionMills = Date.now() - time_atention
+                    this.turnTimeAtentionMills = Date.now() - new Date(this.currentTurnObject.time_atention)
                     this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills)
 
                 }
                 this.currentTurn = this.currentTurnObject.consecutive_string
                 
             }
-            this.turnsWaiting=turnsWaiting
-            this.atendedTurns=turnsAtended
-            this.averageTime="00:12:04"
+            
         },
         formatChron(value){
             var seconds = moment.duration(value).seconds();
@@ -130,7 +151,14 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
         console.log("callAgain")
         },
         atendTurn:function(){
-        console.log("atendTurn")
+            let data = {'module':this.userModule.id, 'current_diligence':this.currentDiligence}
+            api.post(`atending/atend-turn`,data).then((response) => {
+                console.log(response.data)
+                if(response.data.message){
+                    swal(response.data.message)
+                }
+                // this.$emit('reloaddata')
+            })
         },
         finishTurn:function(){
         console.log("finishturn")

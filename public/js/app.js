@@ -81139,6 +81139,7 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
   data: function data() {
     return {
       currentTurnObject: {},
+      FirstTurnInQueue: {},
       currentTurn: "",
       turnState: "",
       turnTimeAtentionMills: "",
@@ -81166,43 +81167,59 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
     }
   },
   methods: {
+    clearData: function clearData() {
+      this.FirstTurnInQueue = {};
+      this.currentTurn = "";
+      this.waitQueueTimeMills = "";
+      this.turnTimeAtentionMills = "";
+      this.waitQueueTime = "0:0:0";
+      this.turnsWaiting = 0;
+      this.atendedTurns = 0;
+      this.turnState = "";
+      this.turnTimeAtention = "0:0:0";
+      this.FirstTurnInQueue = {};
+      this.currentTurnObject = {};
+    },
     setData: function setData(turns) {
       var _this2 = this;
 
-      var turnsWaiting = 0;
-      var turnsAtended = 0;
-      var firstQueueTurnCreatedAt = "";
-      var time_atention = "";
-      this.waitQueueTimeMills = "";
-      this.waitQueueTime = "00:00:00";
+      this.clearData();
+      var turnsWaitingCount = 0;
+      var turnsAtendedCount = 0;
 
       if (turns) {
         turns.map(function (turn) {
+          //if turn has module as null is a turn in queue
           if (_this2.checkIsNull(turn.module_id)) {
-            turnsWaiting++;
+            turnsWaitingCount++;
 
-            if (turnsWaiting == 1) {
-              firstQueueTurnCreatedAt = turn.printed_at;
+            if (turnsWaitingCount == 1) {
+              _this2.FirstTurnInQueue = turn;
             }
-          }
+          } // if turn has the same module is a taked turn or atendend turn
+          else if (turn.module_id == _this2.userModule.id) {
+              // if is a taked is atending or called
+              if (_this2.checkIsNull(turn.end_atention) && (_this2.checkIsNull(turn.time_atention) || !_this2.checkIsNull(turn.time_atention))) {
+                _this2.currentTurnObject = turn;
+              } // if is a attended turn
 
-          if (turn.module_id == _this2.userModule.id) {
-            if (_this2.checkIsNull(turn.end_atention) && (_this2.checkIsNull(turn.time_atention) || !_this2.checkIsNull(turn.time_atention))) {
-              _this2.currentTurnObject = turn;
-            }
 
-            if (!_this2.checkIsNull(turn.end_atention) && !_this2.checkIsNull(turn.time_atention)) {
-              turnsAtended++;
+              if (!_this2.checkIsNull(turn.end_atention) && !_this2.checkIsNull(turn.time_atention)) {
+                turnsAtendedCount++;
+              }
             }
-          }
         });
       }
 
-      if (firstQueueTurnCreatedAt) {
-        firstQueueTurnCreatedAt = new Date(firstQueueTurnCreatedAt);
-        this.waitQueueTimeMills = Date.now() - firstQueueTurnCreatedAt;
+      this.turnsWaiting = turnsWaitingCount;
+      this.atendedTurns = turnsAtendedCount; // if there is a firs turn in queue
+
+      if (!Object.keys(this.FirstTurnInQueue).length == 0) {
+        console.log('if there is a firs turn in queue');
+        this.waitQueueTimeMills = Date.now() - new Date(this.FirstTurnInQueue.printed_at);
         this.waitQueueTime = this.formatChron(this.waitQueueTimeMills);
-      }
+      } // if there is a turn taked or taking
+
 
       if (!Object.keys(this.currentTurnObject).length == 0) {
         if (this.checkIsNull(this.currentTurnObject.time_atention)) {
@@ -81211,18 +81228,12 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
           this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
         } else {
           this.turnState = 'en atencion';
-          time_atention = this.currentTurnObject.time_atention;
-          time_atention = new Date(time_atention);
-          this.turnTimeAtentionMills = Date.now() - time_atention;
+          this.turnTimeAtentionMills = Date.now() - new Date(this.currentTurnObject.time_atention);
           this.turnTimeAtention = this.formatChron(this.turnTimeAtentionMills);
         }
 
         this.currentTurn = this.currentTurnObject.consecutive_string;
       }
-
-      this.turnsWaiting = turnsWaiting;
-      this.atendedTurns = turnsAtended;
-      this.averageTime = "00:12:04";
     },
     formatChron: function formatChron(value) {
       var seconds = moment__WEBPACK_IMPORTED_MODULE_2___default.a.duration(value).seconds();
@@ -81267,7 +81278,18 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       console.log("callAgain");
     },
     atendTurn: function atendTurn() {
-      console.log("atendTurn");
+      var data = {
+        'module': this.userModule.id,
+        'current_diligence': this.currentDiligence
+      };
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/atend-turn", data).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.message) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()(response.data.message);
+        } // this.$emit('reloaddata')
+
+      });
     },
     finishTurn: function finishTurn() {
       console.log("finishturn");

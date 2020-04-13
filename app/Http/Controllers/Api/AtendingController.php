@@ -46,10 +46,14 @@ class AtendingController extends AppBaseController
         Log::info("nexTurn");
         Log::info($request);
         // Log::info($request->current_diligence);
-
-        $module = Module::find($request->module);
-
-        $currentTurnAtending = $module->turns;
+        
+        $currentTurnAtending = Diligence::find($request->current_diligence)
+            ->turns
+            ->where('pivot.module_id',$request->module)
+            ->first()
+            ;
+        Log::info("currentTurnAtending");
+        Log::info($currentTurnAtending);
         
         if($request->current_diligence == Null){
             return response()->json(["message"=>"debe seleccionar una diligencia"], 200);
@@ -86,6 +90,20 @@ class AtendingController extends AppBaseController
     public function atendTurn(Request $request){
         Log::info("atendTurn");
         Log::info($request);
+
+        $module = Module::find($request->module);
+        $currentTurnAtending = $module->turns;
+
+        if($request->current_diligence == Null){
+            return response()->json(["message"=>"debe seleccionar una diligencia"], 200);
+        }
+        else if($currentTurnAtending){
+            Log::info("dentro del if");
+            Log::info($currentTurnAtending);
+            // return response()->json(["message"=>"existen turnos que debe solucionar"], 200);
+        }
+
+
     }
 
     public function finishTurn(Request $request){
