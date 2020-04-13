@@ -168,7 +168,10 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
                 console.log('CallAgain')
                 swal('No estas atendiendo aun!')
             }else{
-                swal('LLamando Nuevamente el TURNO')
+                console.log('Llamando nuevamente')
+                swal('LLamando Nuevamente el turno')
+            }if(Object.keys(this.turnState).length > 8){
+                swal('turno en atencion actualmente')
             }
         },
         atendTurn:function(){

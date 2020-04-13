@@ -125,7 +125,7 @@ class AtendingController extends AppBaseController
             return response()->json($response, 200);
             
         }else{
-            return response()->json(["message"=>"No hay turnos para atender o debe finalizar los que esta atendiendo!"], 200);
+            return response()->json(["message"=>"No hay turnos para atender o debe finalizar el que esta atendiendo!"], 200);
         }
 
 

@@ -81295,7 +81295,12 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         console.log('CallAgain');
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('No estas atendiendo aun!');
       } else {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('LLamando Nuevamente el TURNO');
+        console.log('Llamando nuevamente');
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('LLamando Nuevamente el turno');
+      }
+
+      if (Object.keys(this.turnState).length > 8) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('turno en atencion actualmente');
       }
     },
     atendTurn: function atendTurn() {
