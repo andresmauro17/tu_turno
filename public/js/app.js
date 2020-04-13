@@ -81294,6 +81294,8 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       console.log("callAgain");
     },
     atendTurn: function atendTurn() {
+      var _this4 = this;
+
       var data = {
         'module': this.userModule.id,
         'current_diligence': this.currentDiligence
@@ -81303,12 +81305,27 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
 
         if (response.data.message) {
           sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()(response.data.message);
-        } // this.$emit('reloaddata')
+        }
 
+        _this4.$emit('reloaddata');
       });
     },
     finishTurn: function finishTurn() {
-      console.log("finishturn");
+      var _this5 = this;
+
+      var data = {
+        'module': this.userModule.id,
+        'current_diligence': this.currentDiligence
+      };
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/finish-turn", data).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.message) {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()(response.data.message);
+        }
+
+        _this5.$emit('reloaddata');
+      });
     },
     cancelTurn: function cancelTurn() {
       console.log("cancelTurn");

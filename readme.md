@@ -97,7 +97,7 @@ php artisan voyager:admin admin@mail.com --create
 2. atender turno
     -   UPDATE diligences_modules_turns
         SET time_atention = '2020-mm-dd hh:mm:ss', updated_at = '2020-mm-dd hh:mm:ss'
-        WHERE dmt.module_id = sea el mismo modulo , time_atention = null
+        WHERE dmt.module_id = sea el mismo modulo , time_atention = null, sea activo
         ;
 
 2. finalizar tramite

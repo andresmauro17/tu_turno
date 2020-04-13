@@ -93,9 +93,9 @@
                                                     <i class="material-icons">check</i> Finalizar tramite
                                                 </button>
                                                 <br>
-                                                <button @click="finishTurn" class="btn btn-rose btn-round btn-block">
+                                                {{-- <button @click="finishTurn" class="btn btn-rose btn-round btn-block">
                                                     <i class="material-icons">block</i> Finalizar
-                                                </button>
+                                                </button> --}}
                                                 <br>
                                                 <button @click="cancelTurn" class="btn btn-danger btn-round btn-block">
                                                     <i class="material-icons">delete</i> Anular

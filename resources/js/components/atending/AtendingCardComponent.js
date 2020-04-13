@@ -173,11 +173,18 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
                 if(response.data.message){
                     swal(response.data.message)
                 }
-                // this.$emit('reloaddata')
+                this.$emit('reloaddata')
             })
         },
         finishTurn:function(){
-        console.log("finishturn")
+            let data = {'module':this.userModule.id, 'current_diligence':this.currentDiligence}
+            api.post(`atending/finish-turn`,data).then((response) => {
+                console.log(response.data)
+                if(response.data.message){
+                    swal(response.data.message)
+                }
+                this.$emit('reloaddata')
+            })
         },
         cancelTurn:function(){
         console.log("cancelTurn")

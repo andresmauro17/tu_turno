@@ -13,6 +13,8 @@ use App\Module;
 use App\Diligence;
 use PhpParser\Node\Stmt\Foreach_;
 
+use Illuminate\Support\Arr;
+
 class AtendingController extends AppBaseController
 {
     public function getData($diligence_id,$module_id){
@@ -47,26 +49,33 @@ class AtendingController extends AppBaseController
         Log::info($request);
         // Log::info($request->current_diligence);
         
+        // get turns  where end atention is null and be called or is atending
         $currentTurnAtending = Diligence::find($request->current_diligence)
-            ->turns
-            ->where('pivot.module_id',$request->module)
+            ->turns()
+            ->where([
+                ['turns.is_active', '=', 1],
+                ['diligences_modules_turns.module_id', '=', $request->module],
+                ['diligences_modules_turns.end_atention', '=', null]
+            ])
             ->first()
             ;
         Log::info("currentTurnAtending");
         Log::info($currentTurnAtending);
         
-        if($request->current_diligence == Null){
-            return response()->json(["message"=>"debe seleccionar una diligencia"], 200);
-        }
-        else if($currentTurnAtending){
+        if($currentTurnAtending){
             Log::info("dentro del if");
             Log::info($currentTurnAtending);
             return response()->json(["message"=>"existen turnos que debe solucionar"], 200);
         }else{
 
+            // get a turn not called
             $turn = Diligence::find($request->current_diligence)
-            ->turns
-            ->where('pivot.module_id',null)
+            ->turns()
+            ->where([
+                ['turns.is_active', '=', 1],
+                ['diligences_modules_turns.module_id', '=', null],
+                ['diligences_modules_turns.time_atention', '=', null]
+            ])
             ->first()
             ;
     
@@ -90,17 +99,33 @@ class AtendingController extends AppBaseController
     public function atendTurn(Request $request){
         Log::info("atendTurn");
         Log::info($request);
+        
+        // get the turn that is atending
+        $calledTurnAtending = Diligence::find($request->current_diligence)
+            ->turns()
+            ->where([
+                ['turns.is_active', '=', 1],
+                ['diligences_modules_turns.module_id', '=', $request->module],
+                ['diligences_modules_turns.time_atention', '=', null],
+                ['diligences_modules_turns.end_atention', '=', null],
+            ])
+            ->first()
+            ;
+        
+        Log::info($calledTurnAtending);
 
-        $module = Module::find($request->module);
-        $currentTurnAtending = $module->turns;
-
-        if($request->current_diligence == Null){
-            return response()->json(["message"=>"debe seleccionar una diligencia"], 200);
-        }
-        else if($currentTurnAtending){
+        
+        if($calledTurnAtending){
             Log::info("dentro del if");
-            Log::info($currentTurnAtending);
-            // return response()->json(["message"=>"existen turnos que debe solucionar"], 200);
+            Log::info($calledTurnAtending);
+
+            $diligence = Diligence::find($request->current_diligence);
+            $response = $diligence->turns()->updateExistingPivot($calledTurnAtending->id, ['time_atention' => \Carbon\Carbon::now()]);
+            
+            return response()->json($response, 200);
+            
+        }else{
+            return response()->json(["message"=>"No hay turnos para atender o debe finalizar los que esta atendiendo!"], 200);
         }
 
 
@@ -109,6 +134,61 @@ class AtendingController extends AppBaseController
     public function finishTurn(Request $request){
         Log::info("finishturn");
         Log::info($request);
+
+        // get the turn that is current atending
+        $turnAtending = Diligence::find($request->current_diligence)
+            ->turns()
+            ->where([
+                ['turns.is_active', '=', 1],
+                ['diligences_modules_turns.module_id', '=', $request->module],
+                ['diligences_modules_turns.time_atention', '<>', null],
+                ['diligences_modules_turns.end_atention', '=', null],
+            ])
+            ->first()
+            ;
+        
+        Log::info($turnAtending);
+
+        if($turnAtending){
+
+            $diligence = Diligence::find($request->current_diligence);
+            $response = $diligence->turns()->updateExistingPivot($turnAtending->id, ['end_atention' => \Carbon\Carbon::now()]);
+            
+            // finish the turn
+            $service = Service::find($turnAtending->service_id);
+            $diligences = $service->diligences()->get();
+
+            $nextPosition = null;
+
+            foreach ($diligences as $key => $dili) {
+                if($dili->id == $diligence->id){
+                    $nextPosition = $key + 1;
+                }
+            }
+            Log::info('por que entra al if?');
+            Log::info($nextPosition);
+            Log::info(count($diligences));
+
+
+            if($nextPosition != null && !(count($diligences) == $nextPosition)){
+            
+               $nextDiligenceId = $diligences[$nextPosition]->id;
+               DB::table('diligences_modules_turns')->insert([
+                    'turn_id'           => $turnAtending->id,
+                    'diligence_id'          => $nextDiligenceId,
+                    'created_at' => \Carbon\Carbon::now()
+                ]);
+                Log::info("turno generado exitosamente!!!!!!!!!!!!");
+            }else{
+                $turnAtending->end_atention = \Carbon\Carbon::now();
+                $response = $turnAtending->save();
+                Log::info("turno finalizado exitosamente!!!!!!!!!!!!");
+            }
+            return response()->json([], 200);
+        }else{
+            return response()->json(["message"=>"No estas atendiendo a nadie aun!"], 200);
+        }
+
     }
 
     public function cancelTurn(Request $request){
