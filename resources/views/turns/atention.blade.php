@@ -1,6 +1,7 @@
 @extends('layouts.new_layout_dashboard')
 @section('content_user')
-<atending-component inline-template :user-module="{{$module}}">
+@if($module->is_active)
+    <atending-component inline-template :user-module="{{$module}}">
         <div class="row">
             <div class="row">
                 <div class="col-md-12">
@@ -13,15 +14,15 @@
                             </template>                            
                         </select>
                     </div>
-
+                    
                     <atending-card-component 
                         inline-template 
                         :user-module="userModule" 
                         :atending-data = "atendingData" 
                         :current-diligence = "selectDiligence"
                         @reloaddata = "getAtendingData"
-                       
-                    >
+                        
+                        >
                         <div class="card" v-if="currentDiligence">
                             <div class="card-header card-header-icon" data-background-color="blue">
                                 <i class="material-icons">phone_in_talk</i>
@@ -113,5 +114,13 @@
             </div>
         </div>
     </atending-component>
+@else
+    <div class="alert alert-warning col-md-6 text-center">
+        <span>
+            <b> EL MODULO NO ESTA ACTIVO </b> 
+        </span>
+    </div>
+@endif
+
 @endsection
     

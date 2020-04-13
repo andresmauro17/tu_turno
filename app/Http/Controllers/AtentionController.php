@@ -19,13 +19,11 @@ class AtentionController extends Controller
                 $services = Service::all();    
                 return view('turns.atention', compact('services','module'));
             }else{
-                abort(403, 'No exiten tramites asociados a este modulo!');
+                abort(403, 'NO EXISTEN TRAMITES, asociados a este modulo!');
             }
         }else{
-            abort(403, 'No exiten modulos asociados a este usuario!');
+            abort(403, 'NO EXISTEN MODULOS, asociados a este usuario!');
         }
-       
-        
     }
     
 }

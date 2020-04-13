@@ -76,7 +76,7 @@
                                 <option selected value="{{$module->user->id}}">{{$module->user->name}}</option>
                                 <option value="">QUITAR USUARIO</option>
                                 @foreach ($users as $user)
-                                    @if($module->user_id == $user->id || $user->module)
+                                    @if($module->user_id == $user->id || $user->module || $user->is_active == null)
                                         <option disabled>{{$user->name}}</option>
                                     @else
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -86,7 +86,7 @@
                         @else
                             <select class="selectpicker" data-style="btn btn-primary btn-round" title="Seleccionar Usuario" data-size="7" name="user_id">
                                 @foreach ($users as $user)
-                                    @if($module->user_id == $user->id || $user->module)
+                                    @if($module->user_id == $user->id || $user->module || $user->is_active == null)
                                         <option disabled>{{$user->name}}</option>
                                     @else
                                         <option value="{{$user->id}}">{{$user->name}}</option>

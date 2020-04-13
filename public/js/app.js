@@ -81291,7 +81291,12 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       });
     },
     callAgain: function callAgain() {
-      console.log("callAgain");
+      if (Object.keys(this.currentTurnObject).length == 0) {
+        console.log('CallAgain');
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('No estas atendiendo aun!');
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('LLamando Nuevamente el TURNO');
+      }
     },
     atendTurn: function atendTurn() {
       var _this4 = this;
@@ -81330,50 +81335,58 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
     cancelTurn: function cancelTurn() {
       console.log("cancelTurn");
       var self = this;
-      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
-        title: 'Estas Seguro?',
-        text: 'No podras revertirlo',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, Anular!',
-        cancelButtonText: 'No, cancelar',
-        confirmButtonClass: "btn btn-success",
-        cancelButtonClass: "btn btn-danger",
-        buttonsStyling: false
-      }).then(function () {
-        // hace la peticion al backend para anular
-        var data = {
-          'module': self.userModule.id,
-          'current_diligence': self.currentDiligence
-        };
-        _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/cancel-turn", data).then(function (response) {
-          console.log(response.data);
+      console.log('hola');
 
-          if (response.data.message) {
-            // cuando termine de hacer la peticion
+      if (Object.keys(this.currentTurnObject).length == 0) {
+        console.log('cancelTurn');
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()('No estas atendiendo aun!');
+      } else {
+        console.log('no esta vacio');
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+          title: 'Estas Seguro?',
+          text: 'No podras revertirlo',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si, Anular!',
+          cancelButtonText: 'No, cancelar',
+          confirmButtonClass: "btn btn-success",
+          cancelButtonClass: "btn btn-danger",
+          buttonsStyling: false
+        }).then(function () {
+          // hace la peticion al backend para anular
+          var data = {
+            'module': self.userModule.id,
+            'current_diligence': self.currentDiligence
+          };
+          _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/cancel-turn", data).then(function (response) {
+            console.log(response.data);
+
+            if (response.data.message) {
+              // cuando termine de hacer la peticion
+              sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+                title: 'Borrado!',
+                text: 'El registro ha sido Anulado.',
+                type: 'success',
+                confirmButtonClass: "btn btn-success",
+                buttonsStyling: false
+              })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+            }
+
+            self.$emit('reloaddata');
+          });
+        }, function (dismiss) {
+          // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+          if (dismiss === 'cancel') {
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
-              title: 'Borrado!',
-              text: 'El registro ha sido Anulado.',
-              type: 'success',
-              confirmButtonClass: "btn btn-success",
+              title: 'Cancelado',
+              text: 'No Hicimos nada :)',
+              type: 'error',
+              confirmButtonClass: "btn btn-info",
               buttonsStyling: false
             })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
           }
-
-          self.$emit('reloaddata');
         });
-      }, function (dismiss) {
-        // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-        if (dismiss === 'cancel') {
-          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
-            title: 'Cancelado',
-            text: 'No Hicimos nada :)',
-            type: 'error',
-            confirmButtonClass: "btn btn-info",
-            buttonsStyling: false
-          })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
-        }
-      });
+      }
     }
   }
 });
@@ -120494,8 +120507,8 @@ var require;var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/andresmauro17/Documents/code/MDO/tuturno/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/aletop/Escritorio/tu turno/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

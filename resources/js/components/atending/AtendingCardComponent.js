@@ -164,7 +164,12 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             })
         },
         callAgain:function(){
-        console.log("callAgain")
+            if(Object.keys(this.currentTurnObject).length == 0 ){
+                console.log('CallAgain')
+                swal('No estas atendiendo aun!')
+            }else{
+                swal('LLamando Nuevamente el TURNO')
+            }
         },
         atendTurn:function(){
             let data = {'module':this.userModule.id, 'current_diligence':this.currentDiligence}
@@ -190,69 +195,53 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             console.log("cancelTurn")
             let self = this
             
-
-            swal({
-                title: 'Estas Seguro?',
-                text: 'No podras revertirlo',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si, Anular!',
-                cancelButtonText: 'No, cancelar',
-                confirmButtonClass: "btn btn-success",
-                cancelButtonClass: "btn btn-danger",
-                buttonsStyling: false
-            }).then(function() {
-                // hace la peticion al backend para anular
-                    let data = {'module':self.userModule.id, 'current_diligence':self.currentDiligence}
-                    api.post(`atending/cancel-turn`,data).then((response) => {
-                        console.log(response.data)
-                        if(response.data.message){
-                            // cuando termine de hacer la peticion
-                            swal({
-                                title: 'Borrado!',
-                                text: 'El registro ha sido Anulado.',
-                                type: 'success',
-                                confirmButtonClass: "btn btn-success",
-                                buttonsStyling: false
-                                }).catch(swal.noop)
-                        }
-                        self.$emit('reloaddata')
-                    })
-
-            }, function(dismiss) {
-              // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-              if (dismiss === 'cancel') {
+            console.log('hola')
+            if(Object.keys(this.currentTurnObject).length == 0 ){
+                console.log('cancelTurn')
+                swal('No estas atendiendo aun!')
+            }else{
+                console.log('no esta vacio')
                 swal({
-                  title: 'Cancelado',
-                  text: 'No Hicimos nada :)',
-                  type: 'error',
-                  confirmButtonClass: "btn btn-info",
-                  buttonsStyling: false
-                }).catch(swal.noop)
-              }
-            })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+                    title: 'Estas Seguro?',
+                    text: 'No podras revertirlo',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Si, Anular!',
+                    cancelButtonText: 'No, cancelar',
+                    confirmButtonClass: "btn btn-success",
+                    cancelButtonClass: "btn btn-danger",
+                    buttonsStyling: false
+                }).then(function() {
+                    // hace la peticion al backend para anular
+                        let data = {'module':self.userModule.id, 'current_diligence':self.currentDiligence}
+                        api.post(`atending/cancel-turn`,data).then((response) => {
+                            console.log(response.data)
+                            if(response.data.message){
+                                // cuando termine de hacer la peticion
+                                swal({
+                                    title: 'Borrado!',
+                                    text: 'El registro ha sido Anulado.',
+                                    type: 'success',
+                                    confirmButtonClass: "btn btn-success",
+                                    buttonsStyling: false
+                                    }).catch(swal.noop)
+                            }
+                            self.$emit('reloaddata')
+                        })
+    
+                }, function(dismiss) {
+                  // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+                  if (dismiss === 'cancel') {
+                    swal({
+                      title: 'Cancelado',
+                      text: 'No Hicimos nada :)',
+                      type: 'error',
+                      confirmButtonClass: "btn btn-info",
+                      buttonsStyling: false
+                    }).catch(swal.noop)
+                  }
+                })
+            }
         },
     },
 });

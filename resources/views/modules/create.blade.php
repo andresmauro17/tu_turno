@@ -71,7 +71,7 @@
                             @foreach ($users as $user)
                                 {{-- entrar a la propiedad de un arreglo
                                 <option disabled>{{$user->module["name"]}}</option> --}}
-                                @if($user->module["user_id"] == $user->id || $user->module)
+                                @if($user->module["user_id"] == $user->id || $user->module || $user->is_active == null)
                                     <option disabled>{{$user->name}}</option>
                                 @else
                                     <option value="{{$user->id}}">{{$user->name}}</option>

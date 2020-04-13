@@ -17,19 +17,15 @@ class DiligencesTableSeeder extends Seeder
         $diligence->save();
 
         $diligence = new Diligence();
-        $diligence->name = "Informacion Pediatrica";
-        $diligence->save();
-
-        $diligence = new Diligence();
         $diligence->name = "Facturacion";
         $diligence->save();
 
         $diligence = new Diligence();
-        $diligence->name = "Atencion Consulta";
+        $diligence->name = "Aplicacion Vacunacion";
         $diligence->save();
 
         $diligence = new Diligence();
-        $diligence->name = "Aplicacion Vacunacion";
+        $diligence->name = "Atencion Consulta";
         $diligence->save();
 
     }
