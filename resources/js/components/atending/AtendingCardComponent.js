@@ -187,7 +187,72 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             })
         },
         cancelTurn:function(){
-        console.log("cancelTurn")
+            console.log("cancelTurn")
+            let self = this
+            
+
+            swal({
+                title: 'Estas Seguro?',
+                text: 'No podras revertirlo',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si, Anular!',
+                cancelButtonText: 'No, cancelar',
+                confirmButtonClass: "btn btn-success",
+                cancelButtonClass: "btn btn-danger",
+                buttonsStyling: false
+            }).then(function() {
+                // hace la peticion al backend para anular
+                    let data = {'module':self.userModule.id, 'current_diligence':self.currentDiligence}
+                    api.post(`atending/cancel-turn`,data).then((response) => {
+                        console.log(response.data)
+                        if(response.data.message){
+                            // cuando termine de hacer la peticion
+                            swal({
+                                title: 'Borrado!',
+                                text: 'El registro ha sido Anulado.',
+                                type: 'success',
+                                confirmButtonClass: "btn btn-success",
+                                buttonsStyling: false
+                                }).catch(swal.noop)
+                        }
+                        self.$emit('reloaddata')
+                    })
+
+            }, function(dismiss) {
+              // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+              if (dismiss === 'cancel') {
+                swal({
+                  title: 'Cancelado',
+                  text: 'No Hicimos nada :)',
+                  type: 'error',
+                  confirmButtonClass: "btn btn-info",
+                  buttonsStyling: false
+                }).catch(swal.noop)
+              }
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         },
     },
 });

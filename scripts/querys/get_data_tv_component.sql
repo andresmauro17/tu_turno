@@ -7,6 +7,6 @@ SELECT
 FROM modules AS m
 left join diligences_modules_turns AS dmt ON m.id = dmt.module_id
 join turns as t ON dmt.turn_id = t.id
-where m.is_active = 1 and (dmt.time_atention IS null AND dmt.end_atention IS null or (dmt.end_atention IS null))
+where m.is_active = 1 and t.is_active = 1 and (dmt.time_atention IS null AND dmt.end_atention IS null or (dmt.end_atention IS null))
 order by m.id
 ;

@@ -194,6 +194,34 @@ class AtendingController extends AppBaseController
     public function cancelTurn(Request $request){
         Log::info("cancelTurn");
         Log::info($request);
+        // get turns  where end atention is null and be called or is atending
+        $currentTurnAtending = Diligence::find($request->current_diligence)
+            ->turns()
+            ->where([
+                ['turns.is_active', '=', 1],
+                ['diligences_modules_turns.module_id', '=', $request->module],
+                ['diligences_modules_turns.end_atention', '=', null]
+            ])
+            ->first()
+            ;
+        Log::info("currentTurnAtending");
+        Log::info($currentTurnAtending);
+
+        if($currentTurnAtending){
+            Log::info("dentro del if");
+            Log::info($currentTurnAtending);
+            $currentTurnAtending->is_active = 0;
+            $response = $currentTurnAtending->save();
+            return response()->json($response, 200);
+        }
+        else{
+
+            Log::info('dentro del else');
+            return response()->json(["message"=>"No estas atendiendo ningun turno aun"], 200);
+        }
+        
+
+
     }
 
 }

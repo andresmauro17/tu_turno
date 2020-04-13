@@ -25,7 +25,7 @@ class TvController extends AppBaseController
         )
         ->leftJoin('diligences_modules_turns AS dmt','m.id','=', 'dmt.module_id')
         ->join('turns as t', 'dmt.turn_id', '=', 't.id')
-        ->whereRaw('m.is_active = 1 and (dmt.time_atention IS null AND dmt.end_atention IS null or (dmt.end_atention IS null))')
+        ->whereRaw('m.is_active = 1 and t.is_active = 1 and (dmt.time_atention IS null AND dmt.end_atention IS null or (dmt.end_atention IS null))')
         ->get();
 
         

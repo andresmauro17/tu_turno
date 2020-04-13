@@ -81329,6 +81329,51 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
     },
     cancelTurn: function cancelTurn() {
       console.log("cancelTurn");
+      var self = this;
+      sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+        title: 'Estas Seguro?',
+        text: 'No podras revertirlo',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, Anular!',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonClass: "btn btn-success",
+        cancelButtonClass: "btn btn-danger",
+        buttonsStyling: false
+      }).then(function () {
+        // hace la peticion al backend para anular
+        var data = {
+          'module': self.userModule.id,
+          'current_diligence': self.currentDiligence
+        };
+        _api__WEBPACK_IMPORTED_MODULE_3__["default"].post("atending/cancel-turn", data).then(function (response) {
+          console.log(response.data);
+
+          if (response.data.message) {
+            // cuando termine de hacer la peticion
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+              title: 'Borrado!',
+              text: 'El registro ha sido Anulado.',
+              type: 'success',
+              confirmButtonClass: "btn btn-success",
+              buttonsStyling: false
+            })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+          }
+
+          self.$emit('reloaddata');
+        });
+      }, function (dismiss) {
+        // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+        if (dismiss === 'cancel') {
+          sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()({
+            title: 'Cancelado',
+            text: 'No Hicimos nada :)',
+            type: 'error',
+            confirmButtonClass: "btn btn-info",
+            buttonsStyling: false
+          })["catch"](sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.noop);
+        }
+      });
     }
   }
 });
