@@ -81993,17 +81993,44 @@ var TvModuleCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
   props: ["module"],
   data: function data() {
     return {
-      noti: ''
+      myNoti: false,
+      noti: '',
+      cont: 0
     };
   },
   mounted: function mounted() {
     console.log('hi from TvModuleCardComponent');
+    this.mySound = new Audio('./sound/timbre.mp3');
   },
   methods: {
     notification: function notification() {
-      if (!this.noti) {
+      var _this = this;
+
+      if (this.myNoti == false) {
         this.noti = 'alert alert-warning';
-      } else this.noti = '';
+        this.mySound.play();
+        this.myNoti = true;
+        this.cont++;
+
+        if (this.cont == 1) {
+          setTimeout(function () {
+            _this.notification();
+          }, 1500);
+          setTimeout(function () {
+            _this.notification();
+          }, 2600);
+          setTimeout(function () {
+            _this.notification();
+          }, 4000);
+        }
+
+        if (this.cont == 2) {
+          this.cont = 0;
+        }
+      } else {
+        this.noti = '';
+        this.myNoti = false;
+      }
     }
   }
 });
