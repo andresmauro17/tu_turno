@@ -13,7 +13,8 @@ const AtendingComponent = Vue.component("atending-component",{
     data() {
         return {
             selectDiligence:null,
-            atendingData : {}
+            atendingData : {},
+            datodelhijo: '',
 
         }
     },

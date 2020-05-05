@@ -24,7 +24,7 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             atendedTurns:"",
             averageTime:"",
             maxTresholdTowait:600000,
-            maxTresholdToAtend:300000
+            maxTresholdToAtend:300000,
 
         }
     },
@@ -34,6 +34,8 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             this.incrementWaitQueueTime()
             this.incrementTurnTimeAtention()
         }, 1000)
+        //dato que comparto con el padre
+        this.$emit('turnhijo', this.turnsWaiting);
     },
     watch: {
         atendingData: function (newData, oldData) {

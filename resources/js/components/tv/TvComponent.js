@@ -14,6 +14,8 @@ const TvComponent = Vue.component("tv-component",{
 
     props:[
         "modules",
+        "services",
+        "turnstotales"
     ],
 
     data() {
@@ -37,6 +39,12 @@ const TvComponent = Vue.component("tv-component",{
         
     },
 
+    updated() {
+        if (this.turnstotales === 10) {
+            this.showNotification('top','left')
+        }
+    },
+
     methods: {
 
         getHour: function(){
@@ -51,8 +59,26 @@ const TvComponent = Vue.component("tv-component",{
                 // console.log(' esta es mi response')
                 // console.log(response.data)
            });
-           
-       }
+        },
+
+        showNotification: function(from, align) {
+            let type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+        
+            let color = Math.floor((Math.random() * 6) + 1);
+        
+            $.notify({
+              icon: "add_alert",
+              message: "Cantidad Maxima De Turnos"
+        
+            },{
+                type: type[color],
+                timer: 3000,
+                placement: {
+                from: from,
+                align: align
+                }
+            });
+        },
     },
 });
 

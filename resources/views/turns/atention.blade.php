@@ -1,18 +1,28 @@
 @extends('layouts.new_layout_dashboard')
 @section('content_user')
 @if($module->is_active)
-    <atending-component inline-template :user-module="{{$module}}">
+    <atending-component 
+        inline-template 
+        :user-module="{{$module}}" 
+        >
+
         <div class="row">
             <div class="row">
                 <div class="col-md-12">
                     {{-- <h1>hola {{$module->diligences}}</h1> --}}
                     <div class="col-lg-5 col-md-6 col-sm-3" v-if="userModule.diligences.length > 1 ">
                         <select v-model="selectDiligence" class="selectpicker" data-style="btn btn-primary btn-round"  data-size="7">
-                            <option :value="0">Seleccione una diligencia</option>
+                            <option :value="1">Seleccione una diligencia</option>
                             <template v-for="diligence in userModule.diligences">
-                                <option :value="diligence.id">@{{diligence.name}}</option>
+                                <option :value="diligence.id">@{{diligence.name}} , @{{datodelhijo}}</option>
                             </template>                            
                         </select>
+                        {{-- <template v-model="selectDiligence">
+                            <div v-for="diligence in userModule.diligences">
+                                <button class="btn btn-primary" :value="diligence.id">@{{diligence.name}} , @{{datoDelHijo}}</button>
+                            </div>
+                        </template> --}}
+                        
                     </div>
                     
                     <atending-card-component 
@@ -21,6 +31,7 @@
                         :atending-data = "atendingData" 
                         :current-diligence = "selectDiligence"
                         @reloaddata = "getAtendingData"
+                        @turnhijo = "datodelhijo = $event"
                         
                         >
                         <div class="card" v-if="currentDiligence">

@@ -81161,7 +81161,9 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       _this.incrementWaitQueueTime();
 
       _this.incrementTurnTimeAtention();
-    }, 1000);
+    }, 1000); //dato que comparto con el padre
+
+    this.$emit('turnhijo', this.turnsWaiting);
   },
   watch: {
     atendingData: function atendingData(newData, oldData) {
@@ -81426,7 +81428,8 @@ var AtendingComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("at
   data: function data() {
     return {
       selectDiligence: null,
-      atendingData: {}
+      atendingData: {},
+      datodelhijo: ''
     };
   },
   watch: {
@@ -81933,7 +81936,7 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
   components: {
     TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  props: ["modules"],
+  props: ["modules", "services", "turnstotales"],
   data: function data() {
     return {
       modulesLocal: [],
@@ -81952,6 +81955,11 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
     }, 1000), this.modulesLocal = this.modules;
     this.traerDatos();
   },
+  updated: function updated() {
+    if (this.turnstotales === 10) {
+      this.showNotification('top', 'left');
+    }
+  },
   methods: {
     getHour: function getHour() {
       this.hours = moment__WEBPACK_IMPORTED_MODULE_3___default()().format('MMMM Do YYYY, h:mm:ss a');
@@ -81963,6 +81971,21 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
       _api__WEBPACK_IMPORTED_MODULE_2__["default"].get('tv/get-data').then(function (response) {
         _this2.modulesLocal = response.data; // console.log(' esta es mi response')
         // console.log(response.data)
+      });
+    },
+    showNotification: function showNotification(from, align) {
+      var type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+      var color = Math.floor(Math.random() * 6 + 1);
+      $.notify({
+        icon: "add_alert",
+        message: "Cantidad Maxima De Turnos"
+      }, {
+        type: type[color],
+        timer: 3000,
+        placement: {
+          from: from,
+          align: align
+        }
       });
     }
   }
