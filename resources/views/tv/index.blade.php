@@ -3,23 +3,19 @@
 @section('app')
 	<tv-component inline-template 
 		v-bind:modules="{{$modules}}" 
-		v-bind:services="{{$services}}" 
 		v-bind:turnstotales="{{$turnstotales}}"
 		>
 
 		<div class="container-fluid">
 			<div class="col-xs-8">
 					<div class="row">
-
+						
 						<div class="card">
+							
 							<div class="card-header card-header-icon" data-background-color="blue">
 								<i class="material-icons">announcement</i>
 							</div>
-							{{-- <div class="toolbar text-right card-header card-header-icon " data-background-color="yellow" @click.prevent="showNotification('top','left')"> --}}
-								<div class="toolbar text-right card-header card-header-icon " data-background-color="yellow" @click.prevent="turnstotales++">
-								<i>@{{turnstotales}}</i>
-							</div>
-							
+
 							<div class="card-content text-center">
 																
 								<MARQUEE behavior="scroll" direction="left" scrollamount="8">
@@ -44,6 +40,12 @@
 				<template v-for="module in modulesLocal">
 					<div>
 						<div class="col-xs-12">
+							<button @click.prevent="reducirTurno">reducir</button>
+							<div class="card" v-bind:class="colorNoty">
+								<div class="card-content text-center" @click.prevent="aumentarTurno">
+									<h4>TURNOS EN ATENCION : <strong>@{{tTotales}}</strong></h4>
+								</div>
+							</div>
 							<tv-module-card-component inline-template v-bind:module="module">
 								<div class="card" @click.prevent="notification" v-bind:class="noti">
 									<div class="card-header card-header-icon " data-background-color="blue">

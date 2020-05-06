@@ -18,7 +18,7 @@ class TvController extends Controller
             $turnstotales+=$service->consecutive_number;
         };
 
-        return view('tv.index',compact('modules', 'services', 'turnstotales'));
+        return view('tv.index',compact('modules', 'turnstotales'));
     }
     
 }

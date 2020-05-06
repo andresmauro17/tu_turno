@@ -14,14 +14,25 @@ const TvComponent = Vue.component("tv-component",{
 
     props:[
         "modules",
-        "services",
-        "turnstotales"
+        "turnstotales",
     ],
 
     data() {
         return {
             modulesLocal: [],
             hours: '', 
+            tTotales: 0,
+
+            myNoti: false,
+            colorNoty: '',
+        }
+    },
+
+    updated() {
+        if(this.tTotales >= 8){
+            this.notifyTurns()
+        }else{
+            this.colorNoty = ''
         }
     },
 
@@ -36,13 +47,10 @@ const TvComponent = Vue.component("tv-component",{
 
         this.modulesLocal = this.modules;
         this.traerDatos();
-        
-    },
 
-    updated() {
-        if (this.turnstotales === 10) {
-            this.showNotification('top','left')
-        }
+        this.tTotales = this.turnstotales
+
+        this.mySoundTurn = new Audio('./sound/turno.mp3')
     },
 
     methods: {
@@ -61,24 +69,25 @@ const TvComponent = Vue.component("tv-component",{
            });
         },
 
-        showNotification: function(from, align) {
-            let type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
-        
-            let color = Math.floor((Math.random() * 6) + 1);
-        
-            $.notify({
-              icon: "add_alert",
-              message: "Cantidad Maxima De Turnos"
-        
-            },{
-                type: type[color],
-                timer: 3000,
-                placement: {
-                from: from,
-                align: align
-                }
-            });
+        aumentarTurno: function(){
+            this.tTotales++
         },
+
+        reducirTurno: function(){
+            this.tTotales--
+        },
+
+        notifyTurns: function(){
+            if(this.myNoti == false){
+                this.colorNoty = 'alert alert-danger'
+                this.mySoundTurn.play() 
+                this.myNoti = true
+
+                setTimeout(() => {
+                    this.myNoti = false
+                } ,5000)
+            }
+        }
     },
 });
 

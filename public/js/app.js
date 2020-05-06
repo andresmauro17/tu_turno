@@ -81936,12 +81936,22 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
   components: {
     TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  props: ["modules", "services", "turnstotales"],
+  props: ["modules", "turnstotales"],
   data: function data() {
     return {
       modulesLocal: [],
-      hours: ''
+      hours: '',
+      tTotales: 0,
+      myNoti: false,
+      colorNoty: ''
     };
+  },
+  updated: function updated() {
+    if (this.tTotales >= 8) {
+      this.notifyTurns();
+    } else {
+      this.colorNoty = '';
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -81954,11 +81964,8 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
       _this.getHour();
     }, 1000), this.modulesLocal = this.modules;
     this.traerDatos();
-  },
-  updated: function updated() {
-    if (this.turnstotales === 10) {
-      this.showNotification('top', 'left');
-    }
+    this.tTotales = this.turnstotales;
+    this.mySoundTurn = new Audio('./sound/turno.mp3');
   },
   methods: {
     getHour: function getHour() {
@@ -81973,20 +81980,23 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
         // console.log(response.data)
       });
     },
-    showNotification: function showNotification(from, align) {
-      var type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
-      var color = Math.floor(Math.random() * 6 + 1);
-      $.notify({
-        icon: "add_alert",
-        message: "Cantidad Maxima De Turnos"
-      }, {
-        type: type[color],
-        timer: 3000,
-        placement: {
-          from: from,
-          align: align
-        }
-      });
+    aumentarTurno: function aumentarTurno() {
+      this.tTotales++;
+    },
+    reducirTurno: function reducirTurno() {
+      this.tTotales--;
+    },
+    notifyTurns: function notifyTurns() {
+      var _this3 = this;
+
+      if (this.myNoti == false) {
+        this.colorNoty = 'alert alert-danger';
+        this.mySoundTurn.play();
+        this.myNoti = true;
+        setTimeout(function () {
+          _this3.myNoti = false;
+        }, 5000);
+      }
     }
   }
 });
