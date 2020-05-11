@@ -24,12 +24,17 @@ const TvComponent = Vue.component("tv-component",{
             tTotales: 0,
 
             myNoti: false,
+            colorAlert: '',
             colorNoty: '',
         }
     },
 
     updated() {
-        if(this.tTotales >= 8){
+        if(this.tTotales >= 6 && this.tTotales <=9){
+            this.colorNoty = 'alert alert-warning'
+            this.colorAlert = 'blue'
+        }
+        else if(this.tTotales >= 10){
             this.notifyTurns()
         }else{
             this.colorNoty = ''
@@ -80,6 +85,7 @@ const TvComponent = Vue.component("tv-component",{
         notifyTurns: function(){
             if(this.myNoti == false){
                 this.colorNoty = 'alert alert-danger'
+                this.colorAlert = 'red'
                 this.mySoundTurn.play() 
                 this.myNoti = true
 
@@ -87,7 +93,7 @@ const TvComponent = Vue.component("tv-component",{
                     this.myNoti = false
                 } ,5000)
             }
-        }
+        },
     },
 });
 

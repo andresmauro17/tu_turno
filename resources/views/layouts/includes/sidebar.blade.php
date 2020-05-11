@@ -77,6 +77,38 @@
                         <p> Clientes </p>
                     </a>
                 </li>
+
+                <li class="{{ areActiveRoutes([
+                    'company.index',
+                    'company.create',
+                    'company.edit'
+                    ]) }}">
+                    <a data-toggle="collapse" href="#pagesCompany">
+                        <i class="material-icons">apartment</i>
+                        <p> Empresas 
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div id="pagesCompany" class="collapse {{ areActiveRoutes([
+                        'company.index',
+                        'company.create',
+                        'company.edit'
+
+                        ],'in') }}" >
+                        <ul class="nav">
+                            <li class="{{ areActiveRoutes([
+                                'company.index',
+                                'company.create',
+                                'company.edit'
+                                ]) }}">
+                                <a href="/company">
+                                    <span class="sidebar-mini"> LI </span>
+                                    <span class="sidebar-normal"> Listar </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
     
                 <li 
                     class="{{ areActiveRoutes([

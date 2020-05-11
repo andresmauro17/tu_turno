@@ -18,7 +18,7 @@
                                     </a>
                             </div>
                         </div>
-
+                        
                         @include('common.success')
 
                         <div class="material-datatables">
@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
+                                        <th>Telefono</th>
                                         <th>Documento</th>
                                         <th>Numero</th>
                                         <th>Sexo</th>
@@ -39,6 +40,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
+                                        <th>Telefono</th>
                                         <th>Documento</th>
                                         <th>Numero</th>
                                         <th>Sexo</th>
@@ -51,6 +53,7 @@
                                         <tr>
                                             <td>@{{client.name}}</td>
                                             <td>@{{client.lastname}}</td>
+                                            <td>@{{client.phone_number}}</td>
                                             <td>@{{client.type_dni}}</td>
                                             <td>@{{client.dni}}</td>
                                             <td>@{{client.sex}}</td>

@@ -34,14 +34,12 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             this.incrementWaitQueueTime()
             this.incrementTurnTimeAtention()
         }, 1000)
-        //dato que comparto con el padre
-        this.$emit('turnhijo', this.turnsWaiting);
     },
     watch: {
         atendingData: function (newData, oldData) {
           this.setData(newData.turns)
         }
-      },
+    },
     methods: {
         clearData(){
             this.FirstTurnInQueue = {}
@@ -91,6 +89,8 @@ const AtendingCardComponent = Vue.component("atending-card-component",{
             }
 
             this.turnsWaiting=turnsWaitingCount
+            //dato que comparto con el padre
+            this.$emit('turnhijo', this.turnsWaiting);
             this.atendedTurns=turnsAtendedCount
             
             // if there is a firs turn in queue

@@ -12,9 +12,11 @@
 						
 						<div class="card">
 							
-							<div class="card-header card-header-icon" data-background-color="blue">
-								<i class="material-icons">announcement</i>
+							<div class="card-header card-header-icon" :data-background-color="colorAlert" @click.prevent="aumentarTurno">
+								<i class="material-icons">announcement</i>TURNOS EN ATENCION : @{{tTotales}}
 							</div>
+
+							
 
 							<div class="card-content text-center">
 																
@@ -40,12 +42,8 @@
 				<template v-for="module in modulesLocal">
 					<div>
 						<div class="col-xs-12">
-							<button @click.prevent="reducirTurno">reducir</button>
-							<div class="card" v-bind:class="colorNoty">
-								<div class="card-content text-center" @click.prevent="aumentarTurno">
-									<h4>TURNOS EN ATENCION : <strong>@{{tTotales}}</strong></h4>
-								</div>
-							</div>
+							<button @click.prevent="reducirTurno">reducir TEMPORAL</button>
+						
 							<tv-module-card-component inline-template v-bind:module="module">
 								<div class="card" @click.prevent="notification" v-bind:class="noti">
 									<div class="card-header card-header-icon " data-background-color="blue">

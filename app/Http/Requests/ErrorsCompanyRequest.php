@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ErrorsClientRequest extends FormRequest
+class ErrorsCompanyRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,11 +15,9 @@ class ErrorsClientRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'lastname' => 'required',
+            'nit' => 'required',
+            'address' => 'required',
             'phone_number' => 'required|numeric',
-            'type_dni' => 'required',
-            'dni' => 'required|numeric',
-            'sex' => 'required',
         ];
     }
 }

@@ -43,6 +43,17 @@
                 </div>
 
                 <div class="row">
+                    <label class="col-md-3 label-on-left">Telefono</label>
+
+                    <div class="col-md-9">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="phone_number" class="form-control" value="{{ old('phone_number')}}" placeholder="Numero Telefonico">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <label class="col-md-3 label-on-left">DNI</label>
 
                     <div class="col-lg-5 col-md-6 col-sm-3">

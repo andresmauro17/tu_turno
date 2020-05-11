@@ -6,6 +6,7 @@ import ModuleIndexComponent from "./components/modules/ModuleIndexComponent"
 import DiligenceIndexComponent from "./components/diligences/DiligenceIndexComponent"
 import UserIndexComponent from "./components/users/UserIndexComponent"
 import ClientIndexComponent from "./components/clients/ClientIndexComponent"
+import CompanyIndexComponent from "./components/companies/CompanyIndexComponent"
 
 
 const GlobalComponents = {
@@ -18,6 +19,7 @@ const GlobalComponents = {
         Vue.component("DiligenceIndexComponent", DiligenceIndexComponent),
         Vue.component("UserIndexComponent", UserIndexComponent),
         Vue.component("ClientIndexComponent", ClientIndexComponent)
+        Vue.component("CompanyIndexComponent", CompanyIndexComponent)
     }
 }
 

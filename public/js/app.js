@@ -81161,9 +81161,7 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
       _this.incrementWaitQueueTime();
 
       _this.incrementTurnTimeAtention();
-    }, 1000); //dato que comparto con el padre
-
-    this.$emit('turnhijo', this.turnsWaiting);
+    }, 1000);
   },
   watch: {
     atendingData: function atendingData(newData, oldData) {
@@ -81215,7 +81213,9 @@ var AtendingCardComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component
         });
       }
 
-      this.turnsWaiting = turnsWaitingCount;
+      this.turnsWaiting = turnsWaitingCount; //dato que comparto con el padre
+
+      this.$emit('turnhijo', this.turnsWaiting);
       this.atendedTurns = turnsAtendedCount; // if there is a firs turn in queue
 
       if (!Object.keys(this.FirstTurnInQueue).length == 0) {
@@ -81535,6 +81535,25 @@ var ClientIndexComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (ClientIndexComponent);
+
+/***/ }),
+
+/***/ "./resources/js/components/companies/CompanyIndexComponent.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/companies/CompanyIndexComponent.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
+var CompanyIndexComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("company-index-component", {
+  props: ["companies"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (CompanyIndexComponent);
 
 /***/ }),
 
@@ -81943,11 +81962,15 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
       hours: '',
       tTotales: 0,
       myNoti: false,
+      colorAlert: '',
       colorNoty: ''
     };
   },
   updated: function updated() {
-    if (this.tTotales >= 8) {
+    if (this.tTotales >= 6 && this.tTotales <= 9) {
+      this.colorNoty = 'alert alert-warning';
+      this.colorAlert = 'blue';
+    } else if (this.tTotales >= 10) {
       this.notifyTurns();
     } else {
       this.colorNoty = '';
@@ -81991,6 +82014,7 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
 
       if (this.myNoti == false) {
         this.colorNoty = 'alert alert-danger';
+        this.colorAlert = 'red';
         this.mySoundTurn.play();
         this.myNoti = true;
         setTimeout(function () {
@@ -82162,6 +82186,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/diligences/DiligenceIndexComponent */ "./resources/js/components/diligences/DiligenceIndexComponent.js");
 /* harmony import */ var _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/users/UserIndexComponent */ "./resources/js/components/users/UserIndexComponent.js");
 /* harmony import */ var _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/clients/ClientIndexComponent */ "./resources/js/components/clients/ClientIndexComponent.js");
+/* harmony import */ var _components_companies_CompanyIndexComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/companies/CompanyIndexComponent */ "./resources/js/components/companies/CompanyIndexComponent.js");
+
 
 
 
@@ -82173,6 +82199,7 @@ __webpack_require__.r(__webpack_exports__);
 var GlobalComponents = {
   install: function install(Vue) {
     Vue.component("serviceIndexComponent", _components_services_ServiceIndexComponent__WEBPACK_IMPORTED_MODULE_0__["default"]), Vue.component("AtendingComponent", _components_atending_AtendingComponent__WEBPACK_IMPORTED_MODULE_1__["default"]), Vue.component("KioskComponent", _components_kiosk_KioskComponent__WEBPACK_IMPORTED_MODULE_2__["default"]), Vue.component("TvComponent", _components_tv_TvComponent__WEBPACK_IMPORTED_MODULE_3__["default"]), Vue.component("ModuleIndexComponent", _components_modules_ModuleIndexComponent__WEBPACK_IMPORTED_MODULE_4__["default"]), Vue.component("DiligenceIndexComponent", _components_diligences_DiligenceIndexComponent__WEBPACK_IMPORTED_MODULE_5__["default"]), Vue.component("UserIndexComponent", _components_users_UserIndexComponent__WEBPACK_IMPORTED_MODULE_6__["default"]), Vue.component("ClientIndexComponent", _components_clients_ClientIndexComponent__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    Vue.component("CompanyIndexComponent", _components_companies_CompanyIndexComponent__WEBPACK_IMPORTED_MODULE_8__["default"]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (GlobalComponents);

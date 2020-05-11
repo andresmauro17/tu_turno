@@ -10,9 +10,9 @@
             <div class="row">
                 <h4 class="card-title">Cliente</h4>
                 <div class="toolbar text-right">
-                        <a href="/clients" class="btn btn-primary btn-just-icon btn-round">
-                            <i class="material-icons">keyboard_backspace</i>
-                        </a>
+                    <a href="/clients" class="btn btn-primary btn-just-icon btn-round">
+                        <i class="material-icons">keyboard_backspace</i>
+                    </a>
                 </div>
             </div>
 
@@ -39,6 +39,17 @@
                         <div class="form-group label-floating is-empty">
                             <label class="control-label"></label>
                             <input type="text" name="lastname" class="form-control" value="{{$client->lastname}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3 label-on-left">Telefono</label>
+
+                    <div class="col-md-9">
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label"></label>
+                            <input type="text" name="phone_number" class="form-control" value="{{$client->phone_number}}">
                         </div>
                     </div>
                 </div>

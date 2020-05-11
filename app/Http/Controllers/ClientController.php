@@ -24,6 +24,7 @@ class ClientController extends Controller
         $client = new Client();
         $client -> name = $request->input('name');
         $client -> lastname = $request->input('lastname');
+        $client -> phone_number = $request->input('phone_number');
         $client -> type_dni = $request->input('type_dni');
         $client -> dni = $request->input('dni');        
         $client -> sex = $request->input('sex');
@@ -49,6 +50,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         $client -> name = $request->input('name');
         $client -> lastname = $request->input('lastname');
+        $client -> phone_number = $request->input('phone_number');
         $client -> type_dni = $request->input('type_dni');
         $client -> dni = $request->input('dni');
         $client -> sex = $request->input('sex');
