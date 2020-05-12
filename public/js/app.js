@@ -81955,25 +81955,27 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
   components: {
     TvModuleCardComponent: _TvModuleCardComponent__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
-  props: ["modules", "turnstotales"],
+  props: ["modules", "turnstotales", "tv_info", "turnos_maximos"],
   data: function data() {
     return {
       modulesLocal: [],
       hours: '',
       tTotales: 0,
+      tMaximos: 0,
       myNoti: false,
       colorAlert: '',
       colorNoty: ''
     };
   },
   updated: function updated() {
-    if (this.tTotales >= 6 && this.tTotales <= 9) {
+    if (this.tTotales >= this.turnos_maximos / 2 && this.tTotales <= this.turnos_maximos - 1) {
       this.colorNoty = 'alert alert-warning';
       this.colorAlert = 'blue';
-    } else if (this.tTotales >= 10) {
+    } else if (this.tTotales >= this.turnos_maximos) {
       this.notifyTurns();
     } else {
       this.colorNoty = '';
+      this.colorAlert = '';
     }
   },
   mounted: function mounted() {
@@ -81988,6 +81990,7 @@ var TvComponent = vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("tv-compo
     }, 1000), this.modulesLocal = this.modules;
     this.traerDatos();
     this.tTotales = this.turnstotales;
+    this.tMaximos = this.turnos_maximos;
     this.mySoundTurn = new Audio('./sound/turno.mp3');
   },
   methods: {

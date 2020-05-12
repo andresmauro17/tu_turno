@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/atention', 'AtentionController@index')->name('atention');
 
-    Route::GET('/tv', 'TvController@index')->name('tv');
+    Route::resource('/tv', 'TvController');
     
     Route::resource('kiosko', 'TurnController');
     

@@ -55,12 +55,39 @@
                         <p> KIOSKO </p>
                     </a>
                 </li>
-                <li>
-                    <a href="/tv">
+
+                <li class="{{ areActiveRoutes([
+                    'tv.index',
+                    ]) }}">
+                    <a data-toggle="collapse" href="#pagesTv">
                         <i class="material-icons">live_tv</i>
-                        <p> TV </p>
+                        <p> TV 
+                            <b class="caret"></b>
+                        </p>
                     </a>
+                    <div id="pagesTv" class="collapse {{ areActiveRoutes([
+                        'tv.edit',
+                        ],'in') }}" >
+                        <ul class="nav">
+                            <li class="{{ areActiveRoutes([
+                                ]) }}">
+                                <a href="/tv">
+                                    <span class="sidebar-mini"> M </span>
+                                    <span class="sidebar-normal"> Mostrar </span>
+                                </a>
+                            </li>
+                            <li class="{{ areActiveRoutes([
+                                'tv.edit',
+                                ]) }}">
+                                <a href="/tv/1/edit">
+                                    <span class="sidebar-mini"> ED </span>
+                                    <span class="sidebar-normal"> Editar </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
                 <li class=" {{ isActiveRoute('atention') }} ">
                     <a href="/atention">
                         <i class="material-icons">phone_in_talk</i>
@@ -80,34 +107,12 @@
 
                 <li class="{{ areActiveRoutes([
                     'company.index',
-                    'company.create',
                     'company.edit'
-                    ]) }}">
-                    <a data-toggle="collapse" href="#pagesCompany">
+                ]) }}">
+                    <a href="/company">
                         <i class="material-icons">apartment</i>
-                        <p> Empresas 
-                            <b class="caret"></b>
-                        </p>
+                        <p> Empresa </p>
                     </a>
-                    <div id="pagesCompany" class="collapse {{ areActiveRoutes([
-                        'company.index',
-                        'company.create',
-                        'company.edit'
-
-                        ],'in') }}" >
-                        <ul class="nav">
-                            <li class="{{ areActiveRoutes([
-                                'company.index',
-                                'company.create',
-                                'company.edit'
-                                ]) }}">
-                                <a href="/company">
-                                    <span class="sidebar-mini"> LI </span>
-                                    <span class="sidebar-normal"> Listar </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
     
                 <li 

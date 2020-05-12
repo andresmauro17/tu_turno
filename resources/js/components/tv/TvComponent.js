@@ -15,6 +15,8 @@ const TvComponent = Vue.component("tv-component",{
     props:[
         "modules",
         "turnstotales",
+        "tv_info",
+        "turnos_maximos"
     ],
 
     data() {
@@ -22,22 +24,25 @@ const TvComponent = Vue.component("tv-component",{
             modulesLocal: [],
             hours: '', 
             tTotales: 0,
+            tMaximos: 0,
 
             myNoti: false,
             colorAlert: '',
             colorNoty: '',
+
         }
     },
 
     updated() {
-        if(this.tTotales >= 6 && this.tTotales <=9){
+        if(this.tTotales >= this.turnos_maximos / 2 && this.tTotales <= this.turnos_maximos -1 ){
             this.colorNoty = 'alert alert-warning'
             this.colorAlert = 'blue'
         }
-        else if(this.tTotales >= 10){
+        else if(this.tTotales >= this.turnos_maximos){
             this.notifyTurns()
         }else{
             this.colorNoty = ''
+            this.colorAlert = ''
         }
     },
 
@@ -53,9 +58,10 @@ const TvComponent = Vue.component("tv-component",{
         this.modulesLocal = this.modules;
         this.traerDatos();
 
-        this.tTotales = this.turnstotales
+        this.tTotales = this.turnstotales;
+        this.tMaximos = this.turnos_maximos;
 
-        this.mySoundTurn = new Audio('./sound/turno.mp3')
+        this.mySoundTurn = new Audio('./sound/turno.mp3');
     },
 
     methods: {

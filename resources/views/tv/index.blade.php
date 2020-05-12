@@ -4,6 +4,8 @@
 	<tv-component inline-template 
 		v-bind:modules="{{$modules}}" 
 		v-bind:turnstotales="{{$turnstotales}}"
+		v-bind:tv_info="{{$tv_info}}"
+		v-bind:turnos_maximos="{{$turnos_maximos}}"
 		>
 
 		<div class="container-fluid">
@@ -19,10 +21,10 @@
 							
 
 							<div class="card-content text-center">
-																
+
 								<MARQUEE behavior="scroll" direction="left" scrollamount="8">
 									<h4>
-										<strong> Informacion Publicitaria </strong>
+										<strong> @{{tv_info[0].message}} </strong>
 									</h4>
 								</MARQUEE>
 								
@@ -32,17 +34,17 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12">
-
-							<iframe id="video-iframe"  width="80%" src="https://www.youtube.com/embed/l-aS0XSmShM?loop=1&playlist=l-aS0XSmShM&autoplay=1" frameborder="0" allowfullscreen></iframe>
+							{{-- src="https://www.youtube.com/embed/l-aS0XSmShM?loop=1&playlist=l-aS0XSmShM&autoplay=1" --}}
+							<iframe id="video-iframe"  width="80%" :src="tv_info[0].url" frameborder="0" allowfullscreen></iframe>
 
 						</div>
 					</div>
 			</div>
 			<div class="col-xs-4">
+				<button @click.prevent="reducirTurno">reducir TEMPORAL</button>
 				<template v-for="module in modulesLocal">
 					<div>
 						<div class="col-xs-12">
-							<button @click.prevent="reducirTurno">reducir TEMPORAL</button>
 						
 							<tv-module-card-component inline-template v-bind:module="module">
 								<div class="card" @click.prevent="notification" v-bind:class="noti">
